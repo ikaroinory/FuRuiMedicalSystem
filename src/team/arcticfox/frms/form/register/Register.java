@@ -18,17 +18,17 @@ public class Register extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        panel1 = new JPanel();
-        label1 = new JLabel();
-        textField1 = new JTextField();
-        label2 = new JLabel();
-        textField2 = new JTextField();
-        label3 = new JLabel();
-        passwordField1 = new JPasswordField();
-        label4 = new JLabel();
-        passwordField2 = new JPasswordField();
-        panel2 = new JPanel();
-        button1 = new JButton();
+        panelAccount = new JPanel();
+        labelUsername = new JLabel();
+        textFieldUsername = new JTextField();
+        labelEmail = new JLabel();
+        textFieldEmail = new JTextField();
+        labelPassword = new JLabel();
+        passwordFieldPassword = new JPasswordField();
+        labelVerificationPassword = new JLabel();
+        passwordFieldVerificationPassword = new JPasswordField();
+        panelButton = new JPanel();
+        buttonRegister = new JButton();
 
         //======== this ========
         setTitle("Register");
@@ -44,9 +44,9 @@ public class Register extends JFrame {
             "[155:155,fill]" +
             "[41:41,fill]"));
 
-        //======== panel1 ========
+        //======== panelAccount ========
         {
-            panel1.setLayout(new MigLayout(
+            panelAccount.setLayout(new MigLayout(
                 "hidemode 3",
                 // columns
                 "[100:120,fill]" +
@@ -57,53 +57,53 @@ public class Register extends JFrame {
                 "[30:30,fill]" +
                 "[30:30,fill]"));
 
-            //---- label1 ----
-            label1.setText("Username");
-            panel1.add(label1, "cell 0 0");
-            panel1.add(textField1, "cell 1 0");
+            //---- labelUsername ----
+            labelUsername.setText("Username");
+            panelAccount.add(labelUsername, "cell 0 0");
+            panelAccount.add(textFieldUsername, "cell 1 0");
 
-            //---- label2 ----
-            label2.setText("Email");
-            panel1.add(label2, "cell 0 1");
-            panel1.add(textField2, "cell 1 1");
+            //---- labelEmail ----
+            labelEmail.setText("Email");
+            panelAccount.add(labelEmail, "cell 0 1");
+            panelAccount.add(textFieldEmail, "cell 1 1");
 
-            //---- label3 ----
-            label3.setText("Password");
-            panel1.add(label3, "cell 0 2");
-            panel1.add(passwordField1, "cell 1 2");
+            //---- labelPassword ----
+            labelPassword.setText("Password");
+            panelAccount.add(labelPassword, "cell 0 2");
+            panelAccount.add(passwordFieldPassword, "cell 1 2");
 
-            //---- label4 ----
-            label4.setText("Verify Password");
-            panel1.add(label4, "cell 0 3");
-            panel1.add(passwordField2, "cell 1 3");
+            //---- labelVerificationPassword ----
+            labelVerificationPassword.setText("Verify Password");
+            panelAccount.add(labelVerificationPassword, "cell 0 3");
+            panelAccount.add(passwordFieldVerificationPassword, "cell 1 3");
         }
-        contentPane.add(panel1, "cell 0 0");
+        contentPane.add(panelAccount, "cell 0 0");
 
-        //======== panel2 ========
+        //======== panelButton ========
         {
-            panel2.setLayout(new FlowLayout());
+            panelButton.setLayout(new FlowLayout());
 
-            //---- button1 ----
-            button1.setText("Register");
-            panel2.add(button1);
+            //---- buttonRegister ----
+            buttonRegister.setText("Register");
+            panelButton.add(buttonRegister);
         }
-        contentPane.add(panel2, "cell 0 1");
+        contentPane.add(panelButton, "cell 0 1");
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JPanel panel1;
-    private JLabel label1;
-    private JTextField textField1;
-    private JLabel label2;
-    private JTextField textField2;
-    private JLabel label3;
-    private JPasswordField passwordField1;
-    private JLabel label4;
-    private JPasswordField passwordField2;
-    private JPanel panel2;
-    private JButton button1;
+    private JPanel panelAccount;
+    private JLabel labelUsername;
+    private JTextField textFieldUsername;
+    private JLabel labelEmail;
+    private JTextField textFieldEmail;
+    private JLabel labelPassword;
+    private JPasswordField passwordFieldPassword;
+    private JLabel labelVerificationPassword;
+    private JPasswordField passwordFieldVerificationPassword;
+    private JPanel panelButton;
+    private JButton buttonRegister;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

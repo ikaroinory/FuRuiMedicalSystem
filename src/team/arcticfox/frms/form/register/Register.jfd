@@ -18,48 +18,48 @@ new FormModel {
 				"$columnConstraints": "[100:120,fill][199:199,fill]"
 				"$rowConstraints": "[30:30,fill][30:30,fill][30:30,fill][30:30,fill]"
 			} ) {
-				name: "panel1"
+				name: "panelAccount"
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
+					name: "labelUsername"
 					"text": "Username"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField1"
+					name: "textFieldUsername"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
+					name: "labelEmail"
 					"text": "Email"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 1"
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField2"
+					name: "textFieldEmail"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 1"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label3"
+					name: "labelPassword"
 					"text": "Password"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 2"
 				} )
 				add( new FormComponent( "javax.swing.JPasswordField" ) {
-					name: "passwordField1"
+					name: "passwordFieldPassword"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 2"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label4"
+					name: "labelVerificationPassword"
 					"text": "Verify Password"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 3"
 				} )
 				add( new FormComponent( "javax.swing.JPasswordField" ) {
-					name: "passwordField2"
+					name: "passwordFieldVerificationPassword"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 3"
 				} )
@@ -67,9 +67,9 @@ new FormModel {
 				"value": "cell 0 0"
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-				name: "panel2"
+				name: "panelButton"
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
+					name: "buttonRegister"
 					"text": "Register"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {

@@ -20,7 +20,7 @@ public class AccountInfo {
     private String id;                      // Id.                  Type: Integer           Encode Type: None
     private String username;                // Username.            Type: String            Encode Type: Base64
     private String email;                   // Email.               Type: String            Encode Type: Base64
-    private String password;                // Password.            Type: String            Encode Type: Base64 -> RSA
+    private String password;                // Password.            Type: String            Encode Type: Base64 -> MD5
     private Time registrationTime;          // Registration Time.   Type: Time              Encode Type: None
     private String status;                  // Account Statue.      Type: AccountStatus     Encode Type: None
     private AccountPermission permission;   // Account Permission   Type: AccountPermission Encode: None

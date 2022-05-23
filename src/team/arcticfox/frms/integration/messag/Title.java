@@ -1,5 +1,6 @@
 package team.arcticfox.frms.integration.messag;
 
+@Deprecated
 public enum Title {
     INFORMATION("Information"),
     WARNING("Warning"),

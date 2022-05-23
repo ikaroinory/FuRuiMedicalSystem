@@ -1,0 +1,61 @@
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.12" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[320:320,fill]"
+			"$rowConstraints": "[81:81,fill][41:41,fill]"
+		} ) {
+			name: "this"
+			"visible": true
+			"minimumSize": new java.awt.Dimension( 350, 182 )
+			"resizable": false
+			"title": "Sign In"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$layoutConstraints": "hidemode 3"
+				"$columnConstraints": "[100:100,fill][199:199,fill]"
+				"$rowConstraints": "[30:30,fill][30:30,fill]"
+			} ) {
+				name: "panelAccount"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelUsername"
+					"text": "Username"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textFieldUsername"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 0"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelPassword"
+					"text": "Password"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 1"
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "passwordFieldPassword"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 1"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panelButton"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonSignIn"
+					"text": "Sign In"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 335, 175 )
+		} )
+	}
+}

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.tree.*;
+
 import net.miginfocom.swing.*;
 
 /**
@@ -18,11 +19,23 @@ public class MainPage extends JFrame {
         initComponents();
     }
 
+    private void menuItemExitActionListener(ActionEvent e) {
+        EventHandler.exit();
+    }
+
+    private void menuItemRegisterActionListener(ActionEvent e) {
+        EventHandler.showRegisterForm();
+    }
+
+    private void menuItemSignInActionListener(ActionEvent e) {
+        EventHandler.showSignInForm();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
         menuFile = new JMenu();
-        menuItem1 = new JMenuItem();
+        menuItemExit = new JMenuItem();
         menuAccount = new JMenu();
         menuItemRegister = new JMenuItem();
         menuItemSignIn = new JMenuItem();
@@ -43,12 +56,12 @@ public class MainPage extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[220!,fill]" +
-            "[1048:1048,fill]",
-            // rows
-            "[590:590,fill]"));
+                "hidemode 3",
+                // columns
+                "[220!,fill]" +
+                        "[1048:1048,fill]",
+                // rows
+                "[590:590,fill]"));
 
         //======== menuBar1 ========
         {
@@ -58,10 +71,11 @@ public class MainPage extends JFrame {
                 menuFile.setText("File");
                 menuFile.setMnemonic('F');
 
-                //---- menuItem1 ----
-                menuItem1.setText("Exit");
-                menuItem1.setMnemonic('X');
-                menuFile.add(menuItem1);
+                //---- menuItemExit ----
+                menuItemExit.setText("Exit");
+                menuItemExit.setMnemonic('X');
+                menuItemExit.addActionListener(e -> menuItemExitActionListener(e));
+                menuFile.add(menuItemExit);
             }
             menuBar1.add(menuFile);
 
@@ -72,11 +86,13 @@ public class MainPage extends JFrame {
 
                 //---- menuItemRegister ----
                 menuItemRegister.setText("Register");
+                menuItemRegister.addActionListener(e -> menuItemRegisterActionListener(e));
                 menuAccount.add(menuItemRegister);
                 menuAccount.addSeparator();
 
                 //---- menuItemSignIn ----
                 menuItemSignIn.setText("Sign In");
+                menuItemSignIn.addActionListener(e -> menuItemSignInActionListener(e));
                 menuAccount.add(menuItemSignIn);
 
                 //---- menuItemSignOut ----
@@ -110,20 +126,20 @@ public class MainPage extends JFrame {
 
             //---- tree1 ----
             tree1.setModel(new DefaultTreeModel(
-                new DefaultMutableTreeNode("FuRui Medical System") {
-                    {
-                        add(new DefaultMutableTreeNode("Home Page"));
-                        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
+                    new DefaultMutableTreeNode("FuRui Medical System") {
+                        {
+                            add(new DefaultMutableTreeNode("Home Page"));
+                            DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
                             node1.add(new DefaultMutableTreeNode("Drugs"));
                             node1.add(new DefaultMutableTreeNode("Medical Devices"));
                             node1.add(new DefaultMutableTreeNode("Others"));
-                        add(node1);
-                        node1 = new DefaultMutableTreeNode("Search Tools");
+                            add(node1);
+                            node1 = new DefaultMutableTreeNode("Search Tools");
                             node1.add(new DefaultMutableTreeNode("Tools1"));
                             node1.add(new DefaultMutableTreeNode("Tools2"));
-                        add(node1);
-                    }
-                }));
+                            add(node1);
+                        }
+                    }));
             scrollPaneTree.setViewportView(tree1);
         }
         contentPane.add(scrollPaneTree, "cell 0 0");
@@ -134,12 +150,12 @@ public class MainPage extends JFrame {
             //======== panelWelcomeVisit ========
             {
                 panelWelcomeVisit.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[1035,fill]",
-                    // rows
-                    "[70:70,fill]" +
-                    "[453:453,top]"));
+                        "hidemode 3",
+                        // columns
+                        "[1035,fill]",
+                        // rows
+                        "[70:70,fill]" +
+                                "[453:453,top]"));
 
                 //---- label1 ----
                 label1.setText("Welcome!");
@@ -161,7 +177,7 @@ public class MainPage extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;
     private JMenu menuFile;
-    private JMenuItem menuItem1;
+    private JMenuItem menuItemExit;
     private JMenu menuAccount;
     private JMenuItem menuItemRegister;
     private JMenuItem menuItemSignIn;

@@ -13,6 +13,7 @@ new FormModel {
 			"minimumSize": new java.awt.Dimension( 350, 182 )
 			"resizable": false
 			"title": "Sign In"
+			"defaultCloseOperation": 2
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "hidemode 3"
 				"$columnConstraints": "[100:100,fill][199:199,fill]"

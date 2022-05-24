@@ -81,9 +81,10 @@ new FormModel {
 					"text": "File"
 					"mnemonic": 70
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
-						name: "menuItem1"
+						name: "menuItemExit"
 						"text": "Exit"
 						"mnemonic": 88
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemExitActionListener", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
@@ -93,6 +94,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemRegister"
 						"text": "Register"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemRegisterActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
 						name: "separatorAccount1"
@@ -100,6 +102,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemSignIn"
 						"text": "Sign In"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemSignInActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemSignOut"

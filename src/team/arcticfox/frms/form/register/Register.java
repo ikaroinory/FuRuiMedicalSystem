@@ -35,6 +35,7 @@ public class Register extends JFrame {
         setVisible(true);
         setMinimumSize(new Dimension(370, 256));
         setResizable(false);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             "hidemode 3",

@@ -31,6 +31,7 @@ public class SignIn extends JFrame {
         setMinimumSize(new Dimension(350, 182));
         setResizable(false);
         setTitle("Sign In");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             "hidemode 3",

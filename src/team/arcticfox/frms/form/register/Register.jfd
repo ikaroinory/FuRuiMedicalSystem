@@ -13,6 +13,7 @@ new FormModel {
 			"visible": true
 			"minimumSize": new java.awt.Dimension( 370, 256 )
 			"resizable": false
+			"defaultCloseOperation": 2
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "hidemode 3"
 				"$columnConstraints": "[100:120,fill][199:199,fill]"

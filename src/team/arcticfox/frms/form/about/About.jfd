@@ -1,0 +1,33 @@
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.12" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[60:60,fill][350:350,fill]"
+			"$rowConstraints": "[256:256,top]"
+		} ) {
+			name: "this"
+			"visible": true
+			"resizable": false
+			"defaultCloseOperation": 2
+			"title": "About"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/resources/images/potion 60x60.png" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "<html>\n    <p>FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>VM: OpenJDK 64-Bit Server VM，JetBrains s.r.o.</p>\n    <br/>\n    <br/>\n    <br/>\n    Technical support:<br/>\n    Aliyun(server support)<br/>\n    Huaweicloud(network support).\n</html>"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 0"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 620, 300 )
+		} )
+	}
+}

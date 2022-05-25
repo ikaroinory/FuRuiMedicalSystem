@@ -125,6 +125,7 @@ new FormModel {
 						name: "menuItemAbout"
 						"text": "About"
 						"mnemonic": 65
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemAboutActionListener", true ) )
 					} )
 				} )
 			}

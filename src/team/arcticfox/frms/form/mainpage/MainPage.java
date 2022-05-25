@@ -31,6 +31,10 @@ public class MainPage extends JFrame {
         EventHandler.showSignInForm();
     }
 
+    private void menuItemAboutActionListener(ActionEvent e) {
+        EventHandler.showAboutForm();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
@@ -56,12 +60,12 @@ public class MainPage extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[220!,fill]" +
-                        "[1048:1048,fill]",
-                // rows
-                "[590:590,fill]"));
+            "hidemode 3",
+            // columns
+            "[220!,fill]" +
+            "[1048:1048,fill]",
+            // rows
+            "[590:590,fill]"));
 
         //======== menuBar1 ========
         {
@@ -115,6 +119,7 @@ public class MainPage extends JFrame {
                 //---- menuItemAbout ----
                 menuItemAbout.setText("About");
                 menuItemAbout.setMnemonic('A');
+                menuItemAbout.addActionListener(e -> menuItemAboutActionListener(e));
                 menuHelp.add(menuItemAbout);
             }
             menuBar1.add(menuHelp);
@@ -126,20 +131,20 @@ public class MainPage extends JFrame {
 
             //---- tree1 ----
             tree1.setModel(new DefaultTreeModel(
-                    new DefaultMutableTreeNode("FuRui Medical System") {
-                        {
-                            add(new DefaultMutableTreeNode("Home Page"));
-                            DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
+                new DefaultMutableTreeNode("FuRui Medical System") {
+                    {
+                        add(new DefaultMutableTreeNode("Home Page"));
+                        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
                             node1.add(new DefaultMutableTreeNode("Drugs"));
                             node1.add(new DefaultMutableTreeNode("Medical Devices"));
                             node1.add(new DefaultMutableTreeNode("Others"));
-                            add(node1);
-                            node1 = new DefaultMutableTreeNode("Search Tools");
+                        add(node1);
+                        node1 = new DefaultMutableTreeNode("Search Tools");
                             node1.add(new DefaultMutableTreeNode("Tools1"));
                             node1.add(new DefaultMutableTreeNode("Tools2"));
-                            add(node1);
-                        }
-                    }));
+                        add(node1);
+                    }
+                }));
             scrollPaneTree.setViewportView(tree1);
         }
         contentPane.add(scrollPaneTree, "cell 0 0");
@@ -150,12 +155,12 @@ public class MainPage extends JFrame {
             //======== panelWelcomeVisit ========
             {
                 panelWelcomeVisit.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1035,fill]",
-                        // rows
-                        "[70:70,fill]" +
-                                "[453:453,top]"));
+                    "hidemode 3",
+                    // columns
+                    "[1035,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
 
                 //---- label1 ----
                 label1.setText("Welcome!");

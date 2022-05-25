@@ -1,9 +1,13 @@
 package team.arcticfox.frms.account;
 
-public class Account{
-    public static boolean signIn(String username,String password){
-        if(username.equals("")) return false;
-        if(password.equals("")) return false;
+import team.arcticfox.frms.exception.FuRuiException;
+import team.arcticfox.frms.exception.account.PasswordIsEmptyException;
+import team.arcticfox.frms.exception.account.UsernameIsEmptyException;
+
+public class Account {
+    public static boolean signIn(String username, String password) throws FuRuiException {
+        if (username.equals("")) throw new UsernameIsEmptyException();
+        if (password.equals("")) throw new PasswordIsEmptyException();
         return true;
     }
 }

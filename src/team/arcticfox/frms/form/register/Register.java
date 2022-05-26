@@ -5,7 +5,9 @@
 package team.arcticfox.frms.form.register;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+
 import net.miginfocom.swing.*;
 
 /**
@@ -14,6 +16,15 @@ import net.miginfocom.swing.*;
 public class Register extends JFrame {
     public Register() {
         initComponents();
+    }
+
+    private void buttonRegisterActionListener(ActionEvent e) {
+        EventHandler.register(
+                textFieldUsername.getText(),
+                textFieldEmail.getText(),
+                String.valueOf(passwordFieldPassword.getPassword()),
+                String.valueOf(passwordFieldVerificationPassword.getPassword())
+        );
     }
 
     private void initComponents() {
@@ -38,25 +49,25 @@ public class Register extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[320:340,fill]",
-            // rows
-            "[155:155,fill]" +
-            "[41:41,fill]"));
+                "hidemode 3",
+                // columns
+                "[320:340,fill]",
+                // rows
+                "[155:155,fill]" +
+                        "[41:41,fill]"));
 
         //======== panelAccount ========
         {
             panelAccount.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[100:120,fill]" +
-                "[199:199,fill]",
-                // rows
-                "[30:30,fill]" +
-                "[30:30,fill]" +
-                "[30:30,fill]" +
-                "[30:30,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[100:120,fill]" +
+                            "[199:199,fill]",
+                    // rows
+                    "[30:30,fill]" +
+                            "[30:30,fill]" +
+                            "[30:30,fill]" +
+                            "[30:30,fill]"));
 
             //---- labelUsername ----
             labelUsername.setText("Username");
@@ -86,6 +97,7 @@ public class Register extends JFrame {
 
             //---- buttonRegister ----
             buttonRegister.setText("Register");
+            buttonRegister.addActionListener(e -> buttonRegisterActionListener(e));
             panelButton.add(buttonRegister);
         }
         contentPane.add(panelButton, "cell 0 1");

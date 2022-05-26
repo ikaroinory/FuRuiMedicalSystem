@@ -21,13 +21,13 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"text": "<html>\n    <p>FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>VM: OpenJDK 64-Bit Server VM，JetBrains s.r.o.</p>\n    <br/>\n    <br/>\n    <br/>\n    Technical support:<br/>\n    Aliyun(server support)<br/>\n    Huaweicloud(network support).\n</html>"
+				"text": "<html>\n    <p><b style=\"color:red\">FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 0"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 620, 300 )
+			"size": new java.awt.Dimension( 435, 300 )
 		} )
 	}
 }

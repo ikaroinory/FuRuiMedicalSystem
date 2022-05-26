@@ -41,7 +41,7 @@ public class About extends JDialog {
         contentPane.add(label1, "cell 0 0");
 
         //---- label2 ----
-        label2.setText("<html>\n    <p>FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>VM: OpenJDK 64-Bit Server VM\uff0cJetBrains s.r.o.</p>\n    <br/>\n    <br/>\n    <br/>\n    Technical support:<br/>\n    Aliyun(server support)<br/>\n    Huaweicloud(network support).\n</html>");
+        label2.setText("<html>\n    <p><b style=\"color:red\">FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>");
         contentPane.add(label2, "cell 1 0");
         pack();
         setLocationRelativeTo(getOwner());

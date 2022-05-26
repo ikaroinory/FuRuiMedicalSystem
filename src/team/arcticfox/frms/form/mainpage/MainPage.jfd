@@ -49,22 +49,53 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 0
+				}
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
 					"$columnConstraints": "[1035,fill]"
 					"$rowConstraints": "[70:70,fill][453:453,top]"
 				} ) {
 					name: "panelWelcomeVisit"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
+						name: "labelWelcomeTitleVisit"
 						"text": "Welcome!"
 						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 36 )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label2"
+						name: "labelWelcomeContentVisit"
 						"text": "<html>\n    Welcome to FuRui Medical System! Please Sign in first.<br/>\n    <br/>\n    No account?<br/>\n    Click <b style=\"color:red\">Account - Register</b> at the top of the window to register your account.<br/>\n</html>"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Welcome Page"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "hidemode 3"
+					"$columnConstraints": "[1035:1035,fill]"
+					"$rowConstraints": "[70:70,fill][453:453,top]"
+				} ) {
+					name: "panelWelcome"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelWelcomeTitle"
+						"text": "Welcome!"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 36 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelWelcomeContent"
+						"text": "<html>\n    Welcome to FuRui Medical System, <b style=\"color:red\">%username%</b>!<br/>\n</html>"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"
 					} )

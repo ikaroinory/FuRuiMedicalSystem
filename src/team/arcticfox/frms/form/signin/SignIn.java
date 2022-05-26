@@ -5,7 +5,9 @@
 package team.arcticfox.frms.form.signin;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+
 import net.miginfocom.swing.*;
 
 /**
@@ -14,6 +16,13 @@ import net.miginfocom.swing.*;
 public class SignIn extends JFrame {
     public SignIn() {
         initComponents();
+    }
+
+    private void buttonSignInActionListener(ActionEvent e) {
+        EventHandler.signIn(
+                textFieldUsername.getText(),
+                String.valueOf(passwordFieldPassword.getPassword())
+        );
     }
 
     private void initComponents() {
@@ -34,23 +43,23 @@ public class SignIn extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[320:320,fill]",
-            // rows
-            "[81:81,fill]" +
-            "[41:41,fill]"));
+                "hidemode 3",
+                // columns
+                "[320:320,fill]",
+                // rows
+                "[81:81,fill]" +
+                        "[41:41,fill]"));
 
         //======== panelAccount ========
         {
             panelAccount.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[100:100,fill]" +
-                "[199:199,fill]",
-                // rows
-                "[30:30,fill]" +
-                "[30:30,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[100:100,fill]" +
+                            "[199:199,fill]",
+                    // rows
+                    "[30:30,fill]" +
+                            "[30:30,fill]"));
 
             //---- labelUsername ----
             labelUsername.setText("Username");
@@ -70,6 +79,7 @@ public class SignIn extends JFrame {
 
             //---- buttonSignIn ----
             buttonSignIn.setText("Sign In");
+            buttonSignIn.addActionListener(e -> buttonSignInActionListener(e));
             panelButton.add(buttonSignIn);
         }
         contentPane.add(panelButton, "cell 0 1");

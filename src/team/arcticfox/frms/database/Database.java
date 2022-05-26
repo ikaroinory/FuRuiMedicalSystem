@@ -68,14 +68,6 @@ public class Database {
     }
 
     public void sqlUpdate(String sql) {
-        /*
-        String str = "INSERT INTO " + "`" + DB_NAME + "`" + "." + "`" + TB_NAME + "`" + " "
-                + "(`Name`, `Time`) "
-                + "VALUES ("
-                + "'" + Base64.encode("ArcticFox") + "', "
-                + "NOW()"
-                + ")";
-         */
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {

@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.tree.*;
 
 import net.miginfocom.swing.*;
+import team.arcticfox.frms.program.environment.Variable;
 
 /**
  * @author IkaroInory
@@ -17,6 +18,8 @@ import net.miginfocom.swing.*;
 public class MainPage extends JFrame {
     public MainPage() {
         initComponents();
+
+        EventHandler.initialize(this);
     }
 
     private void menuItemExitActionListener(ActionEvent e) {
@@ -32,7 +35,7 @@ public class MainPage extends JFrame {
     }
 
     private void menuItemAboutActionListener(ActionEvent e) {
-        EventHandler.showAboutForm();
+        EventHandler.showAboutForm(this);
     }
 
     private void initComponents() {
@@ -51,8 +54,11 @@ public class MainPage extends JFrame {
         tree1 = new JTree();
         tabbedPane = new JTabbedPane();
         panelWelcomeVisit = new JPanel();
-        label1 = new JLabel();
-        label2 = new JLabel();
+        labelWelcomeTitleVisit = new JLabel();
+        labelWelcomeContentVisit = new JLabel();
+        panelWelcome = new JPanel();
+        labelWelcomeTitle = new JLabel();
+        labelWelcomeContent = new JLabel();
 
         //======== this ========
         setVisible(true);
@@ -162,16 +168,37 @@ public class MainPage extends JFrame {
                     "[70:70,fill]" +
                     "[453:453,top]"));
 
-                //---- label1 ----
-                label1.setText("Welcome!");
-                label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 36));
-                panelWelcomeVisit.add(label1, "cell 0 0");
+                //---- labelWelcomeTitleVisit ----
+                labelWelcomeTitleVisit.setText("Welcome!");
+                labelWelcomeTitleVisit.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 36));
+                panelWelcomeVisit.add(labelWelcomeTitleVisit, "cell 0 0");
 
-                //---- label2 ----
-                label2.setText("<html>\n    Welcome to FuRui Medical System! Please Sign in first.<br/>\n    <br/>\n    No account?<br/>\n    Click <b style=\"color:red\">Account - Register</b> at the top of the window to register your account.<br/>\n</html>");
-                panelWelcomeVisit.add(label2, "cell 0 1");
+                //---- labelWelcomeContentVisit ----
+                labelWelcomeContentVisit.setText("<html>\n    Welcome to FuRui Medical System! Please Sign in first.<br/>\n    <br/>\n    No account?<br/>\n    Click <b style=\"color:red\">Account - Register</b> at the top of the window to register your account.<br/>\n</html>");
+                panelWelcomeVisit.add(labelWelcomeContentVisit, "cell 0 1");
             }
             tabbedPane.addTab("Welcome Page", panelWelcomeVisit);
+
+            //======== panelWelcome ========
+            {
+                panelWelcome.setLayout(new MigLayout(
+                    "hidemode 3",
+                    // columns
+                    "[1035:1035,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
+
+                //---- labelWelcomeTitle ----
+                labelWelcomeTitle.setText("Welcome!");
+                labelWelcomeTitle.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 36));
+                panelWelcome.add(labelWelcomeTitle, "cell 0 0");
+
+                //---- labelWelcomeContent ----
+                labelWelcomeContent.setText("<html>\n    Welcome to FuRui Medical System, <b style=\"color:red\">%username%</b>!<br/>\n</html>");
+                panelWelcome.add(labelWelcomeContent, "cell 0 1");
+            }
+            tabbedPane.addTab("Welcome Page", panelWelcome);
         }
         contentPane.add(tabbedPane, "cell 1 0");
         pack();
@@ -192,9 +219,22 @@ public class MainPage extends JFrame {
     private JMenuItem menuItemAbout;
     private JScrollPane scrollPaneTree;
     private JTree tree1;
-    private JTabbedPane tabbedPane;
-    private JPanel panelWelcomeVisit;
-    private JLabel label1;
-    private JLabel label2;
+    JTabbedPane tabbedPane;
+    JPanel panelWelcomeVisit;
+    private JLabel labelWelcomeTitleVisit;
+    private JLabel labelWelcomeContentVisit;
+    JPanel panelWelcome;
+    private JLabel labelWelcomeTitle;
+    private JLabel labelWelcomeContent;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public void signInInitialize() {
+        menuItemSignIn.setEnabled(false);
+        menuItemSignOut.setEnabled(true);
+
+        tabbedPane.removeAll();
+        tabbedPane.addTab("Welcome Page", panelWelcome);
+
+        labelWelcomeContent.setText(labelWelcomeContent.getText().replaceAll("%username%", Variable.accountInfo.getUsername()));
+    }
 }

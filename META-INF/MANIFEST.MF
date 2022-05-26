@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Main-Class: Main
-Class-Path: miglayout-swing.jar miglayout-core.jar mysql-connector-java-
- 8.0.19.jar
+Class-Path: mysql-connector-java-8.0.19.jar miglayout-swing.jar miglayou
+ t-core.jar
 

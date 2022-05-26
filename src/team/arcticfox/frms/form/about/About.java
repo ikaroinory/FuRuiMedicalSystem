@@ -37,7 +37,7 @@ public class About extends JDialog {
             "[256:256,top]"));
 
         //---- label1 ----
-        label1.setIcon(new ImageIcon(getClass().getResource("/resources/images/potion 60x60.png")));
+        label1.setIcon(new ImageIcon(getClass().getResource("/images/potion 60x60.png")));
         contentPane.add(label1, "cell 0 0");
 
         //---- label2 ----

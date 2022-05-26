@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact build-on-make="true" name="FuRui Medical System:jar">
+  <artifact name="FuRui Medical System:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/FuRui_Medical_System_jar</output-path>
     <root id="root">
       <element id="archive" name="FuRui Medical System.jar">
@@ -7,9 +7,10 @@
           <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
         </element>
         <element id="module-output" name="FuRui Medical System" />
+        <element id="library" level="project" name="MigLayout" />
+        <element id="library" level="project" name="mysql-connector-java-8.0.19" />
       </element>
-      <element id="library" level="project" name="MigLayout" />
-      <element id="library" level="project" name="mysql-connector-java-8.0.19" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
     </root>
   </artifact>
 </component>

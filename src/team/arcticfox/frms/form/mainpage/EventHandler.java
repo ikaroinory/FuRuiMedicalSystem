@@ -1,5 +1,6 @@
 package team.arcticfox.frms.form.mainpage;
 
+import team.arcticfox.frms.account.Account;
 import team.arcticfox.frms.form.about.About;
 import team.arcticfox.frms.form.register.Register;
 import team.arcticfox.frms.form.signin.SignIn;

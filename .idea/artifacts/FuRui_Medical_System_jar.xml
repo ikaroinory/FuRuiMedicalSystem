@@ -7,10 +7,10 @@
           <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
         </element>
         <element id="module-output" name="FuRui Medical System" />
-        <element id="library" level="project" name="MigLayout" />
-        <element id="library" level="project" name="mysql-connector-java-8.0.19" />
       </element>
       <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+      <element id="library" level="project" name="MigLayout" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.19" />
     </root>
   </artifact>
 </component>

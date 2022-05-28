@@ -1,0 +1,19 @@
+# 更新记录
+## 格式：<日期> <用户> <更新条目...> [备注]
+
+
+2022-05-18
+    YJN
+     -  添加异常包：/src/team.actricfox.frms/exception/account
+     -  添加异常包：/src/team.actricfox.frms/exception/verification
+
+
+2022-05-28
+    IkaroInory
+     -  添加doc文档：/doc/update logs.txt
+     -  添加登出方法及其附属方法。
+
+    halokk
+     -  添加java类：/src/team.arcticfox.frms/dataset/MedicineInfo
+     -  添加药品分类：/src/team.arcticfox.frms/form/mainpage/MainPage.scrollPaneTree.tree1.node1
+

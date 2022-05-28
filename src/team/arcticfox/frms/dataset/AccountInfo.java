@@ -85,4 +85,18 @@ public class AccountInfo {
     public DateTime getLastLoginTime() {
         return lastLoginTime;
     }
+
+    @Override
+    public String toString() {
+        return "AccountInfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", permission=" + permission +
+                ", registrationTime=" + registrationTime +
+                ", destructionTime=" + destructionTime +
+                ", lastLoginTime=" + lastLoginTime +
+                '}';
+    }
 }

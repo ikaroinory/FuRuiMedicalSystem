@@ -2,7 +2,7 @@ package team.arcticfox.frms.form.register;
 
 import team.arcticfox.frms.account.Account;
 import team.arcticfox.frms.exception.FuRuiException;
-import team.arcticfox.frms.integration.messag.MessageBox;
+import team.arcticfox.frms.integration.message.MessageBox;
 
 class EventHandler {
     static void register(String username, String email, String password, String verifyPassword) {

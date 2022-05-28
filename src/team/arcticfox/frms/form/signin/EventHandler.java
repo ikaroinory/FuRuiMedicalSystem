@@ -2,7 +2,7 @@ package team.arcticfox.frms.form.signin;
 
 import team.arcticfox.frms.account.Account;
 import team.arcticfox.frms.exception.FuRuiException;
-import team.arcticfox.frms.integration.messag.MessageBox;
+import team.arcticfox.frms.integration.message.MessageBox;
 import team.arcticfox.frms.program.environment.Variable;
 
 class EventHandler {

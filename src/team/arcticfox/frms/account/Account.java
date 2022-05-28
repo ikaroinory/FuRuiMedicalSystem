@@ -22,7 +22,7 @@ public class Account {
         AccountInfo accountInfo = null;
         Database db = new Database(Constant.DB_NAME);
         db.open();
-        ResultSet rs = db.sqlQuery(Variable.getQueryByName(username));
+        ResultSet rs = db.sqlQuery(Variable.getQueryByNameSQL(username));
         try {
             if (rs.first()) {
                 accountInfo = AccountInfo.Parse(rs);
@@ -46,7 +46,20 @@ public class Account {
         Variable.accountInfo = getAccountInfo(username);
         if (Variable.accountInfo == null) throw new UserNotFoundException();
 
-        return MD5.encode(password).equals(Variable.accountInfo.getPassword());
+        if (MD5.encode(password).equals(Variable.accountInfo.getPassword())) {
+            Database db = new Database(Constant.DB_NAME);
+            db.open();
+            db.sqlUpdate(Variable.getUpdateLastLoginTimeSQL(Variable.accountInfo.getId()));
+            db.close();
+            return true;
+        } else
+            return false;
+    }
+
+    public static boolean signOut() {
+        Variable.accountInfo = null;
+        System.gc();
+        return Variable.accountInfo == null;
     }
 
     public static boolean register(String username, String email, String password, String verifyPassword) throws FuRuiException {
@@ -64,8 +77,8 @@ public class Account {
         if (Variable.accountInfo != null) throw new UsernameExistsException();
         Database db = new Database(Constant.DB_NAME);
         db.open();
-        System.out.println(Variable.getInsertUser(username, email, password));
-        db.sqlUpdate(Variable.getInsertUser(username, email, password));
+        System.out.println(Variable.getInsertUserSQL(username, email, password));
+        db.sqlUpdate(Variable.getInsertUserSQL(username, email, password));
         db.close();
 
         return getAccountInfo(username) != null;

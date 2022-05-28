@@ -1,7 +1,7 @@
 package team.arcticfox.frms.exception;
 
-import team.arcticfox.frms.integration.messag.IDisplayable;
-import team.arcticfox.frms.integration.messag.MessageBox;
+import team.arcticfox.frms.integration.message.IDisplayable;
+import team.arcticfox.frms.integration.message.MessageBox;
 import team.arcticfox.frms.program.environment.Constant;
 
 public class FuRuiException extends Exception implements IDisplayable {

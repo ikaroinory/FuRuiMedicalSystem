@@ -27,6 +27,12 @@ new FormModel {
 								userObject: "Drugs"
 							} )
 							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "Rx"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
+								userObject: "OTC"
+							} )
+							add( new javax.swing.tree.DefaultMutableTreeNode {
 								userObject: "Medical Devices"
 							} )
 							add( new javax.swing.tree.DefaultMutableTreeNode {
@@ -112,6 +118,12 @@ new FormModel {
 					"text": "File"
 					"mnemonic": 70
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemSettings"
+						"text": "Settings"
+						"mnemonic": 84
+						"accelerator": static javax.swing.KeyStroke getKeyStroke( 83, 650, false )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemExit"
 						"text": "Exit"
 						"mnemonic": 88
@@ -139,6 +151,7 @@ new FormModel {
 						name: "menuItemSignOut"
 						"text": "Sign Out"
 						"enabled": false
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemSignOutActionListener", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {

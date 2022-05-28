@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.tree.*;
 
 import net.miginfocom.swing.*;
+import team.arcticfox.frms.account.Account;
 import team.arcticfox.frms.program.environment.Variable;
 
 /**
@@ -38,10 +39,15 @@ public class MainPage extends JFrame {
         EventHandler.showAboutForm(this);
     }
 
+    private void menuItemSignOutActionListener(ActionEvent e) {
+        signOutInitialize();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
         menuFile = new JMenu();
+        menuItemSettings = new JMenuItem();
         menuItemExit = new JMenuItem();
         menuAccount = new JMenu();
         menuItemRegister = new JMenuItem();
@@ -66,12 +72,12 @@ public class MainPage extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[220!,fill]" +
-            "[1048:1048,fill]",
-            // rows
-            "[590:590,fill]"));
+                "hidemode 3",
+                // columns
+                "[220!,fill]" +
+                        "[1048:1048,fill]",
+                // rows
+                "[590:590,fill]"));
 
         //======== menuBar1 ========
         {
@@ -80,6 +86,12 @@ public class MainPage extends JFrame {
             {
                 menuFile.setText("File");
                 menuFile.setMnemonic('F');
+
+                //---- menuItemSettings ----
+                menuItemSettings.setText("Settings");
+                menuItemSettings.setMnemonic('T');
+                menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.ALT_DOWN_MASK));
+                menuFile.add(menuItemSettings);
 
                 //---- menuItemExit ----
                 menuItemExit.setText("Exit");
@@ -108,6 +120,7 @@ public class MainPage extends JFrame {
                 //---- menuItemSignOut ----
                 menuItemSignOut.setText("Sign Out");
                 menuItemSignOut.setEnabled(false);
+                menuItemSignOut.addActionListener(e -> menuItemSignOutActionListener(e));
                 menuAccount.add(menuItemSignOut);
             }
             menuBar1.add(menuAccount);
@@ -137,20 +150,22 @@ public class MainPage extends JFrame {
 
             //---- tree1 ----
             tree1.setModel(new DefaultTreeModel(
-                new DefaultMutableTreeNode("FuRui Medical System") {
-                    {
-                        add(new DefaultMutableTreeNode("Home Page"));
-                        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
+                    new DefaultMutableTreeNode("FuRui Medical System") {
+                        {
+                            add(new DefaultMutableTreeNode("Home Page"));
+                            DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
                             node1.add(new DefaultMutableTreeNode("Drugs"));
+                            node1.add(new DefaultMutableTreeNode("Rx"));
+                            node1.add(new DefaultMutableTreeNode("OTC"));
                             node1.add(new DefaultMutableTreeNode("Medical Devices"));
                             node1.add(new DefaultMutableTreeNode("Others"));
-                        add(node1);
-                        node1 = new DefaultMutableTreeNode("Search Tools");
+                            add(node1);
+                            node1 = new DefaultMutableTreeNode("Search Tools");
                             node1.add(new DefaultMutableTreeNode("Tools1"));
                             node1.add(new DefaultMutableTreeNode("Tools2"));
-                        add(node1);
-                    }
-                }));
+                            add(node1);
+                        }
+                    }));
             scrollPaneTree.setViewportView(tree1);
         }
         contentPane.add(scrollPaneTree, "cell 0 0");
@@ -161,12 +176,12 @@ public class MainPage extends JFrame {
             //======== panelWelcomeVisit ========
             {
                 panelWelcomeVisit.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[1035,fill]",
-                    // rows
-                    "[70:70,fill]" +
-                    "[453:453,top]"));
+                        "hidemode 3",
+                        // columns
+                        "[1035,fill]",
+                        // rows
+                        "[70:70,fill]" +
+                                "[453:453,top]"));
 
                 //---- labelWelcomeTitleVisit ----
                 labelWelcomeTitleVisit.setText("Welcome!");
@@ -182,12 +197,12 @@ public class MainPage extends JFrame {
             //======== panelWelcome ========
             {
                 panelWelcome.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[1035:1035,fill]",
-                    // rows
-                    "[70:70,fill]" +
-                    "[453:453,top]"));
+                        "hidemode 3",
+                        // columns
+                        "[1035:1035,fill]",
+                        // rows
+                        "[70:70,fill]" +
+                                "[453:453,top]"));
 
                 //---- labelWelcomeTitle ----
                 labelWelcomeTitle.setText("Welcome!");
@@ -209,6 +224,7 @@ public class MainPage extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;
     private JMenu menuFile;
+    private JMenuItem menuItemSettings;
     private JMenuItem menuItemExit;
     private JMenu menuAccount;
     private JMenuItem menuItemRegister;
@@ -236,5 +252,15 @@ public class MainPage extends JFrame {
         tabbedPane.addTab("Welcome Page", panelWelcome);
 
         labelWelcomeContent.setText(labelWelcomeContent.getText().replaceAll("%username%", Variable.accountInfo.getUsername()));
+    }
+
+    public void signOutInitialize() {
+        Account.signOut();
+
+        menuItemSignIn.setEnabled(true);
+        menuItemSignOut.setEnabled(false);
+
+        tabbedPane.removeAll();
+        tabbedPane.add("Welcome Page", panelWelcomeVisit);
     }
 }

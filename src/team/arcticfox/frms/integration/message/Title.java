@@ -1,4 +1,4 @@
-package team.arcticfox.frms.integration.messag;
+package team.arcticfox.frms.integration.message;
 
 @Deprecated
 public enum Title {

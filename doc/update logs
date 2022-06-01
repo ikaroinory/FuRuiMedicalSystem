@@ -21,3 +21,4 @@
     IkaroInory
      -  添加表`Medicine List`及其相关常量：team.arcticfox.frms.program.environment.Constant
      -  添加表`Medicine List`的相关SQL：team.arcticfox.frms.program.environment.Variable
+     -  修改类MedicineInfo和类MedicineType的架构

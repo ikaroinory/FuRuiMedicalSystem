@@ -1,33 +1,87 @@
 package team.arcticfox.frms.dataset;
 
-import team.arcticfox.frms.security.Base64;
+import team.arcticfox.frms.program.environment.Constant;
 
-enum MedicineType {
-    RX, OTC, Medicine_Devices, MEDICINE_DEVICES, OTHERS
-}
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MedicineInfo {
-    private String medicineName;                // medicineName.            Type: String            Encode Type: Base64
-    private MedicineType type;                  // type.                    Type: MedicineType      Encode Type: None
+    private final int id;                        // Id.                      Type: Integer           Encode Type: None
+    private final String medicineName;           // MedicineName.            Type: String            Encode Type: None
+    private final String manufacturer;           // Manufacturer.            Type: String            Encode Type: None
+    private final MedicineType type;             // type.                    Type: MedicineType      Encode Type: None
+    private final boolean forSale;               // For Sale.                Type: Boolean           Encode Type: None
+    private final double price;                  // Price.                   Type: Double            Encode Type: None
+    private final int amount;                    // Amount.                  Type: Integer           Encode Type: None
+    private final DateTime putawayTime;          // Putaway Time.            Type: DataTime          Encode Type: None
 
-    MedicineInfo(String _name, MedicineType _type) {
-        medicineName = Base64.encode(_name);
-        type = _type;
+    MedicineInfo(int id, String medicineName, String manufacturer, MedicineType type,
+                 boolean forSale, double price, int amount, DateTime putawayTime
+    ) {
+        this.id = id;
+        this.medicineName = medicineName;
+        this.manufacturer = manufacturer;
+        this.type = type;
+        this.forSale = forSale;
+        this.price = price;
+        this.amount = amount;
+        this.putawayTime = putawayTime;
     }
 
-    public void setMedicineName(String _name) {
-        medicineName = Base64.encode(_name);
+    public static MedicineInfo parse(ResultSet rs) {
+        int id = 0;
+        String medicineName = "";
+        String manufacturer = "";
+        MedicineType type = MedicineType.NULL;
+        boolean forSale = false;
+        double price = 0;
+        int amount = 0;
+        DateTime putawayTime = null;
+        try {
+            id = rs.getInt(Constant.COLUMNLABEL_ID);
+            medicineName = rs.getString(Constant.COLUMNLABEL_MEDICINENAME);
+            manufacturer = rs.getString(Constant.COLUMNLABEL_MANUFACTURER);
+            // type
+            forSale = rs.getBoolean(Constant.COLUMNLABEL_FORSALE);
+            price = rs.getDouble(Constant.COLUMNLABEL_PRICE);
+            amount = rs.getInt(Constant.COLUMNLABEL_AMOUNT);
+            putawayTime = DateTime.parse(rs.getString(Constant.COLUMNLABEL_PUTAWAYTIME));
+
+        } catch (SQLException e) {
+            // Do nothing.
+        }
+        return new MedicineInfo(id, medicineName, manufacturer, type, forSale, price, amount, putawayTime);
     }
 
-    public void setType(MedicineType _type) {
-        type = _type;
+    public int getId() {
+        return id;
     }
 
     public String getMedicineName() {
-        return Base64.decode(medicineName);
+        return medicineName;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
     }
 
     public MedicineType getType() {
         return type;
+    }
+
+    public boolean isForSale() {
+        return forSale;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public DateTime getPutawayTime() {
+        return putawayTime;
     }
 }

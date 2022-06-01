@@ -1,13 +1,13 @@
 package team.arcticfox.frms.dataset;
 
 public enum AccountPermission {
-    NULL(-1, "Null"),
-    OWNER(0, "Owner"),
-    ADMIN(2, "Admin"),
-    USER(5, "User");
+    NULL(-1, "Null"),       // Unknown. In development, developer can use NULL instead of null.
+    OWNER(0, "Owner"),      // Owner.
+    ADMIN(2, "Admin"),      // Admin.
+    USER(5, "User");        // User, which is the most general permission level.
 
-    int id;
-    String label;
+    final int id;               // Numeric encode.
+    final String label;         // Character label.
 
     AccountPermission(int id, String label) {
         this.id = id;

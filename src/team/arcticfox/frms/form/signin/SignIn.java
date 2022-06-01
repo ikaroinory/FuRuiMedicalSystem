@@ -25,6 +25,11 @@ public class SignIn extends JFrame {
         );
     }
 
+    private void buttonSignInKeyPressed(KeyEvent e) {
+        if (e.getKeyChar() == KeyEvent.VK_ENTER)
+            buttonSignInActionListener(null);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panelAccount = new JPanel();
@@ -43,23 +48,23 @@ public class SignIn extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[320:320,fill]",
-                // rows
-                "[81:81,fill]" +
-                        "[41:41,fill]"));
+            "hidemode 3",
+            // columns
+            "[320:320,fill]",
+            // rows
+            "[81:81,fill]" +
+            "[41:41,fill]"));
 
         //======== panelAccount ========
         {
             panelAccount.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[100:100,fill]" +
-                            "[199:199,fill]",
-                    // rows
-                    "[30:30,fill]" +
-                            "[30:30,fill]"));
+                "hidemode 3",
+                // columns
+                "[100:100,fill]" +
+                "[199:199,fill]",
+                // rows
+                "[30:30,fill]" +
+                "[30:30,fill]"));
 
             //---- labelUsername ----
             labelUsername.setText("Username");
@@ -69,6 +74,9 @@ public class SignIn extends JFrame {
             //---- labelPassword ----
             labelPassword.setText("Password");
             panelAccount.add(labelPassword, "cell 0 1");
+
+            //---- passwordFieldPassword ----
+            passwordFieldPassword.setNextFocusableComponent(buttonSignIn);
             panelAccount.add(passwordFieldPassword, "cell 1 1");
         }
         contentPane.add(panelAccount, "cell 0 0");
@@ -80,6 +88,12 @@ public class SignIn extends JFrame {
             //---- buttonSignIn ----
             buttonSignIn.setText("Sign In");
             buttonSignIn.addActionListener(e -> buttonSignInActionListener(e));
+            buttonSignIn.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    buttonSignInKeyPressed(e);
+                }
+            });
             panelButton.add(buttonSignIn);
         }
         contentPane.add(panelButton, "cell 0 1");

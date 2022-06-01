@@ -6,11 +6,17 @@ package team.arcticfox.frms.form.mainpage;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.*;
 import javax.swing.tree.*;
 
 import net.miginfocom.swing.*;
 import team.arcticfox.frms.account.Account;
+import team.arcticfox.frms.database.Database;
+import team.arcticfox.frms.dataset.MedicineInfo;
+import team.arcticfox.frms.program.environment.Constant;
 import team.arcticfox.frms.program.environment.Variable;
 
 /**
@@ -45,7 +51,7 @@ public class MainPage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        menuBar1 = new JMenuBar();
+        menuBar = new JMenuBar();
         menuFile = new JMenu();
         menuItemSettings = new JMenuItem();
         menuItemExit = new JMenuItem();
@@ -65,6 +71,11 @@ public class MainPage extends JFrame {
         panelWelcome = new JPanel();
         labelWelcomeTitle = new JLabel();
         labelWelcomeContent = new JLabel();
+        panelMedicineList = new JPanel();
+        scrollPaneMedicineList = new JScrollPane();
+        tableMedicineList = new JTable();
+        panelButton = new JPanel();
+        buttonViewDetails = new JButton();
 
         //======== this ========
         setVisible(true);
@@ -75,11 +86,11 @@ public class MainPage extends JFrame {
                 "hidemode 3",
                 // columns
                 "[220!,fill]" +
-                        "[1048:1048,fill]",
+                        "[1100:1100,fill]",
                 // rows
                 "[590:590,fill]"));
 
-        //======== menuBar1 ========
+        //======== menuBar ========
         {
 
             //======== menuFile ========
@@ -99,7 +110,7 @@ public class MainPage extends JFrame {
                 menuItemExit.addActionListener(e -> menuItemExitActionListener(e));
                 menuFile.add(menuItemExit);
             }
-            menuBar1.add(menuFile);
+            menuBar.add(menuFile);
 
             //======== menuAccount ========
             {
@@ -123,7 +134,7 @@ public class MainPage extends JFrame {
                 menuItemSignOut.addActionListener(e -> menuItemSignOutActionListener(e));
                 menuAccount.add(menuItemSignOut);
             }
-            menuBar1.add(menuAccount);
+            menuBar.add(menuAccount);
 
             //======== menuHelp ========
             {
@@ -141,9 +152,9 @@ public class MainPage extends JFrame {
                 menuItemAbout.addActionListener(e -> menuItemAboutActionListener(e));
                 menuHelp.add(menuItemAbout);
             }
-            menuBar1.add(menuHelp);
+            menuBar.add(menuHelp);
         }
-        setJMenuBar(menuBar1);
+        setJMenuBar(menuBar);
 
         //======== scrollPaneTree ========
         {
@@ -214,6 +225,78 @@ public class MainPage extends JFrame {
                 panelWelcome.add(labelWelcomeContent, "cell 0 1");
             }
             tabbedPane.addTab("Welcome Page", panelWelcome);
+
+            //======== panelMedicineList ========
+            {
+                panelMedicineList.setLayout(new MigLayout(
+                        "hidemode 3",
+                        // columns
+                        "[1048:1048,fill]",
+                        // rows
+                        "[500:500,fill]" +
+                                "[40:40,fill]"));
+
+                //======== scrollPaneMedicineList ========
+                {
+
+                    //---- tableMedicineList ----
+                    tableMedicineList.setModel(new DefaultTableModel(
+                            new Object[][]{
+                                    {null, null, null, null, null, null},
+                            },
+                            new String[]{
+                                    "Id", "Medicine Name", "Manufacturer", "Type", "Price", "Amount"
+                            }
+                    ) {
+                        Class<?>[] columnTypes = new Class<?>[]{
+                                Integer.class, String.class, String.class, String.class, Double.class, Integer.class
+                        };
+                        boolean[] columnEditable = new boolean[]{
+                                false, false, false, false, false, false
+                        };
+
+                        @Override
+                        public Class<?> getColumnClass(int columnIndex) {
+                            return columnTypes[columnIndex];
+                        }
+
+                        @Override
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return columnEditable[columnIndex];
+                        }
+                    });
+                    {
+                        TableColumnModel cm = tableMedicineList.getColumnModel();
+                        cm.getColumn(0).setResizable(false);
+                        cm.getColumn(0).setMinWidth(45);
+                        cm.getColumn(0).setMaxWidth(45);
+                        cm.getColumn(0).setPreferredWidth(45);
+                        cm.getColumn(3).setResizable(false);
+                        cm.getColumn(3).setMinWidth(80);
+                        cm.getColumn(3).setMaxWidth(80);
+                        cm.getColumn(3).setPreferredWidth(80);
+                        cm.getColumn(4).setMinWidth(100);
+                        cm.getColumn(4).setMaxWidth(100);
+                        cm.getColumn(4).setPreferredWidth(100);
+                        cm.getColumn(5).setMinWidth(100);
+                        cm.getColumn(5).setMaxWidth(100);
+                        cm.getColumn(5).setPreferredWidth(100);
+                    }
+                    scrollPaneMedicineList.setViewportView(tableMedicineList);
+                }
+                panelMedicineList.add(scrollPaneMedicineList, "cell 0 0");
+
+                //======== panelButton ========
+                {
+                    panelButton.setLayout(new FlowLayout());
+
+                    //---- buttonViewDetails ----
+                    buttonViewDetails.setText("View Details");
+                    panelButton.add(buttonViewDetails);
+                }
+                panelMedicineList.add(panelButton, "cell 0 1");
+            }
+            tabbedPane.addTab("Medicine List", panelMedicineList);
         }
         contentPane.add(tabbedPane, "cell 1 0");
         pack();
@@ -222,7 +305,7 @@ public class MainPage extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JMenuBar menuBar1;
+    private JMenuBar menuBar;
     private JMenu menuFile;
     private JMenuItem menuItemSettings;
     private JMenuItem menuItemExit;
@@ -242,6 +325,11 @@ public class MainPage extends JFrame {
     JPanel panelWelcome;
     private JLabel labelWelcomeTitle;
     private JLabel labelWelcomeContent;
+    private JPanel panelMedicineList;
+    private JScrollPane scrollPaneMedicineList;
+    JTable tableMedicineList;
+    private JPanel panelButton;
+    private JButton buttonViewDetails;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void signInInitialize() {
@@ -250,8 +338,17 @@ public class MainPage extends JFrame {
 
         tabbedPane.removeAll();
         tabbedPane.addTab("Welcome Page", panelWelcome);
+        tabbedPane.add("Medicine List", panelMedicineList);
 
         labelWelcomeContent.setText(labelWelcomeContent.getText().replaceAll("%username%", Variable.accountInfo.getUsername()));
+
+        ((DefaultTableModel) tableMedicineList.getModel()).removeRow(0);
+        Database db = new Database(Constant.DB_NAME);
+        db.open();
+        List<MedicineInfo> list = MedicineInfo.parse(db.sqlQuery(Variable.getQueryMedicineListSQL()));
+        for (MedicineInfo medicineInfo : list)
+            ((DefaultTableModel) tableMedicineList.getModel()).addRow(medicineInfo.toObjectList());
+        db.close();
     }
 
     public void signOutInitialize() {

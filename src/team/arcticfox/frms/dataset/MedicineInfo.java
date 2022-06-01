@@ -32,7 +32,7 @@ public class MedicineInfo {
         int id = 0;
         String medicineName = "";
         String manufacturer = "";
-        MedicineType type = MedicineType.NULL;
+        MedicineType type = MedicineType.UNKNOWN;
         boolean forSale = false;
         double price = 0;
         int amount = 0;
@@ -41,7 +41,7 @@ public class MedicineInfo {
             id = rs.getInt(Constant.COLUMNLABEL_ID);
             medicineName = rs.getString(Constant.COLUMNLABEL_MEDICINENAME);
             manufacturer = rs.getString(Constant.COLUMNLABEL_MANUFACTURER);
-            // type
+            type = MedicineType.prase(rs.getString(Constant.COLUMNLABEL_TYPE));
             forSale = rs.getBoolean(Constant.COLUMNLABEL_FORSALE);
             price = rs.getDouble(Constant.COLUMNLABEL_PRICE);
             amount = rs.getInt(Constant.COLUMNLABEL_AMOUNT);

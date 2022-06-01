@@ -8,7 +8,7 @@ public class MessageBox {
         WARNING("Warning"),
         ERROR("Error");
 
-        private String title;
+        private final String title;
 
         Title(String title) {
             this.title = title;
@@ -26,7 +26,7 @@ public class MessageBox {
         WARNING(JOptionPane.WARNING_MESSAGE),
         ERROR(JOptionPane.ERROR_MESSAGE);
 
-        private int icon;
+        private final int icon;
 
         Icon(int icon) {
             this.icon = icon;

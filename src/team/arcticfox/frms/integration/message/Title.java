@@ -6,7 +6,7 @@ public enum Title {
     WARNING("Warning"),
     ERROR("Error");
 
-    private String title;
+    private final String title;
 
     Title(String title) {
         this.title = title;

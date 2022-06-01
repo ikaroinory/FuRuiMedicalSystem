@@ -6,8 +6,8 @@ public enum AccountPermission {
     ADMIN(2, "Admin"),      // Admin.
     USER(5, "User");        // User, which is the most general permission level.
 
-    final int id;               // Numeric encode.
-    final String label;         // Character label.
+    final private int id;               // Numeric encode.
+    final private String label;         // Character label.
 
     AccountPermission(int id, String label) {
         this.id = id;

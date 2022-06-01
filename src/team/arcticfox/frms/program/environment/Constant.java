@@ -10,6 +10,7 @@ public class Constant {
     public static final String DB_PWD = "ArcticFox@2022";
 
     public static final String TABLE_ACCOUNTINFO = "Account Info";
+    public static final String TABLE_MEDICINELIST = "Medicine List";
 
     public static final String COLUMNLABEL_ID = "Id";
     public static final String COLUMNLABEL_USERNAME = "Username";
@@ -19,4 +20,12 @@ public class Constant {
     public static final String COLUMNLABEL_REGISTRATIONTIME = "Registration Time";
     public static final String COLUMNLABEL_DESTRUCTIONTIME = "Destruction Time";
     public static final String COLUMNLABEL_LASTLOGINTIME = "Last Login Time";
+
+    public static final String COLUMNLABEL_MEDICINENAME = "Medicine Name";
+    public static final String COLUMNLABEL_MANUFACTURER = "Manufacturer";
+    public static final String COLUMNLABEL_TYPE = "Type";
+    public static final String COLUMNLABEL_FORSALE = "For Sale";
+    public static final String COLUMNLABEL_PRICE = "Price";
+    public static final String COLUMNLABEL_AMOUNT = "Amount";
+    public static final String COLUMNLABEL_PUTAWAYTIME = "Putaway Time";
 }

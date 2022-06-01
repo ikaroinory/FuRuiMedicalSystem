@@ -9,6 +9,7 @@ import team.arcticfox.frms.security.MD5;
 
 public class Variable {
     private static final String PATH_TABLE_ACCOUNT = "`" + Constant.DB_NAME + "`.`" + Constant.TABLE_ACCOUNTINFO + "`";
+    private static final String PATH_TABLE_MEDICINELIST = "`" + Constant.DB_NAME + "`.`" + Constant.TABLE_MEDICINELIST + "`";
 
     public static AccountInfo accountInfo = null;
 
@@ -37,5 +38,9 @@ public class Variable {
 
     public static String getUpdateLastLoginTimeSQL(int id) {
         return "UPDATE " + PATH_TABLE_ACCOUNT + " SET `Last Login Time` = NOW() WHERE `Id` = " + id;
+    }
+
+    public static String getQueryMedicineListSQL() {
+        return "SELECT * FROM " + PATH_TABLE_MEDICINELIST;
     }
 }

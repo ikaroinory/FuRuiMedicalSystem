@@ -27,6 +27,11 @@ public class Register extends JFrame {
         );
     }
 
+    private void buttonRegisterKeyPressed(KeyEvent e) {
+        if (e.getKeyChar() == KeyEvent.VK_ENTER)
+            buttonRegisterActionListener(null);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panelAccount = new JPanel();
@@ -49,25 +54,25 @@ public class Register extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[320:340,fill]",
-                // rows
-                "[155:155,fill]" +
-                        "[41:41,fill]"));
+            "hidemode 3",
+            // columns
+            "[320:340,fill]",
+            // rows
+            "[155:155,fill]" +
+            "[41:41,fill]"));
 
         //======== panelAccount ========
         {
             panelAccount.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[100:120,fill]" +
-                            "[199:199,fill]",
-                    // rows
-                    "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]"));
+                "hidemode 3",
+                // columns
+                "[100:120,fill]" +
+                "[199:199,fill]",
+                // rows
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]"));
 
             //---- labelUsername ----
             labelUsername.setText("Username");
@@ -87,6 +92,9 @@ public class Register extends JFrame {
             //---- labelVerificationPassword ----
             labelVerificationPassword.setText("Verify Password");
             panelAccount.add(labelVerificationPassword, "cell 0 3");
+
+            //---- passwordFieldVerificationPassword ----
+            passwordFieldVerificationPassword.setNextFocusableComponent(buttonRegister);
             panelAccount.add(passwordFieldVerificationPassword, "cell 1 3");
         }
         contentPane.add(panelAccount, "cell 0 0");
@@ -98,6 +106,12 @@ public class Register extends JFrame {
             //---- buttonRegister ----
             buttonRegister.setText("Register");
             buttonRegister.addActionListener(e -> buttonRegisterActionListener(e));
+            buttonRegister.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    buttonRegisterKeyPressed(e);
+                }
+            });
             panelButton.add(buttonRegister);
         }
         contentPane.add(panelButton, "cell 0 1");

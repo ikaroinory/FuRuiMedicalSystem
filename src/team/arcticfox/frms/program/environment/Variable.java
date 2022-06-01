@@ -21,18 +21,16 @@ public class Variable {
     }
 
     public static String getInsertUserSQL(String username, String email, String password) {
-        return "INSERT INFO " + PATH_TABLE_ACCOUNT + " (" +
+        return "INSERT INTO " + PATH_TABLE_ACCOUNT + " (" +
                 "`" + Constant.COLUMNLABEL_USERNAME + "`, " +
                 "`" + Constant.COLUMNLABEL_EMAIL + "`, " +
                 "`" + Constant.COLUMNLABEL_PASSWORD + "`, " +
-                "`" + Constant.COLUMNLABEL_PERMISSION + "`, " +
-                "`" + Constant.COLUMNLABEL_REGISTRATIONTIME + "`" +
+                "`" + Constant.COLUMNLABEL_PERMISSION + "`" +
                 ") VALUES (" +
                 "'" + Base64.encode(username) + "', " +
                 "'" + Base64.encode(email) + "', " +
                 "'" + Base64.encode(MD5.encode(password)) + "', " +
-                "'" + AccountPermission.USER + "', " +
-                "NOW()" +
+                "'" + AccountPermission.USER + "'" +
                 ")";
     }
 

@@ -77,7 +77,7 @@ public class Account {
         if (Variable.accountInfo != null) throw new UsernameExistsException();
         Database db = new Database(Constant.DB_NAME);
         db.open();
-        System.out.println(Variable.getInsertUserSQL(username, email, password));
+        // System.out.println(Variable.getInsertUserSQL(username, email, password));
         db.sqlUpdate(Variable.getInsertUserSQL(username, email, password));
         db.close();
 

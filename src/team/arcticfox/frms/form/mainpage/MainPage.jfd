@@ -166,6 +166,11 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 						name: "panelButton"
 						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonRefresh"
+							"text": "Refresh"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRefreshActionEvent", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonViewDetails"
 							"text": "View Details"
 						} )

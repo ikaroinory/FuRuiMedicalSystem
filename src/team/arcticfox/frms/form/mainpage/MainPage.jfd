@@ -126,16 +126,19 @@ new FormModel {
 									add( null )
 									add( null )
 									add( null )
+									add( null )
 								} )
 							}, new java.util.Vector {
 								add( "Id" )
 								add( "Medicine Name" )
+								add( "Approval No" )
 								add( "Manufacturer" )
 								add( "Type" )
 								add( "Price" )
 								add( "Amount" )
 							}, new java.util.Vector {
 								add( class java.lang.Integer )
+								add( class java.lang.String )
 								add( class java.lang.String )
 								add( class java.lang.String )
 								add( class java.lang.String )
@@ -148,17 +151,21 @@ new FormModel {
 								add( false )
 								add( false )
 								add( false )
+								add( false )
 							}, new java.util.Vector {
 								add( new com.jformdesigner.model.SwingTableColumn( null, 45, 45, 45, false ) )
 								add( null )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 135, 135, 135, true ) )
 								add( null )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, false ) )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 100, 100, 100, true ) )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 100, 100, 100, true ) )
 							} )
+							"selectionMode": 0
 							auxiliary() {
 								"JavaCodeGenerator.variableModifiers": 0
 							}
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "tableMedicineListKeyPressed", true ) )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
@@ -168,11 +175,12 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonRefresh"
 							"text": "Refresh"
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRefreshActionEvent", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRefreshActionListener", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonViewDetails"
 							"text": "View Details"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonViewDetailsActionListener", true ) )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"

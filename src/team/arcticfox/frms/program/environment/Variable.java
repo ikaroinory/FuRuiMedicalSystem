@@ -41,4 +41,12 @@ public class Variable {
     public static String getQueryMedicineListSQL() {
         return "SELECT * FROM " + PATH_TABLE_MEDICINELIST;
     }
+
+    public static String getQueryByApprovalNoSQL(String approvalNo) {
+        return "SELECT * FROM " + PATH_TABLE_MEDICINELIST + " WHERE `" + Constant.COLUMNLABEL_APPROVALNO + "` = '" + approvalNo + "'";
+    }
+
+    public static String getQueryByIdNoSQL(int id) {
+        return "SELECT * FROM " + PATH_TABLE_MEDICINELIST + " WHERE `" + Constant.COLUMNLABEL_ID + "` = '" + id + "'";
+    }
 }

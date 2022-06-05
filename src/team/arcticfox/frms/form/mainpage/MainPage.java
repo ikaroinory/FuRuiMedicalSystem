@@ -12,10 +12,13 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 import javax.swing.tree.*;
 
+import jdk.jfr.Event;
 import net.miginfocom.swing.*;
 import team.arcticfox.frms.account.Account;
 import team.arcticfox.frms.database.Database;
 import team.arcticfox.frms.dataset.MedicineInfo;
+import team.arcticfox.frms.form.view.View;
+import team.arcticfox.frms.integration.message.MessageBox;
 import team.arcticfox.frms.program.environment.Constant;
 import team.arcticfox.frms.program.environment.Variable;
 
@@ -49,8 +52,17 @@ public class MainPage extends JFrame {
         signOutInitialize();
     }
 
-    private void buttonRefreshActionEvent(ActionEvent e) {
+    private void buttonRefreshActionListener(ActionEvent e) {
         EventHandler.refresh(this);
+    }
+
+    private void buttonViewDetailsActionListener(ActionEvent e) {
+        EventHandler.showView(this);
+    }
+
+    private void tableMedicineListKeyPressed(KeyEvent e) {
+        if (e.getKeyChar() == KeyEvent.VK_ENTER)
+            EventHandler.showView(this);
     }
 
     private void initComponents() {
@@ -88,12 +100,12 @@ public class MainPage extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[220!,fill]" +
-                        "[1100:1100,fill]",
-                // rows
-                "[590:590,fill]"));
+            "hidemode 3",
+            // columns
+            "[220!,fill]" +
+            "[1100:1100,fill]",
+            // rows
+            "[590:590,fill]"));
 
         //======== menuBar ========
         {
@@ -106,7 +118,7 @@ public class MainPage extends JFrame {
                 //---- menuItemSettings ----
                 menuItemSettings.setText("Settings");
                 menuItemSettings.setMnemonic('T');
-                menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.ALT_DOWN_MASK));
+                menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK|KeyEvent.ALT_DOWN_MASK));
                 menuFile.add(menuItemSettings);
 
                 //---- menuItemExit ----
@@ -166,22 +178,22 @@ public class MainPage extends JFrame {
 
             //---- tree1 ----
             tree1.setModel(new DefaultTreeModel(
-                    new DefaultMutableTreeNode("FuRui Medical System") {
-                        {
-                            add(new DefaultMutableTreeNode("Home Page"));
-                            DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
+                new DefaultMutableTreeNode("FuRui Medical System") {
+                    {
+                        add(new DefaultMutableTreeNode("Home Page"));
+                        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
                             node1.add(new DefaultMutableTreeNode("Drugs"));
                             node1.add(new DefaultMutableTreeNode("Rx"));
                             node1.add(new DefaultMutableTreeNode("OTC"));
                             node1.add(new DefaultMutableTreeNode("Medical Devices"));
                             node1.add(new DefaultMutableTreeNode("Others"));
-                            add(node1);
-                            node1 = new DefaultMutableTreeNode("Search Tools");
+                        add(node1);
+                        node1 = new DefaultMutableTreeNode("Search Tools");
                             node1.add(new DefaultMutableTreeNode("Tools1"));
                             node1.add(new DefaultMutableTreeNode("Tools2"));
-                            add(node1);
-                        }
-                    }));
+                        add(node1);
+                    }
+                }));
             scrollPaneTree.setViewportView(tree1);
         }
         contentPane.add(scrollPaneTree, "cell 0 0");
@@ -192,12 +204,12 @@ public class MainPage extends JFrame {
             //======== panelWelcomeVisit ========
             {
                 panelWelcomeVisit.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1035,fill]",
-                        // rows
-                        "[70:70,fill]" +
-                                "[453:453,top]"));
+                    "hidemode 3",
+                    // columns
+                    "[1035,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
 
                 //---- labelWelcomeTitleVisit ----
                 labelWelcomeTitleVisit.setText("Welcome!");
@@ -213,12 +225,12 @@ public class MainPage extends JFrame {
             //======== panelWelcome ========
             {
                 panelWelcome.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1035:1035,fill]",
-                        // rows
-                        "[70:70,fill]" +
-                                "[453:453,top]"));
+                    "hidemode 3",
+                    // columns
+                    "[1035:1035,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
 
                 //---- labelWelcomeTitle ----
                 labelWelcomeTitle.setText("Welcome!");
@@ -234,37 +246,35 @@ public class MainPage extends JFrame {
             //======== panelMedicineList ========
             {
                 panelMedicineList.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1048:1048,fill]",
-                        // rows
-                        "[500:500,fill]" +
-                                "[40:40,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[1048:1048,fill]",
+                    // rows
+                    "[500:500,fill]" +
+                    "[40:40,fill]"));
 
                 //======== scrollPaneMedicineList ========
                 {
 
                     //---- tableMedicineList ----
                     tableMedicineList.setModel(new DefaultTableModel(
-                            new Object[][]{
-                                    {null, null, null, null, null, null},
-                            },
-                            new String[]{
-                                    "Id", "Medicine Name", "Manufacturer", "Type", "Price", "Amount"
-                            }
+                        new Object[][] {
+                            {null, null, null, null, null, null, null},
+                        },
+                        new String[] {
+                            "Id", "Medicine Name", "Approval No", "Manufacturer", "Type", "Price", "Amount"
+                        }
                     ) {
-                        Class<?>[] columnTypes = new Class<?>[]{
-                                Integer.class, String.class, String.class, String.class, Double.class, Integer.class
+                        Class<?>[] columnTypes = new Class<?>[] {
+                            Integer.class, String.class, String.class, String.class, String.class, Double.class, Integer.class
                         };
-                        boolean[] columnEditable = new boolean[]{
-                                false, false, false, false, false, false
+                        boolean[] columnEditable = new boolean[] {
+                            false, false, false, false, false, false, false
                         };
-
                         @Override
                         public Class<?> getColumnClass(int columnIndex) {
                             return columnTypes[columnIndex];
                         }
-
                         @Override
                         public boolean isCellEditable(int rowIndex, int columnIndex) {
                             return columnEditable[columnIndex];
@@ -276,17 +286,27 @@ public class MainPage extends JFrame {
                         cm.getColumn(0).setMinWidth(45);
                         cm.getColumn(0).setMaxWidth(45);
                         cm.getColumn(0).setPreferredWidth(45);
-                        cm.getColumn(3).setResizable(false);
-                        cm.getColumn(3).setMinWidth(80);
-                        cm.getColumn(3).setMaxWidth(80);
-                        cm.getColumn(3).setPreferredWidth(80);
-                        cm.getColumn(4).setMinWidth(100);
-                        cm.getColumn(4).setMaxWidth(100);
-                        cm.getColumn(4).setPreferredWidth(100);
+                        cm.getColumn(2).setMinWidth(135);
+                        cm.getColumn(2).setMaxWidth(135);
+                        cm.getColumn(2).setPreferredWidth(135);
+                        cm.getColumn(4).setResizable(false);
+                        cm.getColumn(4).setMinWidth(80);
+                        cm.getColumn(4).setMaxWidth(80);
+                        cm.getColumn(4).setPreferredWidth(80);
                         cm.getColumn(5).setMinWidth(100);
                         cm.getColumn(5).setMaxWidth(100);
                         cm.getColumn(5).setPreferredWidth(100);
+                        cm.getColumn(6).setMinWidth(100);
+                        cm.getColumn(6).setMaxWidth(100);
+                        cm.getColumn(6).setPreferredWidth(100);
                     }
+                    tableMedicineList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                    tableMedicineList.addKeyListener(new KeyAdapter() {
+                        @Override
+                        public void keyPressed(KeyEvent e) {
+                            tableMedicineListKeyPressed(e);
+                        }
+                    });
                     scrollPaneMedicineList.setViewportView(tableMedicineList);
                 }
                 panelMedicineList.add(scrollPaneMedicineList, "cell 0 0");
@@ -297,11 +317,12 @@ public class MainPage extends JFrame {
 
                     //---- buttonRefresh ----
                     buttonRefresh.setText("Refresh");
-                    buttonRefresh.addActionListener(e -> buttonRefreshActionEvent(e));
+                    buttonRefresh.addActionListener(e -> buttonRefreshActionListener(e));
                     panelButton.add(buttonRefresh);
 
                     //---- buttonViewDetails ----
                     buttonViewDetails.setText("View Details");
+                    buttonViewDetails.addActionListener(e -> buttonViewDetailsActionListener(e));
                     panelButton.add(buttonViewDetails);
                 }
                 panelMedicineList.add(panelButton, "cell 0 1");
@@ -353,13 +374,7 @@ public class MainPage extends JFrame {
 
         labelWelcomeContent.setText(labelWelcomeContent.getText().replaceAll("%username%", Variable.accountInfo.getUsername()));
 
-        ((DefaultTableModel) tableMedicineList.getModel()).removeRow(0);
-        Database db = new Database(Constant.DB_NAME);
-        db.open();
-        List<MedicineInfo> list = MedicineInfo.parse(db.sqlQuery(Variable.getQueryMedicineListSQL()));
-        for (MedicineInfo medicineInfo : list)
-            ((DefaultTableModel) tableMedicineList.getModel()).addRow(medicineInfo.toObjectList());
-        db.close();
+        EventHandler.refresh(this);
     }
 
     public void signOutInitialize() {

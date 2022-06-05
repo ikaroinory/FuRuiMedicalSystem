@@ -6,6 +6,8 @@ import team.arcticfox.frms.dataset.MedicineInfo;
 import team.arcticfox.frms.form.about.About;
 import team.arcticfox.frms.form.register.Register;
 import team.arcticfox.frms.form.signin.SignIn;
+import team.arcticfox.frms.form.view.View;
+import team.arcticfox.frms.integration.message.MessageBox;
 import team.arcticfox.frms.program.environment.Constant;
 import team.arcticfox.frms.program.environment.Variable;
 
@@ -24,6 +26,7 @@ class EventHandler {
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JTextField.CENTER);
         mainPage.tableMedicineList.getColumn(Constant.COLUMNLABEL_ID).setCellRenderer(r);
+        mainPage.tableMedicineList.getColumn(Constant.COLUMNLABEL_APPROVALNO).setCellRenderer(r);
         mainPage.tableMedicineList.getColumn(Constant.COLUMNLABEL_TYPE).setCellRenderer(r);
         mainPage.tableMedicineList.getColumn(Constant.COLUMNLABEL_PRICE).setCellRenderer(r);
         mainPage.tableMedicineList.getColumn(Constant.COLUMNLABEL_AMOUNT).setCellRenderer(r);
@@ -43,6 +46,14 @@ class EventHandler {
 
     static void showAboutForm(MainPage mainPage) {
         new About(mainPage);
+    }
+
+    static void showView(MainPage mainPage) {
+        int selectedRow = mainPage.tableMedicineList.getSelectedRow();
+        if (selectedRow == -1)
+            MessageBox.show(MessageBox.Title.ERROR, "Please select a row!", MessageBox.Icon.ERROR);
+        else
+            new View(Integer.parseInt(mainPage.tableMedicineList.getValueAt(selectedRow, 0).toString()));
     }
 
     static void refresh(MainPage mainPage) {

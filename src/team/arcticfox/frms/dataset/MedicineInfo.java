@@ -8,26 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedicineInfo {
-    private final int id;                        // Id.                      Type: Integer           Encode Type: None
-    private final String medicineName;           // MedicineName.            Type: String            Encode Type: None
-    private final String manufacturer;           // Manufacturer.            Type: String            Encode Type: None
-    private final MedicineType type;             // type.                    Type: MedicineType      Encode Type: None
-    private final boolean forSale;               // For Sale.                Type: Boolean           Encode Type: None
-    private final double price;                  // Price.                   Type: Double            Encode Type: None
-    private final int amount;                    // Amount.                  Type: Integer           Encode Type: None
-    private final DateTime putawayTime;          // Putaway Time.            Type: DataTime          Encode Type: None
+    private final int id;                       // Id.                      Type: Integer           Encode Type: None
+    private final String medicineName;          // MedicineName.            Type: String            Encode Type: None
+    private final String approvalNo;            // Approval No.             Type: String            Encode Type: None
+    private final String manufacturer;          // Manufacturer.            Type: String            Encode Type: None
+    private final MedicineGrade grade;          // Grade.                   Type: MedicineGrade     Encode Type: None
+    private final MedicineType type;            // Type.                    Type: MedicineType      Encode Type: None
+    private final String specification;         // Specification.           Type: String            Encode Type: None
+    private final boolean forSale;              // For Sale.                Type: Boolean           Encode Type: None
+    private final double price;                 // Price.                   Type: Double            Encode Type: None
+    private final int amount;                   // Amount.                  Type: Integer           Encode Type: None
+    private final DateTime putawayTime;         // Putaway Time.            Type: DataTime          Encode Type: None
+    private final String imageName;             // Image Name.              Type: String            Encode Type: None
 
-    MedicineInfo(int id, String medicineName, String manufacturer, MedicineType type,
-                 boolean forSale, double price, int amount, DateTime putawayTime
+    MedicineInfo(int id, String medicineName, String approvalNo, String manufacturer, MedicineGrade grade, MedicineType type,
+                 String specification, boolean forSale, double price, int amount, DateTime putawayTime, String imageName
     ) {
         this.id = id;
         this.medicineName = medicineName;
+        this.approvalNo = approvalNo;
         this.manufacturer = manufacturer;
+        this.grade = grade;
         this.type = type;
+        this.specification = specification;
         this.forSale = forSale;
         this.price = price;
         this.amount = amount;
         this.putawayTime = putawayTime;
+        this.imageName = imageName;
     }
 
     public static List<MedicineInfo> parse(ResultSet rs) {
@@ -35,24 +43,32 @@ public class MedicineInfo {
 
         int id = 0;
         String medicineName = "";
+        String approvalNo = "";
         String manufacturer = "";
+        MedicineGrade grade = MedicineGrade.UNKNOWN;
         MedicineType type = MedicineType.UNKNOWN;
+        String specification = "";
         boolean forSale = false;
         double price = 0;
         int amount = 0;
         DateTime putawayTime = null;
+        String imageName = "";
         try {
             while (rs.next()) {
                 id = rs.getInt(Constant.COLUMNLABEL_ID);
                 medicineName = rs.getString(Constant.COLUMNLABEL_MEDICINENAME);
+                approvalNo = rs.getString(Constant.COLUMNLABEL_APPROVALNO);
                 manufacturer = rs.getString(Constant.COLUMNLABEL_MANUFACTURER);
-                type = MedicineType.prase(rs.getString(Constant.COLUMNLABEL_TYPE));
+                grade = MedicineGrade.parse(rs.getString(Constant.COLUMNLABEL_GRADE));
+                type = MedicineType.parse(rs.getString(Constant.COLUMNLABEL_TYPE));
+                specification = rs.getString(Constant.COLUMNLABEL_SPECIFICATION);
                 forSale = rs.getBoolean(Constant.COLUMNLABEL_FORSALE);
                 price = rs.getDouble(Constant.COLUMNLABEL_PRICE);
                 amount = rs.getInt(Constant.COLUMNLABEL_AMOUNT);
                 putawayTime = DateTime.parse(rs.getString(Constant.COLUMNLABEL_PUTAWAYTIME));
+                imageName = rs.getString(Constant.COLUMNLABEL_IMAGENAME);
 
-                list.add(new MedicineInfo(id, medicineName, manufacturer, type, forSale, price, amount, putawayTime));
+                list.add(new MedicineInfo(id, medicineName, approvalNo, manufacturer, grade, type, specification, forSale, price, amount, putawayTime, imageName));
             }
 
         } catch (SQLException e) {
@@ -69,12 +85,24 @@ public class MedicineInfo {
         return medicineName;
     }
 
+    public String getApprovalNo() {
+        return approvalNo;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
 
+    public MedicineGrade getGrade() {
+        return grade;
+    }
+
     public MedicineType getType() {
         return type;
+    }
+
+    public String getSpecification() {
+        return specification;
     }
 
     public boolean isForSale() {
@@ -93,8 +121,12 @@ public class MedicineInfo {
         return putawayTime;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
     public Object[] toObjectList() {
-        return new Object[]{id, medicineName, manufacturer, type.getLabel(), price, amount};
+        return new Object[]{id, medicineName, approvalNo, manufacturer, type.getLabel(), price, amount};
     }
 
     @Override

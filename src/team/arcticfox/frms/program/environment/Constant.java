@@ -21,10 +21,14 @@ public class Constant {
     public static final String COLUMNLABEL_DESTRUCTIONTIME = "Destruction Time";    // Destruction Time
     public static final String COLUMNLABEL_LASTLOGINTIME = "Last Login Time";       // Last Login Time
     public static final String COLUMNLABEL_MEDICINENAME = "Medicine Name";          // Medicine Name
+    public static final String COLUMNLABEL_APPROVALNO = "Approval No";              // Approval No
     public static final String COLUMNLABEL_MANUFACTURER = "Manufacturer";           // Manufacturer
+    public static final String COLUMNLABEL_GRADE = "Grade";                         // Grade
     public static final String COLUMNLABEL_TYPE = "Type";                           // Type
+    public static final String COLUMNLABEL_SPECIFICATION = "Specification";         // Specification
     public static final String COLUMNLABEL_FORSALE = "For Sale";                    // For Sale
     public static final String COLUMNLABEL_PRICE = "Price";                         // Price
     public static final String COLUMNLABEL_AMOUNT = "Amount";                       // Amount
     public static final String COLUMNLABEL_PUTAWAYTIME = "Putaway Time";            // Putaway Time
+    public static final String COLUMNLABEL_IMAGENAME = "Image Name";                // Image Name
 }

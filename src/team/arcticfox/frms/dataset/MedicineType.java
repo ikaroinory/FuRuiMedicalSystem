@@ -9,15 +9,15 @@ public enum MedicineType {
     BIOLOGICAL_AGENTS(3, "生物制剂"),
     COMPOUND(4, "复方制剂");
 
-    final private int id;
-    final private String label;
+    private final int id;
+    private final String label;
 
     MedicineType(int id, String label) {
         this.id = id;
         this.label = label;
     }
 
-    public static MedicineType prase(String label) {
+    public static MedicineType parse(String label) {
         if (label.equals("西药")) return WESTERN_MEDICINE;
         if (label.equals("中药")) return TRADITIONAL_CHINESE_MEDICINE;
         if (label.equals("中成药")) return CHINESE_PATENT_MEDICINE;

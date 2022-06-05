@@ -9,24 +9,15 @@ import javax.swing.*;
 import java.awt.*;
 
 class EventHandler {
-    static void initialize(View view) {
-        ImageIcon imageIcon = new ImageIcon(view.getClass().getResource("/images/potion 60x60.png"));
-        Image img = imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING);
-        imageIcon.setImage(img);
-        view.labelImage.setIcon(imageIcon);
-    }
-
-    static void initialize(View view, int id) {
+    static MedicineInfo initialize(View view, int id) {
         Database db = new Database(Constant.DB_NAME);
         db.open();
         MedicineInfo info = MedicineInfo.parse(db.sqlQuery(Variable.getQueryByIdNoSQL(id))).get(0);
         db.close();
 
-        String path = "/images/" + info.getImageName();
-        ImageIcon image = new ImageIcon(view.getClass().getResource(path));
-        Image img = image.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING);
-        image.setImage(img);
-        view.labelImage.setIcon(image);
+        ImageIcon medicineImage = new ImageIcon(view.getClass().getResource("/images/" + info.getImageName()));
+        medicineImage.setImage(medicineImage.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING));
+        view.labelImage.setIcon(medicineImage);
 
         view.labelGrade.setText(view.labelGrade.getText().replaceAll("%grade%", info.getGrade().getLabel()));
         view.labelMedicineName.setText(view.labelMedicineName.getText().replaceAll("%medicine_name%", info.getMedicineName()));
@@ -36,6 +27,15 @@ class EventHandler {
         view.labelSpecification.setText(view.labelSpecification.getText().replaceAll("%specification%", info.getSpecification()));
         view.labelManufacturer.setText(view.labelManufacturer.getText().replaceAll("%manufacturer%", info.getManufacturer()));
 
-        view.setTitle(info.getMedicineName()+" - View");
+        view.setTitle(view.getTitle().replaceAll("%medicine_name%", info.getMedicineName()));
+
+        ImageIcon copyImage = new ImageIcon(view.getClass().getResource("/icons/copy.png"));
+        copyImage.setImage(copyImage.getImage().getScaledInstance(20, 20, Image.SCALE_AREA_AVERAGING));
+        view.buttonCopyMedicineName.setIcon(copyImage);
+        view.buttonCopyApprovalNo.setIcon(copyImage);
+        view.buttonCopyType.setIcon(copyImage);
+        view.buttonCopySpecification.setIcon(copyImage);
+        view.buttonCopyManufacturer.setIcon(copyImage);
+        return info;
     }
 }

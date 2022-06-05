@@ -98,6 +98,7 @@ public class MainPage extends JFrame {
         setVisible(true);
         setTitle("Main Page - FuRui Medical System");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             "hidemode 3",

@@ -12,6 +12,7 @@ new FormModel {
 			"visible": true
 			"title": "Main Page - FuRui Medical System"
 			"defaultCloseOperation": 3
+			"resizable": false
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPaneTree"
 				add( new FormComponent( "javax.swing.JTree" ) {

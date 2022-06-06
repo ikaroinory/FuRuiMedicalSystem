@@ -1,5 +1,8 @@
 package team.arcticfox.frms.dataset;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
+import team.arcticfox.frms.integration.json.JsonParser;
 import team.arcticfox.frms.program.environment.Constant;
 
 import java.sql.ResultSet;
@@ -7,18 +10,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedicineInfo {
+public class MedicineInfo implements JsonParser {
+    @JSONField(name = "Id")
     private final int id;                       // Id.                      Type: Integer           Encode Type: None
+    @JSONField(name = "Medicine Name")
     private final String medicineName;          // MedicineName.            Type: String            Encode Type: None
+    @JSONField(name = "Approval No")
     private final String approvalNo;            // Approval No.             Type: String            Encode Type: None
+    @JSONField(name = "Manufacturer")
     private final String manufacturer;          // Manufacturer.            Type: String            Encode Type: None
+    @JSONField(name = "Grade")
     private final MedicineGrade grade;          // Grade.                   Type: MedicineGrade     Encode Type: None
+    @JSONField(name = "Type")
     private final MedicineType type;            // Type.                    Type: MedicineType      Encode Type: None
+    @JSONField(name = "Specification")
     private final String specification;         // Specification.           Type: String            Encode Type: None
+    @JSONField(name = "For Sale")
     private final boolean forSale;              // For Sale.                Type: Boolean           Encode Type: None
+    @JSONField(name = "Price")
     private final double price;                 // Price.                   Type: Double            Encode Type: None
+    @JSONField(name = "Amount")
     private final int amount;                   // Amount.                  Type: Integer           Encode Type: None
+    @JSONField(name = "Putaway Time")
     private final DateTime putawayTime;         // Putaway Time.            Type: DataTime          Encode Type: None
+    @JSONField(name = "Image Name")
     private final String imageName;             // Image Name.              Type: String            Encode Type: None
 
     MedicineInfo(int id, String medicineName, String approvalNo, String manufacturer, MedicineGrade grade, MedicineType type,
@@ -129,17 +144,12 @@ public class MedicineInfo {
         return new Object[]{id, medicineName, approvalNo, manufacturer, type.getLabel(), price, amount};
     }
 
+    public JSONObject toJsonObject() {
+        return JSONObject.parseObject(toString());
+    }
+
     @Override
     public String toString() {
-        return "MedicineInfo{" +
-                "id=" + id +
-                ", medicineName='" + medicineName + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", type=" + type +
-                ", forSale=" + forSale +
-                ", price=" + price +
-                ", amount=" + amount +
-                ", putawayTime=" + putawayTime +
-                '}';
+        return JSONObject.toJSONString(this);
     }
 }

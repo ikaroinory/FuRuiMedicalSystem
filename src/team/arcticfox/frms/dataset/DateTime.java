@@ -20,6 +20,29 @@ public class DateTime {
         this.second = second;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
 
     // yyyy-mm-dd hh:mm:ss
     public static DateTime parse(String str) {
@@ -37,6 +60,9 @@ public class DateTime {
         return parse(df.format(new Date()));
     }
 
+    public long timeToLong() {
+        return hour * 10000 + minute * 100 + second;
+    }
 
     @Override
     public String toString() {

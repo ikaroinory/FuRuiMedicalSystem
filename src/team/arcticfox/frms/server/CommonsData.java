@@ -16,11 +16,11 @@ public class CommonsData {
         medicine=null;
     }
 
-    public String getop() {
+    public String getOp() {
         return op;
     }
 
-    public User getuser() {
+    public User getUser() {
         return user;
     }
 

@@ -2,9 +2,7 @@ package team.arcticfox.frms.server;
 
 import team.arcticfox.frms.database.Domain.User;
 import team.arcticfox.frms.database.service.UserService;
-import team.arcticfox.frms.exception.FuRuiException;
 
-import javax.sql.CommonDataSource;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -28,9 +26,9 @@ public class ServerContextListener extends Thread {
                 CommonsData commonsData = (CommonsData) input.readObject();
                 socket.shutdownInput();
 
-                if ("login".equals(commonsData.getop())) {
-                    String username = commonsData.getuser().getUser_name();
-                    String password = commonsData.getuser().getPwd();
+                if ("login".equals(commonsData.getOp())) {
+                    String username = commonsData.getUser().getUser_name();
+                    String password = commonsData.getUser().getPwd();
 
                     UserService userService = new UserService();
 
@@ -39,9 +37,9 @@ public class ServerContextListener extends Thread {
                     commonsData.setUser(user);
                     commonsData.setResult("登陆成功！");
                     log("用户" + username + "登录");
-                } else if ("register".equals(commonsData.getop())) {
-                    String username = commonsData.getuser().getUser_name();
-                    String password = commonsData.getuser().getPwd();
+                } else if ("register".equals(commonsData.getOp())) {
+                    String username = commonsData.getUser().getUser_name();
+                    String password = commonsData.getUser().getPwd();
 
                     UserService userService = new UserService();
 

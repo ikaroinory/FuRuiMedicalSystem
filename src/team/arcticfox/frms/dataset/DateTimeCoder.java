@@ -1,5 +1,7 @@
 package team.arcticfox.frms.dataset;
 
+import com.alibaba.fastjson.parser.DefaultJSONParser;
+import com.alibaba.fastjson.parser.deserializer.ObjectDeserializer;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;
 
@@ -12,9 +14,19 @@ import java.lang.reflect.Type;
  * @author Guanyu Hu
  * @date 2022/6/8 16:23
  */
-public class DateTimeSerializer implements ObjectSerializer {
+public class DateTimeCoder implements ObjectSerializer, ObjectDeserializer {
     @Override
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
         jsonSerializer.write(o.toString());
+    }
+
+    @Override
+    public DateTime deserialze(DefaultJSONParser defaultJSONParser, Type type, Object o) {
+        return DateTime.parse(defaultJSONParser.parse().toString());
+    }
+
+    @Override
+    public int getFastMatchToken() {
+        return 0;
     }
 }

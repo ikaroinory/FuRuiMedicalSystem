@@ -11,17 +11,17 @@ import java.util.Date;
 
 public class DateTime {
     @JSONField(name = "year")
-    private final int year;
+    public int year;
     @JSONField(name = "month", ordinal = 1)
-    private final int month;
+    public int month;
     @JSONField(name = "day", ordinal = 2)
-    private final int day;
+    public int day;
     @JSONField(name = "hour", ordinal = 3)
-    private final int hour;
+    public int hour;
     @JSONField(name = "minute", ordinal = 4)
-    private final int minute;
+    public int minute;
     @JSONField(name = "second", ordinal = 5)
-    private final int second;
+    public int second;
 
     public DateTime(int year, int month, int day, int hour, int minute, int second) {
         this.year = year;

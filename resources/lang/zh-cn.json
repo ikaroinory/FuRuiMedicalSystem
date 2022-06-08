@@ -1,53 +1,53 @@
 {
-  "form": {
-    "signIn": {
-      "form-title": "登录",
-      "label-username": "用户名",
-      "label-password": "密码",
-      "button-signIn": "登录"
-    },
-    "register": {
-      "form-title": "Register",
-      "label-username": "Username",
-      "label-email": "Email",
-      "label-password": "Password",
-      "label-verifyPassword": "Verify Password",
-      "button-register": "Register"
-    },
-    "mainPage": {
-      "form-title": "Main Page - FuRui Medical System",
-      "menu-file": "File",
-      "menu-account": "Account",
-      "menu-help": "Help",
-      "menuItem-settings": "Settings",
-      "menuItem-exit": "Exit",
-      "menuItem-register": "Register",
-      "menuItem-signIn": "Sign In",
-      "menuItem-signOut": "Sign Out",
-      "menuItem-checkUpdate": "Check Update",
-      "menuItem-about": "About",
-      "tab-welcomePage": "Welcome Page",
-      "tab-medicineList": "Medicine List",
-      "table-id": "Id",
-      "table-medicineName": "Medicine Name",
-      "table-approvalNo": "Approval No",
-      "table-manufacturer": "Manufacturer",
-      "table-type": "Type",
-      "table-price": "Price",
-      "table-amount": "Amount",
-      "button-refresh": "Refresh",
-      "button-viewDetails": "View Details"
-    },
-    "view": {
-      "form-title": "%medicine_name% - View",
-      "label-approvalNo": "Approval No",
-      "label-type": "Type",
-      "label-specification": "Specification",
-      "label-manufacturer": "Manufacturer",
-      "button-addToCart": "Add To Cart"
-    },
-    "about": {
-      "form-title": "About"
+    "form": {
+        "signIn": {
+            "form-title": "登录",
+            "label-username": "用户名",
+            "label-password": "密码",
+            "button-signIn": "登录"
+        },
+        "register": {
+            "form-title": "注册",
+            "label-username": "用户名",
+            "label-email": "电子邮件",
+            "label-password": "密码",
+            "label-verifyPassword": "重复密码",
+            "button-register": "注册"
+        },
+        "mainPage": {
+            "form-title": "主页-福瑞医疗系统",
+            "menu-file": "文件",
+            "menu-account": "账户",
+            "menu-help": "帮助",
+            "menuItem-settings": "设置",
+            "menuItem-exit": "退出",
+            "menuItem-register": "注册",
+            "menuItem-signIn": "登录",
+            "menuItem-signOut": "登出",
+            "menuItem-checkUpdate": "检查更新",
+            "menuItem-about": "关于",
+            "tab-welcomePage": "欢迎",
+            "tab-medicineList": "药品清单",
+            "table-id": "ID",
+            "table-medicineName": "药品名称",
+            "table-approvalNo": "批准号",
+            "table-manufacturer": "制造商",
+            "table-type": "类型",
+            "table-price": "价格",
+            "table-amount": "数量",
+            "button-refresh": "刷新",
+            "button-viewDetails": "查看详细信息"
+        },
+        "view": {
+            "form-title": "%medicine_name% - View",
+            "label-approvalNo": "批准号",
+            "label-type": "类型",
+            "label-specification": "规格",
+            "label-manufacturer": "制造商",
+            "button-addToCart": "添加到购物车"
+        },
+        "about": {
+            "form-title": "关于"
+        }
     }
-  }
 }

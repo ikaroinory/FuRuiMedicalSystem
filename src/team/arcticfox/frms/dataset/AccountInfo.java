@@ -1,5 +1,6 @@
 package team.arcticfox.frms.dataset;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.program.environment.Constant;
 import team.arcticfox.frms.security.Base64;
@@ -8,21 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountInfo {
-    @JSONField(name = "ID")
+    @JSONField(name = "id")
     private final int id;                       // Id.                  Type: Integer           Encode Type: None
-    @JSONField(name = "Username")
+    @JSONField(name = "username", ordinal = 1)
     private final String username;              // Username.            Type: String            Encode Type: Base64
-    @JSONField(name = "Email")
+    @JSONField(name = "email", ordinal = 2)
     private final String email;                 // Email.               Type: String            Encode Type: Base64
-    @JSONField(name = "Password")
+    @JSONField(name = "password", ordinal = 3)
     private final String password;              // Password.            Type: String            Encode Type: Base64 -> MD5
-    @JSONField(name = "Permission")
+    @JSONField(name = "permission", ordinal = 4)
     private final AccountPermission permission; // Account Permission   Type: AccountPermission Encode Type: None
-    @JSONField(name = "Registration Time")
+    @JSONField(name = "registration-time", ordinal = 5, serializeUsing = DateTimeSerializer.class)
     private final DateTime registrationTime;    // Registration Time.   Type: DateTime          Encode Type: None
-    @JSONField(name = "Destruction Time")
+    @JSONField(name = "destruction-time", ordinal = 6, serializeUsing = DateTimeSerializer.class)
     private final DateTime destructionTime;     // Destruction Time.    Type: DateTime          Encode Type: None
-    @JSONField(name = "Last Login Time")
+    @JSONField(name = "last-login-time", ordinal = 7, serializeUsing = DateTimeSerializer.class)
     private final DateTime lastLoginTime;       // Last Login Time.     Type: DateTime          Encode Type: None
 
     public AccountInfo(int id, String username, String email, String password, AccountPermission permission,
@@ -97,15 +98,6 @@ public class AccountInfo {
 
     @Override
     public String toString() {
-        return "AccountInfo{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", permission=" + permission +
-                ", registrationTime=" + registrationTime +
-                ", destructionTime=" + destructionTime +
-                ", lastLoginTime=" + lastLoginTime +
-                '}';
+        return JSON.toJSONString(this);
     }
 }

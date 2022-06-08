@@ -1,10 +1,10 @@
 {
   "form": {
     "signIn": {
-      "form-title": "Sign In",
-      "label-username": "Username",
-      "label-password": "Password",
-      "button-signIn": "Sign In"
+      "form-title": "登录",
+      "label-username": "用户名",
+      "label-password": "密码",
+      "button-signIn": "登录"
     },
     "register": {
       "form-title": "Register",

@@ -1,14 +1,26 @@
 package team.arcticfox.frms.dataset;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.JSONSerializer;
+import com.alibaba.fastjson.serializer.ObjectSerializer;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateTime {
+    @JSONField(name = "year")
     private final int year;
+    @JSONField(name = "month", ordinal = 1)
     private final int month;
+    @JSONField(name = "day", ordinal = 2)
     private final int day;
+    @JSONField(name = "hour", ordinal = 3)
     private final int hour;
+    @JSONField(name = "minute", ordinal = 4)
     private final int minute;
+    @JSONField(name = "second", ordinal = 5)
     private final int second;
 
     public DateTime(int year, int month, int day, int hour, int minute, int second) {
@@ -71,3 +83,4 @@ public class DateTime {
                 + String.format("%02d", hour) + ":" + String.format("%02d", minute) + ":" + String.format("%02d", second);
     }
 }
+

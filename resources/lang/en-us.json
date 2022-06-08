@@ -1,53 +1,53 @@
 {
-  "form": {
-    "signIn": {
-      "form-title": "Sign In",
-      "label-username": "Username",
-      "label-password": "Password",
-      "button-signIn": "Sign In"
-    },
-    "register": {
-      "form-title": "Register",
-      "label-username": "Username",
-      "label-email": "Email",
-      "label-password": "Password",
-      "label-verifyPassword": "Verify Password",
-      "button-register": "Register"
-    },
-    "mainPage": {
-      "form-title": "Main Page - FuRui Medical System",
-      "menu-file": "File",
-      "menu-account": "Account",
-      "menu-help": "Help",
-      "menuItem-settings": "Settings",
-      "menuItem-exit": "Exit",
-      "menuItem-register": "Register",
-      "menuItem-signIn": "Sign In",
-      "menuItem-signOut": "Sign Out",
-      "menuItem-checkUpdate": "Check Update",
-      "menuItem-about": "About",
-      "tab-welcomePage": "Welcome Page",
-      "tab-medicineList": "Medicine List",
-      "table-id": "Id",
-      "table-medicineName": "Medicine Name",
-      "table-approvalNo": "Approval No",
-      "table-manufacturer": "Manufacturer",
-      "table-type": "Type",
-      "table-price": "Price",
-      "table-amount": "Amount",
-      "button-refresh": "Refresh",
-      "button-viewDetails": "View Details"
-    },
-    "view": {
-      "form-title": "%medicine_name% - View",
-      "label-approvalNo": "Approval No",
-      "label-type": "Type",
-      "label-specification": "Specification",
-      "label-manufacturer": "Manufacturer",
-      "button-addToCart": "Add To Cart"
-    },
-    "about": {
-      "form-title": "About"
+    "form": {
+        "signIn": {
+            "form-title": "Sign In",
+            "label-username": "Username",
+            "label-password": "Password",
+            "button-signIn": "Sign In"
+        },
+        "register": {
+            "form-title": "Register",
+            "label-username": "Username",
+            "label-email": "Email",
+            "label-password": "Password",
+            "label-verifyPassword": "Verify Password",
+            "button-register": "Register"
+        },
+        "mainPage": {
+            "form-title": "Main Page - FuRui Medical System",
+            "menu-file": "File",
+            "menu-account": "Account",
+            "menu-help": "Help",
+            "menuItem-settings": "Settings",
+            "menuItem-exit": "Exit",
+            "menuItem-register": "Register",
+            "menuItem-signIn": "Sign In",
+            "menuItem-signOut": "Sign Out",
+            "menuItem-checkUpdate": "Check Update",
+            "menuItem-about": "About",
+            "tab-welcomePage": "Welcome Page",
+            "tab-medicineList": "Medicine List",
+            "table-id": "Id",
+            "table-medicineName": "Medicine Name",
+            "table-approvalNo": "Approval No",
+            "table-manufacturer": "Manufacturer",
+            "table-type": "Type",
+            "table-price": "Price",
+            "table-amount": "Amount",
+            "button-refresh": "Refresh",
+            "button-viewDetails": "View Details"
+        },
+        "view": {
+            "form-title": "%medicine_name% - View",
+            "label-approvalNo": "Approval No",
+            "label-type": "Type",
+            "label-specification": "Specification",
+            "label-manufacturer": "Manufacturer",
+            "button-addToCart": "Add To Cart"
+        },
+        "about": {
+            "form-title": "About"
+        }
     }
-  }
 }

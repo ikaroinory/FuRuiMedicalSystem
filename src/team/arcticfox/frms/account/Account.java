@@ -1,5 +1,6 @@
 package team.arcticfox.frms.account;
 
+import com.alibaba.fastjson.JSONObject;
 import team.arcticfox.frms.database.Database;
 import team.arcticfox.frms.dataset.AccountInfo;
 import team.arcticfox.frms.exception.FuRuiException;
@@ -8,6 +9,8 @@ import team.arcticfox.frms.program.environment.Constant;
 import team.arcticfox.frms.program.environment.Variable;
 import team.arcticfox.frms.security.MD5;
 
+import java.io.DataOutputStream;
+import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
@@ -43,6 +46,19 @@ public class Account {
         // Network Transmission......
         // in(Base64.decode(username), Base64.decode(password))
 
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("username", username);
+        jsonObject.put("password", password);
+        try {
+            Socket socket = new Socket("localhost", 25566);
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            out.writeUTF(jsonObject.toJSONString());
+            out.close();
+            socket.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Variable.accountInfo = getAccountInfo(username);
         if (Variable.accountInfo == null) throw new UserNotFoundException();
 
@@ -55,6 +71,29 @@ public class Account {
         } else
             return false;
     }
+    /*
+    public static boolean signIn(String username, String password) throws FuRuiException {
+        if (username.equals("")) throw new UsernameIsEmptyException();
+        if (password.equals("")) throw new PasswordIsEmptyException();
+
+        // out(Base64.encode(username), Base64.encode(password))
+        // Network Transmission......
+        // in(Base64.decode(username), Base64.decode(password))
+
+        Variable.accountInfo = getAccountInfo(username);
+        if (Variable.accountInfo == null) throw new UserNotFoundException();
+
+        if (MD5.encode(password).equals(Variable.accountInfo.getPassword())) {
+            Database db = new Database(Constant.DB_NAME);
+            db.open();
+            db.sqlUpdate(Variable.getUpdateLastLoginTimeSQL(Variable.accountInfo.getId()));
+            db.close();
+            return true;
+        } else
+            return false;
+    }
+
+     */
 
     public static boolean signOut() {
         Variable.accountInfo = null;

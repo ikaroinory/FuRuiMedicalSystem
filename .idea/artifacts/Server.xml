@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact name="Server">
+    <output-path>$PROJECT_DIR$/out/artifacts/Server</output-path>
+    <root id="root">
+      <element id="archive" name="Server.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/Server/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Server" />
+        <element id="module-output" name="FuRui Medical System" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/fastjson-1.2.53.jar" path-in-jar="/" />
+      </element>
+      <element id="directory" name="logs">
+        <element id="dir-copy" path="$PROJECT_DIR$/Server/logs" />
+        <element id="directory" name="register" />
+        <element id="directory" name="sign in" />
+        <element id="directory" name="system" />
+      </element>
+      <element id="directory" name="config">
+        <element id="dir-copy" path="$PROJECT_DIR$/Server/config" />
+      </element>
+    </root>
+  </artifact>
+</component>

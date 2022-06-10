@@ -1,0 +1,16 @@
+{
+	"uuid":"202206110110402794",
+	"time":"2022-06-11 01:10:40",
+	"ip":{
+		"address":"127.0.0.1",
+		"port":54284
+	},
+	"exception":{
+		"code":"AC1002",
+		"message":"Password is wrong."
+	},
+	"json":{
+		"username":"root",
+		"password":"123"
+	}
+}

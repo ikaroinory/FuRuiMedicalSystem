@@ -1,0 +1,34 @@
+<component name="ArtifactManager">
+  <artifact name="Client:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Client_jar2</output-path>
+    <root id="root">
+      <element id="archive" name="Client.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/Client/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Client" />
+        <element id="module-output" name="FuRui Medical System" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/fastjson-1.2.53.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-swing.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-swing-sources.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-swing-javadoc.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-core.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-core-sources.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-core-javadoc.jar" path-in-jar="/" />
+      </element>
+      <element id="directory" name="config">
+        <element id="dir-copy" path="$PROJECT_DIR$/Client/config" />
+      </element>
+      <element id="directory" name="icons">
+        <element id="dir-copy" path="$PROJECT_DIR$/Client/icons" />
+      </element>
+      <element id="directory" name="images">
+        <element id="dir-copy" path="$PROJECT_DIR$/Client/images" />
+      </element>
+      <element id="directory" name="lang">
+        <element id="dir-copy" path="$PROJECT_DIR$/Client/lang" />
+      </element>
+    </root>
+  </artifact>
+</component>

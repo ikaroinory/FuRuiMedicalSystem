@@ -1,9 +1,0 @@
-{
-    "name": "Fu Rui Medical System",
-    "version": "1.0.0",
-    "default-port": 25565,
-    "lang": [
-        "en-us",
-        "zh-cn"
-    ]
-}

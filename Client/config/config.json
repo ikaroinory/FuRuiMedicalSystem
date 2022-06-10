@@ -1,0 +1,14 @@
+{
+    "version": "1.0.0",
+    "database": {
+        "name": "FuRui Medical System",
+        "address": {
+            "ip": "121.37.221.220",
+            "port": 3306
+        },
+        "root": {
+            "username": "root",
+            "password": "ArcticFox@2022"
+        }
+    }
+}

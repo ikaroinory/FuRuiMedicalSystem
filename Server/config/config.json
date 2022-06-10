@@ -1,0 +1,30 @@
+{
+    "config-version": "1.0.6.7",
+    "server": {
+        "name": "FRMS-Server-01",
+        "uuid": "be69c309-5bb2-4eb4-be5b-6d4046677d19",
+        "address": {
+            "ip": "localhost",
+            "port": 25565
+        },
+        "list": {
+            "signIn": {
+                "ip": "localhost",
+                "port": 25566
+            },
+            "register": {
+                "ip": "localhost",
+                "port": 25567
+            }
+        }
+    },
+    "database": {
+        "name": "FuRui Medical System",
+        "address": {
+            "ip": "121.37.221.220",
+            "port": 3306
+        },
+        "root-username": "root",
+        "root-password": "ArcticFox@2022"
+    }
+}

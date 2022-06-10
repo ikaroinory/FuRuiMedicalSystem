@@ -1,7 +1,6 @@
 package team.arcticfox.frms.exception.account;
 
 import team.arcticfox.frms.exception.FuRuiException;
-import team.arcticfox.frms.program.environment.Constant;
 
 public class PasswordIsEmptyException extends FuRuiException {
     private static final String CODE = "AC0002";

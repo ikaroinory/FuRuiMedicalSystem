@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/config" type="java-resource" relativeOutputPath="config" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/icons" type="java-resource" relativeOutputPath="icons" />
+      <sourceFolder url="file://$MODULE_DIR$/images" type="java-resource" relativeOutputPath="images" />
+      <sourceFolder url="file://$MODULE_DIR$/lang" type="java-resource" relativeOutputPath="lang" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.19" level="project" />
+    <orderEntry type="module" module-name="FuRui Medical System" />
+    <orderEntry type="library" name="fastjson-1.2.53" level="project" />
+    <orderEntry type="library" name="MigLayout" level="project" />
+  </component>
+</module>

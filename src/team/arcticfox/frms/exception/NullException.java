@@ -1,6 +1,6 @@
 package team.arcticfox.frms.exception;
 
-public class NullException extends FuRuiException {
+public final class NullException extends FuRuiException {
     private static final String CODE = "NULL";
     private static final String MESSAGE = "Null exception.";
     private static final String SOLUTION = "";

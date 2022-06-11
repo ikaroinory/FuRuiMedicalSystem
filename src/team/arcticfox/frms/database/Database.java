@@ -4,7 +4,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
-public class Database {
+public final class Database {
     private static final String DRIVE = "com.mysql.cj.jdbc.Driver";
 
     private static boolean connect = false;
@@ -12,9 +12,7 @@ public class Database {
     private static Statement stmt;
     private final String url;
 
-    public Database(){
-        this("121.37.221.220", 3306, "FuRui Medical System");
-    }
+
     public Database(String databaseName) {
         this("121.37.221.220", 3306, databaseName);
     }

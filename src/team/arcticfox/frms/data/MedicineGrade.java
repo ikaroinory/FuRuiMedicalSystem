@@ -9,7 +9,7 @@ public enum MedicineGrade {
 
     OTCB("OTC-乙");
 
-    public final String label;
+    private final String label;
 
     MedicineGrade(String label) {
         this.label = label;

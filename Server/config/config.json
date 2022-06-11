@@ -15,6 +15,10 @@
             "register": {
                 "ip": "localhost",
                 "port": 25567
+            },
+            "cart": {
+                "ip": "localhost",
+                "port": 25568
             }
         }
     },
@@ -24,7 +28,9 @@
             "ip": "121.37.221.220",
             "port": 3306
         },
-        "root-username": "root",
-        "root-password": "ArcticFox@2022"
+        "root": {
+            "username": "root",
+            "password": "ArcticFox@2022"
+        }
     }
 }

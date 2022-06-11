@@ -1,4 +1,4 @@
-package team.arcticfox.frms.server.core.thread;
+package team.arcticfox.frms.server.thread;
 
 public interface ITerminable {
     void terminate();

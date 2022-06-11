@@ -4,16 +4,24 @@ import com.alibaba.fastjson.JSON;
 import team.arcticfox.frms.data.DateTime;
 import team.arcticfox.frms.server.config.Config;
 import team.arcticfox.frms.server.core.Command;
-import team.arcticfox.frms.server.core.thread.RegisterServer;
-import team.arcticfox.frms.server.core.thread.SignInServer;
+import team.arcticfox.frms.server.thread.CartServer;
+import team.arcticfox.frms.server.thread.RegisterServer;
+import team.arcticfox.frms.server.thread.SignInServer;
 import team.arcticfox.frms.system.Function;
 import team.arcticfox.frms.system.SystemEnvironment;
 
-public class Environment {
+public final class Environment {
+    public static final String DIR_CONFIG = "./config/";
+    public static final String DIR_CARTS = "./carts/";
+    public static final String FILE_CONFIG = "config.json";
+    public static final String PATH_CONFIG = DIR_CONFIG + FILE_CONFIG;
+
+
     public static Config config = null;
     public static Command command = null;
     public static SignInServer signInServer = null;
     public static RegisterServer registerServer = null;
+    public static CartServer cartServer = null;
 
 
     public static void printInfo(String info) {
@@ -29,7 +37,7 @@ public class Environment {
     }
 
     private static void loadConfig() {
-        config = JSON.parseObject(Function.readFile(SystemEnvironment.PATH_CONFIG), Config.class);
+        config = JSON.parseObject(Function.readFile(PATH_CONFIG), Config.class);
     }
 
     public static void initialize() {

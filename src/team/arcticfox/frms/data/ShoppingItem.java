@@ -1,42 +1,54 @@
 package team.arcticfox.frms.data;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
-import team.arcticfox.frms.integration.json.JsonParser;
 
-public class ShoppingItem implements JsonParser {
-    @JSONField(name = "Id")
-    private final int id;
-    @JSONField(name = "Amount")
-    private final int amount;
-    @JSONField(name = "Unit Price")
-    private final double unitPrice;
+public final class ShoppingItem implements IJsonTextable {
+    @JSONField(name = "id")
+    public int id;
+    @JSONField(name = "medicine-name", ordinal = 1)
+    public String name;
+    @JSONField(name = "manufacturer", ordinal = 2)
+    public String manufacturer;
+    @JSONField(name = "specification", ordinal = 3)
+    public String specification;
+    @JSONField(name = "price", ordinal = 4)
+    public double price;
+    @JSONField(name = "amount", ordinal = 5)
+    public int amount;
 
-    public ShoppingItem(int id, int amount, int unitPrice) {
+
+    public ShoppingItem() {
+        this(0, null, null, null, 0, 0);
+    }
+
+    public ShoppingItem(int id, String name, String manufacturer, String specification, double price, int amount) {
         this.id = id;
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.specification = specification;
+        this.price = price;
         this.amount = amount;
-        this.unitPrice = unitPrice;
     }
 
-    public int getId() {
-        return id;
+
+    public static ShoppingItem parse(String json) {
+        return JSON.parseObject(json, ShoppingItem.class);
     }
 
-    public int getAmount() {
-        return amount;
-    }
 
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public JSONObject toJsonObject() {
-        return JSONObject.parseObject(toString());
+    public Object[] toObjectList() {
+        return new Object[]{id, name, amount, price * amount};
     }
 
     @Override
-    public String toString() {
-        // return "{\"Shopping Cart\": {\"id\": " + id + ", \"amount\": " + amount + "}}";
-        return JSONObject.toJSONString(this);
+    public JSONObject toJsonObject() {
+        return JSON.parseObject(toJsonString());
+    }
+
+    @Override
+    public String toJsonString() {
+        return JSON.toJSONString(this, true);
     }
 }

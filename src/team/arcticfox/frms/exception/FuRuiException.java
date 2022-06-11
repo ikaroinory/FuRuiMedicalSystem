@@ -54,7 +54,7 @@ public class FuRuiException extends Exception implements IDisplayable {
     }
 
     @Override
-    public void displayMessageBox() {
+    public final void displayMessageBox() {
         String displayMessage = "Code: " + code + SystemEnvironment.EOL
                 + SystemEnvironment.EOL
                 + "Information: " + getMessage() + SystemEnvironment.EOL

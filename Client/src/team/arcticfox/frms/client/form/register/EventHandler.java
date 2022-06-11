@@ -4,7 +4,7 @@ import team.arcticfox.frms.client.function.Account;
 import team.arcticfox.frms.exception.FuRuiException;
 import team.arcticfox.frms.integration.message.MessageBox;
 
-class EventHandler {
+final class EventHandler {
     static void register(Register register,String username, String email, String password, String verifyPassword) {
         try {
             if (Account.register(username, email, password, verifyPassword)){

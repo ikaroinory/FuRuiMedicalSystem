@@ -20,6 +20,7 @@
       <element id="directory" name="config">
         <element id="dir-copy" path="$PROJECT_DIR$/Server/config" />
       </element>
+      <element id="file-copy" path="$PROJECT_DIR$/Server/start.bat" />
     </root>
   </artifact>
 </component>

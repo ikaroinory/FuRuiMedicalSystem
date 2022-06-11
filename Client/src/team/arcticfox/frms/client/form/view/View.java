@@ -11,6 +11,7 @@ import javax.swing.*;
 import net.miginfocom.swing.*;
 import team.arcticfox.frms.client.environment.Environment;
 import team.arcticfox.frms.data.MedicineInfo;
+import team.arcticfox.frms.data.ShoppingItem;
 
 /**
  * @author IkaroInory
@@ -45,6 +46,19 @@ public class View extends JFrame {
         Environment.copyToClipboard(labelManufacturer.getText());
     }
 
+    private void buttonAddToCartActionListener(ActionEvent e) {
+        Environment.cart.add(new ShoppingItem(
+                Integer.parseInt(labelId.getText()),
+                labelMedicineName.getText(),
+                labelManufacturer.getText(),
+                labelSpecification.getText(),
+                Double.parseDouble(labelPrice.getText().replaceAll("￥ ", "")),
+                1
+        ));
+        if (Environment.cartForm != null)
+            team.arcticfox.frms.client.form.cart.EventHandler.refresh(Environment.cartForm);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         labelImage = new JLabel();
@@ -54,6 +68,8 @@ public class View extends JFrame {
         buttonCopyMedicineName = new JButton();
         labelPrice = new JLabel();
         panelInformation = new JPanel();
+        labelIdLabel = new JLabel();
+        labelId = new JLabel();
         labelApprovalNoLabel = new JLabel();
         labelApprovalNo = new JLabel();
         buttonCopyApprovalNo = new JButton();
@@ -77,14 +93,14 @@ public class View extends JFrame {
         setMinimumSize(new Dimension(551, 564));
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[521:521,center]",
-            // rows
-            "[250:250,center]" +
-            "[44!,fill]" +
-            "[155!,fill]" +
-            "[41:41,fill]"));
+                "hidemode 3",
+                // columns
+                "[521:521,center]",
+                // rows
+                "[250:250,center]" +
+                        "[44!,fill]" +
+                        "[185!,fill]" +
+                        "[41:41,fill]"));
 
         //---- labelImage ----
         labelImage.setIcon(new ImageIcon(getClass().getResource("/images/default.jpeg")));
@@ -93,14 +109,14 @@ public class View extends JFrame {
         //======== panelMainInfo ========
         {
             panelMainInfo.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[70!,fill]" +
-                "[313!,fill]" +
-                "[30!,fill]" +
-                "[73!,fill]",
-                // rows
-                "[30:30,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[70!,fill]" +
+                            "[313!,fill]" +
+                            "[30!,fill]" +
+                            "[73!,fill]",
+                    // rows
+                    "[30:30,fill]"));
 
             //---- labelGrade ----
             labelGrade.setText("%grade%");
@@ -127,76 +143,85 @@ public class View extends JFrame {
         //======== panelInformation ========
         {
             panelInformation.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[150:150,fill]" +
-                "[313:313,fill]" +
-                "[30:30,fill]",
-                // rows
-                "[30:30,fill]" +
-                "[30:30,fill]" +
-                "[30:30,fill]" +
-                "[30:30,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[150:150,fill]" +
+                            "[313:313,fill]" +
+                            "[30:30,fill]",
+                    // rows
+                    "[30!,fill]" +
+                            "[30:30,fill]" +
+                            "[30:30,fill]" +
+                            "[30:30,fill]" +
+                            "[30:30,fill]"));
+
+            //---- labelIdLabel ----
+            labelIdLabel.setText("Id");
+            panelInformation.add(labelIdLabel, "cell 0 0");
+
+            //---- labelId ----
+            labelId.setText("%id%");
+            panelInformation.add(labelId, "cell 1 0");
 
             //---- labelApprovalNoLabel ----
             labelApprovalNoLabel.setText("Approval No");
-            panelInformation.add(labelApprovalNoLabel, "cell 0 0");
+            panelInformation.add(labelApprovalNoLabel, "cell 0 1");
 
             //---- labelApprovalNo ----
             labelApprovalNo.setText("%approval_no%");
-            panelInformation.add(labelApprovalNo, "cell 1 0");
+            panelInformation.add(labelApprovalNo, "cell 1 1");
 
             //---- buttonCopyApprovalNo ----
             buttonCopyApprovalNo.setMaximumSize(new Dimension(30, 30));
             buttonCopyApprovalNo.setMinimumSize(new Dimension(30, 30));
             buttonCopyApprovalNo.setPreferredSize(new Dimension(30, 30));
             buttonCopyApprovalNo.addActionListener(e -> buttonCopyApprovalNoActionListener(e));
-            panelInformation.add(buttonCopyApprovalNo, "cell 2 0");
+            panelInformation.add(buttonCopyApprovalNo, "cell 2 1");
 
             //---- labelTypeLabel ----
             labelTypeLabel.setText("Type");
-            panelInformation.add(labelTypeLabel, "cell 0 1");
+            panelInformation.add(labelTypeLabel, "cell 0 2");
 
             //---- labelType ----
             labelType.setText("%type%");
-            panelInformation.add(labelType, "cell 1 1");
+            panelInformation.add(labelType, "cell 1 2");
 
             //---- buttonCopyType ----
             buttonCopyType.setMaximumSize(new Dimension(30, 30));
             buttonCopyType.setMinimumSize(new Dimension(30, 30));
             buttonCopyType.setPreferredSize(new Dimension(30, 30));
             buttonCopyType.addActionListener(e -> buttonCopyTypeActionListener(e));
-            panelInformation.add(buttonCopyType, "cell 2 1");
+            panelInformation.add(buttonCopyType, "cell 2 2");
 
             //---- labelSpecificationLabel ----
             labelSpecificationLabel.setText("Specification");
-            panelInformation.add(labelSpecificationLabel, "cell 0 2");
+            panelInformation.add(labelSpecificationLabel, "cell 0 3");
 
             //---- labelSpecification ----
             labelSpecification.setText("%specification%");
-            panelInformation.add(labelSpecification, "cell 1 2");
+            panelInformation.add(labelSpecification, "cell 1 3");
 
             //---- buttonCopySpecification ----
             buttonCopySpecification.setMinimumSize(new Dimension(30, 30));
             buttonCopySpecification.setPreferredSize(new Dimension(30, 30));
             buttonCopySpecification.setMaximumSize(new Dimension(30, 30));
             buttonCopySpecification.addActionListener(e -> buttonCopySpecificationActionListener(e));
-            panelInformation.add(buttonCopySpecification, "cell 2 2");
+            panelInformation.add(buttonCopySpecification, "cell 2 3");
 
             //---- labelManufacturerLabel ----
             labelManufacturerLabel.setText("Manufacturer");
-            panelInformation.add(labelManufacturerLabel, "cell 0 3");
+            panelInformation.add(labelManufacturerLabel, "cell 0 4");
 
             //---- labelManufacturer ----
             labelManufacturer.setText("%manufacturer%");
-            panelInformation.add(labelManufacturer, "cell 1 3");
+            panelInformation.add(labelManufacturer, "cell 1 4");
 
             //---- buttonCopyManufacturer ----
             buttonCopyManufacturer.setMinimumSize(new Dimension(30, 30));
             buttonCopyManufacturer.setPreferredSize(new Dimension(30, 30));
             buttonCopyManufacturer.setMaximumSize(new Dimension(30, 30));
             buttonCopyManufacturer.addActionListener(e -> buttonCopyManufacturerActionListener(e));
-            panelInformation.add(buttonCopyManufacturer, "cell 2 3");
+            panelInformation.add(buttonCopyManufacturer, "cell 2 4");
         }
         contentPane.add(panelInformation, "cell 0 2");
 
@@ -206,6 +231,7 @@ public class View extends JFrame {
 
             //---- buttonAddToCart ----
             buttonAddToCart.setText("Add To Cart");
+            buttonAddToCart.addActionListener(e -> buttonAddToCartActionListener(e));
             panelButton.add(buttonAddToCart);
         }
         contentPane.add(panelButton, "cell 0 3");
@@ -222,6 +248,8 @@ public class View extends JFrame {
     JButton buttonCopyMedicineName;
     JLabel labelPrice;
     private JPanel panelInformation;
+    private JLabel labelIdLabel;
+    JLabel labelId;
     private JLabel labelApprovalNoLabel;
     JLabel labelApprovalNo;
     JButton buttonCopyApprovalNo;

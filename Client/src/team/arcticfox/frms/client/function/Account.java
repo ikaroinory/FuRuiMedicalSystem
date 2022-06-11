@@ -1,12 +1,12 @@
 package team.arcticfox.frms.client.function;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import team.arcticfox.frms.client.environment.Environment;
-import team.arcticfox.frms.data.AccountInfo;
 import team.arcticfox.frms.exception.FuRuiException;
 import team.arcticfox.frms.exception.NullException;
 import team.arcticfox.frms.exception.account.*;
+import team.arcticfox.frms.utp.RegisterProtocolClientToServer;
+import team.arcticfox.frms.utp.SignInProtocolClientToServer;
+import team.arcticfox.frms.utp.SignInProtocolServerToClient;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.regex.Pattern;
 
-public class Account {
+public final class Account {
     private static boolean isNotComplex(String password) {
         String pattern = "^.*(?=.{8,16})(?=.*\\d)(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[!@#$%^&*?()]).*$";
         return !Pattern.matches(pattern, password);
@@ -24,21 +24,17 @@ public class Account {
         if (username.equals("")) throw new UsernameIsEmptyException();
         if (password.equals("")) throw new PasswordIsEmptyException();
 
-        JSONObject jsonObject = new JSONObject(true) {
-            {
-                put("username", username);
-                put("password", password);
-            }
-        };
-        String exceptionCode = "";
+        SignInProtocolClientToServer sentObj = new SignInProtocolClientToServer(username, password);
+        SignInProtocolServerToClient receivedObj = null;
         try {
-            Socket socket = new Socket("172.16.57.21", 25566);
+            Socket socket = new Socket(Environment.config.server.list.signIn.ip, Environment.config.server.list.signIn.port);
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
-            out.writeUTF(jsonObject.toJSONString());
-            exceptionCode = in.readUTF();
-            Environment.accountInfo = JSON.parseObject(in.readUTF(), AccountInfo.class);
+            out.writeUTF(sentObj.toJsonString());
+            receivedObj = SignInProtocolServerToClient.parse(in.readUTF());
+
+            Environment.accountInfo = receivedObj.accountInfo;
 
             in.close();
             out.close();
@@ -47,7 +43,9 @@ public class Account {
             e.printStackTrace();
         }
 
-        if (!exceptionCode.equals(new NullException().code)) throw FuRuiException.parse(exceptionCode);
+        if (!receivedObj.code.equals(new NullException().code)) throw FuRuiException.parse(receivedObj.code);
+
+        CartFunction.loading();
 
         return true;
     }
@@ -65,21 +63,15 @@ public class Account {
         if (!password.equals(verifyPassword)) throw new DifferentPasswordException();
         if (isNotComplex(password)) throw new PasswordIsEasyException();
 
-        JSONObject jsonObject = new JSONObject(true) {
-            {
-                put("username", username);
-                put("email", email);
-                put("password", password);
-            }
-        };
-        String exceptionCode = "";
+        RegisterProtocolClientToServer sentObj = new RegisterProtocolClientToServer(username, email, password);
+        String receivedObj = "";
         try {
-            Socket socket = new Socket("localhost", 25567);
+            Socket socket = new Socket(Environment.config.server.list.register.ip, Environment.config.server.list.register.port);
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
-            out.writeUTF(jsonObject.toJSONString());
-            exceptionCode = in.readUTF();
+            out.writeUTF(sentObj.toJsonString());
+            receivedObj = in.readUTF();
 
             in.close();
             out.close();
@@ -88,7 +80,7 @@ public class Account {
             e.printStackTrace();
         }
 
-        if (!exceptionCode.equals(new NullException().code)) throw FuRuiException.parse(exceptionCode);
+        if (!receivedObj.equals(new NullException().code)) throw FuRuiException.parse(receivedObj);
 
         return true;
     }

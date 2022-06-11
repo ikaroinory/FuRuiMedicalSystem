@@ -1,9 +1,11 @@
 import team.arcticfox.frms.server.core.Command;
-import team.arcticfox.frms.server.core.thread.RegisterServer;
-import team.arcticfox.frms.server.core.thread.SignInServer;
+import team.arcticfox.frms.server.thread.CartServer;
+import team.arcticfox.frms.server.thread.RegisterServer;
+import team.arcticfox.frms.server.thread.SignInServer;
 import team.arcticfox.frms.server.environment.Environment;
 
-public class Server {
+
+public final class Server {
     private static final String WELCOME_WORDS = "FuRui Medical System Server 2022 - [%ip%:%port%]";
 
     public static String getWelcomeWords() {
@@ -19,10 +21,12 @@ public class Server {
         Environment.command = new Command();
         Environment.signInServer = new SignInServer();
         Environment.registerServer = new RegisterServer();
+        Environment.cartServer = new CartServer();
 
         Environment.command.start();
         Environment.signInServer.start();
         Environment.registerServer.start();
+        Environment.cartServer.start();
     }
 
     public static void main(String[] args) throws Exception {

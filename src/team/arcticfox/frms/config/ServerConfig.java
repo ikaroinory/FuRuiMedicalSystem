@@ -1,9 +1,8 @@
-package team.arcticfox.frms.server.config;
+package team.arcticfox.frms.config;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
-import team.arcticfox.frms.config.Address;
-import team.arcticfox.frms.config.DatabaseConfig;
 import team.arcticfox.frms.data.IJsonTextable;
 
 public class ServerConfig implements IJsonTextable {
@@ -19,6 +18,11 @@ public class ServerConfig implements IJsonTextable {
     public DatabaseConfig database;
 
 
+    public ServerConfig() {
+        this(null, null, null, null, null);
+    }
+
+
     public ServerConfig(String name, String uuid, Address address, ServerListConfig list, DatabaseConfig database) {
         this.name = name;
         this.uuid = uuid;
@@ -27,6 +31,11 @@ public class ServerConfig implements IJsonTextable {
         this.database = database;
     }
 
+
+    @Override
+    public JSONObject toJsonObject() {
+        return JSON.parseObject(toJsonString());
+    }
 
     @Override
     public String toJsonString() {

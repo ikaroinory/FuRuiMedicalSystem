@@ -25,7 +25,4 @@ public class SystemEnvironment {
     public static final String COLUMN_AMOUNT = "Amount";
     public static final String COLUMN_PUTAWAY_TIME = "Putaway Time";
     public static final String COLUMN_IMAGE_NAME = "Image Name";
-    public static final String DIR_CONFIG = "./config/";
-    public static final String FILE_CONFIG = "config.json";
-    public static final String PATH_CONFIG = DIR_CONFIG + FILE_CONFIG;
 }

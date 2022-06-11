@@ -4,24 +4,48 @@ import team.arcticfox.frms.data.DateTime;
 import team.arcticfox.frms.security.Base64;
 import team.arcticfox.frms.security.MD5;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 public class Function {
     private static final String PATH_TABLE_ACCOUNT_INFO = "`" + SystemEnvironment.DB_NAME + "`.`" + SystemEnvironment.TABLE_ACCOUNT_INFO + "`";
     public static final String PATH_TABLE_MEDICINE_LIST = "`" + SystemEnvironment.DB_NAME + "`.`" + SystemEnvironment.TABLE_MEDICINE_LIST + "`";
 
-    public static String readFile(String path) {
-        String s = "";
+    public static boolean createFile(String path) {
+        if (new File(path).exists()) return false;
+
+        String[] dirs = path.split("/");
+        StringBuilder dir = new StringBuilder();
+        for (int i = 0; i < dirs.length - 1; i++)
+            dir.append(dirs[i]).append("/");
+        new File(dir.toString()).mkdirs();
         try {
+            new File(path).createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public static String readFile(String path) {
+        StringBuilder s = new StringBuilder();
+        try {
+            createFile(path);
             FileInputStream fin = new FileInputStream(path);
-            s = new String(fin.readAllBytes());
+            InputStreamReader reader = new InputStreamReader(fin, StandardCharsets.UTF_8);
+            BufferedReader br = new BufferedReader(reader);
+            String line;
+            while ((line = br.readLine()) != null)
+                s.append(line).append(SystemEnvironment.EOL);
+            // s = new String(fin.readAllBytes());
+            br.close();
+            reader.close();
             fin.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return s;
+        return s.toString();
     }
 
     public static String getSQL_Query_AccountInfo_ByName(String username) {
@@ -56,6 +80,10 @@ public class Function {
 
     public static String getSQL_Query_MedicineList_All() {
         return "SELECT * FROM " + PATH_TABLE_MEDICINE_LIST;
+    }
+
+    public static String getTimeStamp() {
+        return getTimeStamp(DateTime.now());
     }
 
     public static String getTimeStamp(DateTime dateTime) {

@@ -1,5 +1,27 @@
 {
     "version": "1.0.0",
+    "server": {
+        "name": "FRMS-Server-01",
+        "uuid": "be69c309-5bb2-4eb4-be5b-6d4046677d19",
+        "address": {
+            "ip": "121.196.19.52",
+            "port": 25565
+        },
+        "list": {
+            "signIn": {
+                "ip": "121.196.19.52",
+                "port": 25566
+            },
+            "register": {
+                "ip": "121.196.19.52",
+                "port": 25567
+            },
+            "cart": {
+                "ip": "121.196.19.52",
+                "port": 25568
+            }
+        }
+    },
     "database": {
         "name": "FuRui Medical System",
         "address": {

@@ -6,6 +6,7 @@ package team.arcticfox.frms.client.form.about;
 
 import java.awt.*;
 import javax.swing.*;
+
 import net.miginfocom.swing.*;
 
 /**

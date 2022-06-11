@@ -1,6 +1,7 @@
 package team.arcticfox.frms.data;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.database.Database;
 import team.arcticfox.frms.security.Base64;
@@ -19,8 +20,8 @@ public class AccountInfo implements IJsonTextable {
     public String email;
     @JSONField(name = "password", serialize = false)
     public String password;
-    @JSONField(name = "permission", ordinal = 3)
-    public String permission;
+    @JSONField(name = "permission", ordinal = 3, serializeUsing = AccountPermissionSerializer.class, deserializeUsing = AccountPermissionSerializer.class)
+    public AccountPermission permission;
     @JSONField(name = "registration-time", ordinal = 4, serializeUsing = DateTimeSerializer.class, deserializeUsing = DateTimeSerializer.class)
     public DateTime registrationTime;
     @JSONField(name = "destruction-time", ordinal = 5, serializeUsing = DateTimeSerializer.class, deserializeUsing = DateTimeSerializer.class)
@@ -30,10 +31,10 @@ public class AccountInfo implements IJsonTextable {
 
 
     public AccountInfo() {
-        this(0, "", "", "", "", DateTime.now(), DateTime.now(), DateTime.now());
+        this(0, null, null, null, null, null, null, null);
     }
 
-    public AccountInfo(int id, String username, String email, String password, String permission, DateTime registrationTime, DateTime destructionTime, DateTime lastLoginTime) {
+    public AccountInfo(int id, String username, String email, String password, AccountPermission permission, DateTime registrationTime, DateTime destructionTime, DateTime lastLoginTime) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -47,10 +48,10 @@ public class AccountInfo implements IJsonTextable {
 
     private static AccountInfo parse(ResultSet rs) {
         int id = 0;
-        String username = "";
-        String email = "";
-        String password = "";
-        String permission = "";
+        String username = null;
+        String email = null;
+        String password = null;
+        AccountPermission permission = null;
         DateTime registrationTime = null;
         DateTime destructionTime = null;
         DateTime lastLoginTime = null;
@@ -59,7 +60,7 @@ public class AccountInfo implements IJsonTextable {
             username = Base64.decode(rs.getString(SystemEnvironment.COLUMN_USERNAME));
             email = Base64.decode(rs.getString(SystemEnvironment.COLUMN_EMAIL));
             password = Base64.decode(rs.getString(SystemEnvironment.COLUMN_PASSWORD));
-            permission = rs.getString(SystemEnvironment.COLUMN_PERMISSION);
+            permission = AccountPermission.parse(rs.getString(SystemEnvironment.COLUMN_PERMISSION));
             registrationTime = DateTime.parse(rs.getString(SystemEnvironment.COLUMN_REGISTRATION_TIME));
             destructionTime = DateTime.parse(rs.getString(SystemEnvironment.COLUMN_DESTRUCTION_TIME));
             lastLoginTime = DateTime.parse(rs.getString(SystemEnvironment.COLUMN_LAST_LOGIN_TIME));
@@ -68,6 +69,10 @@ public class AccountInfo implements IJsonTextable {
             // Do nothing.
         }
         return new AccountInfo(id, username, email, password, permission, registrationTime, destructionTime, lastLoginTime);
+    }
+
+    public static AccountInfo parse(String s) {
+        return JSON.parseObject(s, AccountInfo.class);
     }
 
     public static AccountInfo getAccountInfo(String username) {
@@ -84,6 +89,12 @@ public class AccountInfo implements IJsonTextable {
         }
         db.close();
         return accountInfo;
+    }
+
+
+    @Override
+    public JSONObject toJsonObject() {
+        return JSON.parseObject(toJsonString());
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import net.miginfocom.swing.*;
+import team.arcticfox.frms.client.environment.Environment;
 
 /**
  * @author IkaroInory
@@ -33,6 +34,10 @@ public class Register extends JFrame {
             buttonRegisterActionListener(null);
     }
 
+    private void thisWindowClosed(WindowEvent e) {
+        Environment.register = null;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panelAccount = new JPanel();
@@ -53,27 +58,33 @@ public class Register extends JFrame {
         setMinimumSize(new Dimension(370, 256));
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                thisWindowClosed(e);
+            }
+        });
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[320:340,fill]",
-                // rows
-                "[155:155,fill]" +
-                        "[41:41,fill]"));
+            "hidemode 3",
+            // columns
+            "[320:340,fill]",
+            // rows
+            "[155:155,fill]" +
+            "[41:41,fill]"));
 
         //======== panelAccount ========
         {
             panelAccount.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[100:120,fill]" +
-                            "[199:199,fill]",
-                    // rows
-                    "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]"));
+                "hidemode 3",
+                // columns
+                "[100:120,fill]" +
+                "[199:199,fill]",
+                // rows
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]"));
 
             //---- labelUsername ----
             labelUsername.setText("Username");

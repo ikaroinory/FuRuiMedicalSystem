@@ -11,8 +11,9 @@ new FormModel {
 			name: "this"
 			"visible": true
 			"title": "Main Page - FuRui Medical System"
-			"defaultCloseOperation": 3
+			"defaultCloseOperation": 2
 			"resizable": false
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPaneTree"
 				add( new FormComponent( "javax.swing.JTree" ) {
@@ -112,7 +113,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
 					"$columnConstraints": "[1048:1048,fill]"
-					"$rowConstraints": "[500:500,fill][40:40,fill]"
+					"$rowConstraints": "[500:500,fill][41:41,fill]"
 				} ) {
 					name: "panelMedicineList"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -182,6 +183,16 @@ new FormModel {
 							name: "buttonViewDetails"
 							"text": "View Details"
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonViewDetailsActionListener", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonAddToCart"
+							"text": "Add To Cart"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonAddToCartActionListener", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonViewCart"
+							"text": "View Cart"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonViewCartActionListener", true ) )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"

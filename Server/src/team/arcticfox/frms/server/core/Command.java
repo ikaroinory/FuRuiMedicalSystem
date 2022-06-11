@@ -20,6 +20,7 @@ public class Command extends Thread {
             put("exit", args -> {
                 Environment.signInServer.terminate();
                 Environment.registerServer.terminate();
+                Environment.cartServer.terminate();
                 return true;
             });
             put("help", args -> {

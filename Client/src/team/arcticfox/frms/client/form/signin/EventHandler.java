@@ -7,6 +7,17 @@ import team.arcticfox.frms.exception.FuRuiException;
 import team.arcticfox.frms.integration.message.MessageBox;
 
 final class EventHandler {
+    private static void loadLang(SignIn signIn) {
+        signIn.setTitle(Environment.language.form.signIn.formTitle);
+        signIn.labelUsername.setText(Environment.language.form.signIn.labelUsername);
+        signIn.labelPassword.setText(Environment.language.form.signIn.labelPassword);
+        signIn.buttonSignIn.setText(Environment.language.form.signIn.buttonSignIn);
+    }
+
+    static void initialize(SignIn signIn) {
+        loadLang(signIn);
+    }
+
     static void signIn(String username, String password) {
         try {
             if (Account.signIn(username, password)) {

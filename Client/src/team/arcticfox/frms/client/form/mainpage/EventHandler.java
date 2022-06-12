@@ -4,6 +4,7 @@ import team.arcticfox.frms.client.environment.Environment;
 import team.arcticfox.frms.client.form.about.About;
 import team.arcticfox.frms.client.form.cart.Cart;
 import team.arcticfox.frms.client.form.register.Register;
+import team.arcticfox.frms.client.form.settings.SettingsForm;
 import team.arcticfox.frms.client.form.signin.SignIn;
 import team.arcticfox.frms.client.form.view.View;
 import team.arcticfox.frms.data.ShoppingItem;
@@ -19,9 +20,33 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 final class EventHandler {
+    private static void loadLang(MainPage mainPage) {
+        mainPage.setTitle(Environment.language.form.mainPage.formTitle.replaceAll("%version%", Environment.config.version));
+        mainPage.menuFile.setText(Environment.language.form.mainPage.menuFile);
+        mainPage.menuAccount.setText(Environment.language.form.mainPage.menuAccount);
+        mainPage.menuHelp.setText(Environment.language.form.mainPage.menuHelp);
+        mainPage.menuItemSettings.setText(Environment.language.form.mainPage.menuItemSettings);
+        mainPage.menuItemExit.setText(Environment.language.form.mainPage.menuItemExit);
+        mainPage.menuItemRegister.setText(Environment.language.form.mainPage.menuItemRegister);
+        mainPage.menuItemSignIn.setText(Environment.language.form.mainPage.menuItemSignIn);
+        mainPage.menuItemSignOut.setText(Environment.language.form.mainPage.menuItemSignOut);
+        mainPage.menuItemViewCart.setText(Environment.language.form.mainPage.menuItemViewCart);
+        mainPage.menuItemCheckUpdate.setText(Environment.language.form.mainPage.menuItemCheckUpdate);
+        mainPage.menuItemAbout.setText(Environment.language.form.mainPage.menuItemAbout);
+
+        // tab
+
+        mainPage.buttonRefresh.setText(Environment.language.form.mainPage.buttonRefresh);
+        mainPage.buttonViewDetails.setText(Environment.language.form.mainPage.buttonViewDetails);
+        mainPage.buttonAddToCart.setText(Environment.language.form.mainPage.buttonAddToCart);
+        mainPage.buttonViewDetails.setText(Environment.language.form.mainPage.buttonViewCart);
+    }
+
     static void initialize(MainPage mainPage) {
+        loadLang(mainPage);
+
         mainPage.tabbedPane.removeAll();                                                    // Remove all tabs.
-        mainPage.tabbedPane.addTab("Welcome Page", mainPage.panelWelcomeVisit);        // Add welcome page.
+        mainPage.tabbedPane.addTab(Environment.language.form.mainPage.tabWelcomePage, mainPage.panelWelcomeVisit);
 
         mainPage.tableMedicineList.getTableHeader().setReorderingAllowed(false);            // Prohibit column movement.
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
@@ -58,6 +83,13 @@ final class EventHandler {
             Environment.about.setVisible(true);
     }
 
+    static void showSettingsForm() {
+        if (Environment.settingsForm == null)
+            Environment.settingsForm = new SettingsForm();
+        else
+            Environment.settingsForm.setVisible(true);
+    }
+
     static void showView(MainPage mainPage) {
         int selectedRow = mainPage.tableMedicineList.getSelectedRow();
         if (selectedRow == -1)
@@ -90,7 +122,8 @@ final class EventHandler {
                     info.manufacturer,
                     info.specification,
                     info.price,
-                    1
+                    1,
+                    true
             ));
             if (Environment.cartForm != null)
                 team.arcticfox.frms.client.form.cart.EventHandler.refresh(Environment.cartForm);
@@ -108,5 +141,13 @@ final class EventHandler {
         for (MedicineInfo medicineInfo : list)
             ((DefaultTableModel) mainPage.tableMedicineList.getModel()).addRow(medicineInfo.toObjectList());
         db.close();
+
+        mainPage.tableMedicineList.getColumnModel().getColumn(0).setHeaderValue(Environment.language.form.mainPage.tableId);
+        mainPage.tableMedicineList.getColumnModel().getColumn(1).setHeaderValue(Environment.language.form.mainPage.tableMedicineName);
+        mainPage.tableMedicineList.getColumnModel().getColumn(2).setHeaderValue(Environment.language.form.mainPage.tableApprovalNo);
+        mainPage.tableMedicineList.getColumnModel().getColumn(3).setHeaderValue(Environment.language.form.mainPage.tableManufacturer);
+        mainPage.tableMedicineList.getColumnModel().getColumn(4).setHeaderValue(Environment.language.form.mainPage.tableType);
+        mainPage.tableMedicineList.getColumnModel().getColumn(5).setHeaderValue(Environment.language.form.mainPage.tablePrice);
+        mainPage.tableMedicineList.getColumnModel().getColumn(6).setHeaderValue(Environment.language.form.mainPage.tableAmount);
     }
 }

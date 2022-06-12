@@ -6,7 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.data.IJsonTextable;
 import team.arcticfox.frms.data.ShoppingCart;
 
-public class CartProtocolClientToServer implements IJsonTextable {
+public final class CartProtocolClientToServer implements IJsonTextable {
     @JSONField(name = "command")
     public String command;
     @JSONField(name = "id", ordinal = 1)

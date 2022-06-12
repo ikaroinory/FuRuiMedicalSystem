@@ -2,7 +2,7 @@ package team.arcticfox.frms.security;
 
 import java.nio.charset.StandardCharsets;
 
-public class Base64 {
+public final class Base64 {
     public static String encode(String str) {
         return java.util.Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8));
     }

@@ -2,7 +2,6 @@ package team.arcticfox.frms.data;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
-import team.arcticfox.frms.integration.json.JsonParser;
 import team.arcticfox.frms.system.SystemEnvironment;
 
 import java.sql.ResultSet;
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedicineInfo implements JsonParser {
+public final class MedicineInfo implements IJsonTextable {
     @JSONField(name = "Id")
     public int id;                       // Id.                      Type: Integer           Encode Type: None
     @JSONField(name = "Medicine Name", ordinal = 1)
@@ -103,8 +102,14 @@ public class MedicineInfo implements JsonParser {
         return new Object[]{id, medicineName, approvalNo, manufacturer, type.getLabel(), price, amount};
     }
 
+    @Override
     public JSONObject toJsonObject() {
-        return JSONObject.parseObject(toString());
+        return JSONObject.parseObject(toJsonString());
+    }
+
+    @Override
+    public String toJsonString() {
+        return JSONObject.toJSONString(this, true);
     }
 
     @Override

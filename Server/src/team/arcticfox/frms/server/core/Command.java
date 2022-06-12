@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Command extends Thread {
+public final class Command extends Thread {
 
     private static final Map<String, ICommandFunction> map = new HashMap<>() {
         {

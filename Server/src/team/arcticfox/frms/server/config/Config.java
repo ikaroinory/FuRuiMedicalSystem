@@ -7,7 +7,7 @@ import team.arcticfox.frms.config.DatabaseConfig;
 import team.arcticfox.frms.config.ServerConfig;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class Config implements IJsonTextable {
+public final class Config implements IJsonTextable {
     @JSONField(name = "version")
     public String version;
     @JSONField(name = "server", ordinal = 1)

@@ -17,6 +17,7 @@ import team.arcticfox.frms.client.environment.Environment;
 public class Register extends JFrame {
     public Register() {
         initComponents();
+        EventHandler.initialize(this);
     }
 
     private void buttonRegisterActionListener(ActionEvent e) {
@@ -58,6 +59,7 @@ public class Register extends JFrame {
         setMinimumSize(new Dimension(370, 256));
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/icons/fr.png")).getImage());
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -134,15 +136,15 @@ public class Register extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panelAccount;
-    private JLabel labelUsername;
+    JLabel labelUsername;
     private JTextField textFieldUsername;
-    private JLabel labelEmail;
+    JLabel labelEmail;
     private JTextField textFieldEmail;
-    private JLabel labelPassword;
+    JLabel labelPassword;
     private JPasswordField passwordFieldPassword;
-    private JLabel labelVerificationPassword;
+    JLabel labelVerificationPassword;
     private JPasswordField passwordFieldVerificationPassword;
     private JPanel panelButton;
-    private JButton buttonRegister;
+    JButton buttonRegister;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

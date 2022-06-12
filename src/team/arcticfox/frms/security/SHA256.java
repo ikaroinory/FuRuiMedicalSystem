@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SHA256 {
+public final class SHA256 {
     public static String encode(String str) {
         try {
             byte[] bytes = MessageDigest.getInstance("SHA256").digest(str.getBytes());

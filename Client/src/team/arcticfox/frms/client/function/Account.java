@@ -32,6 +32,7 @@ public final class Account {
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
             out.writeUTF(sentObj.toJsonString());
+            out.flush();
             receivedObj = SignInProtocolServerToClient.parse(in.readUTF());
 
             Environment.accountInfo = receivedObj.accountInfo;
@@ -50,10 +51,14 @@ public final class Account {
         return true;
     }
 
-    public static boolean signOut() {
+    public static void signOut() {
+        if (Environment.accountInfo != null)
+            CartFunction.update();
+        if (Environment.cartForm != null)
+            Environment.cartForm.dispose();
+
+        Environment.cartForm = null;
         Environment.accountInfo = null;
-        System.gc();
-        return Environment.accountInfo == null;
     }
 
     public static boolean register(String username, String email, String password, String verifyPassword) throws FuRuiException {

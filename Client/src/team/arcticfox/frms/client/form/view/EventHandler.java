@@ -1,7 +1,6 @@
 package team.arcticfox.frms.client.form.view;
 
 import team.arcticfox.frms.client.environment.Environment;
-import team.arcticfox.frms.data.ShoppingItem;
 import team.arcticfox.frms.database.Database;
 import team.arcticfox.frms.data.MedicineInfo;
 import team.arcticfox.frms.system.Function;
@@ -11,7 +10,18 @@ import javax.swing.*;
 import java.awt.*;
 
 final class EventHandler {
+    private static void loadLang(View view) {
+        view.setTitle(Environment.language.form.view.formTitle);
+        view.labelIdLabel.setText(Environment.language.form.view.labelId);
+        view.labelApprovalNoLabel.setText(Environment.language.form.view.labelApprovalNo);
+        view.labelTypeLabel.setText(Environment.language.form.view.labelType);
+        view.labelSpecificationLabel.setText(Environment.language.form.view.labelSpecification);
+        view.labelManufacturerLabel.setText(Environment.language.form.view.labelManufacturer);
+        view.buttonAddToCart.setText(Environment.language.form.view.buttonAddToCart);
+    }
+
     static MedicineInfo initialize(View view, int id) {
+        loadLang(view);
         Database db = new Database(Environment.config.database.address.ip, Environment.config.database.address.port, SystemEnvironment.DB_NAME);
         db.open(Environment.config.database.root.username, Environment.config.database.root.password);
         MedicineInfo info = MedicineInfo.parse(db.sqlQuery(Function.getSQL_Query_MedicineList_ById(id))).get(0);

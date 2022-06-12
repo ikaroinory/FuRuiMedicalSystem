@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
 import net.miginfocom.swing.*;
 import team.arcticfox.frms.client.environment.Environment;
 
@@ -17,7 +19,9 @@ import team.arcticfox.frms.client.environment.Environment;
 public class SignIn extends JFrame {
     public SignIn() {
         initComponents();
+        EventHandler.initialize(this);
     }
+
 
     private void buttonSignInActionListener(ActionEvent e) {
         EventHandler.signIn(
@@ -51,6 +55,7 @@ public class SignIn extends JFrame {
         setResizable(false);
         setTitle("Sign In");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/icons/fr.png")).getImage());
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -115,11 +120,11 @@ public class SignIn extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panelAccount;
-    private JLabel labelUsername;
+    JLabel labelUsername;
     private JTextField textFieldUsername;
-    private JLabel labelPassword;
+    JLabel labelPassword;
     private JPasswordField passwordFieldPassword;
     private JPanel panelButton;
-    private JButton buttonSignIn;
+    JButton buttonSignIn;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

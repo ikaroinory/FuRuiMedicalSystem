@@ -11,7 +11,7 @@ import team.arcticfox.frms.system.SystemEnvironment;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AccountInfo implements IJsonTextable {
+public final class AccountInfo implements IJsonTextable {
     @JSONField(name = "id")
     public int id;
     @JSONField(name = "username", ordinal = 1)

@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5 {
+public final class MD5 {
     public static String encode(String str) {
         try {
             byte[] bytes = MessageDigest.getInstance("MD5").digest(str.getBytes());

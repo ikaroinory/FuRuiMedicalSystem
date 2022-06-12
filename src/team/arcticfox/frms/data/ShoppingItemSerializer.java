@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ShoppingItemSerializer implements ObjectSerializer, ObjectDeserializer {
+public final class ShoppingItemSerializer implements ObjectSerializer, ObjectDeserializer {
     @Override
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
         List<ShoppingItem> list = new ArrayList<>();

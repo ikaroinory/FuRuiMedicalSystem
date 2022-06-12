@@ -7,7 +7,7 @@ import team.arcticfox.frms.config.DatabaseConfig;
 import team.arcticfox.frms.config.ServerConfig;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class Config implements IJsonTextable {
+public final class Config implements IJsonTextable {
     @JSONField(name = "version")
     public String version;
     @JSONField(name = "server", ordinal = 1)
@@ -24,6 +24,11 @@ public class Config implements IJsonTextable {
         this.version = version;
         this.server = server;
         this.database = database;
+    }
+
+
+    public static Config parse(String json) {
+        return JSON.parseObject(json, Config.class);
     }
 
 

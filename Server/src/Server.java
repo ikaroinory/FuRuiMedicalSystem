@@ -1,5 +1,6 @@
 import team.arcticfox.frms.server.core.Command;
 import team.arcticfox.frms.server.thread.CartServer;
+import team.arcticfox.frms.server.thread.OrderServer;
 import team.arcticfox.frms.server.thread.RegisterServer;
 import team.arcticfox.frms.server.thread.SignInServer;
 import team.arcticfox.frms.server.environment.Environment;
@@ -22,11 +23,13 @@ public final class Server {
         Environment.signInServer = new SignInServer();
         Environment.registerServer = new RegisterServer();
         Environment.cartServer = new CartServer();
+        Environment.orderServer = new OrderServer();
 
         Environment.command.start();
         Environment.signInServer.start();
         Environment.registerServer.start();
         Environment.cartServer.start();
+        Environment.orderServer.start();
     }
 
     public static void main(String[] args) throws Exception {

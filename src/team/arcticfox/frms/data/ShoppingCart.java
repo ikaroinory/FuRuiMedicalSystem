@@ -4,10 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public final class ShoppingCart implements IJsonTextable {
     @JSONField(name = "username")
@@ -41,13 +42,49 @@ public final class ShoppingCart implements IJsonTextable {
             list.put(item.id, item);
     }
 
+    public void clear() {
+        clear(false);
+    }
+
+    public void clear(boolean onlySelected) {
+        if (list == null) return;
+
+        if (onlySelected) {
+            Set<Map.Entry<Integer, ShoppingItem>> itemList = new HashSet<>(list.entrySet());
+            for (Map.Entry<Integer, ShoppingItem> item : itemList)
+                if (item.getValue().selected)
+                    list.remove(item.getKey());
+        } else
+            list.clear();
+    }
+
+    public void selectAll() {
+        if (list == null) return;
+
+        for (Map.Entry<Integer, ShoppingItem> item : list.entrySet())
+            item.getValue().selected = true;
+    }
+
+    public void deselectAll() {
+        if (list == null) return;
+
+        for (Map.Entry<Integer, ShoppingItem> item : list.entrySet())
+            item.getValue().selected = false;
+    }
+
     public double getTotalPrice() {
+        return getTotalPrice(false);
+    }
+
+    public double getTotalPrice(boolean onlySelected) {
         if (list == null) return 0;
 
-        double price = 0;
+        BigDecimal price = new BigDecimal(0);
         for (Map.Entry<Integer, ShoppingItem> item : list.entrySet())
-            price += item.getValue().price * item.getValue().amount;
-        return price;
+            if (!onlySelected || item.getValue().selected)
+                price = BigDecimal.valueOf(item.getValue().getTotalPrice()).add(price);
+
+        return price.doubleValue();
     }
 
 

@@ -1,0 +1,16 @@
+{
+	"totalPrice":9.0,
+	"username":"root",
+	"list":[
+		{
+			"id":1,
+			"totalPrice":9.0,
+			"medicine-name":"罗红霉素分散片(严迪)",
+			"manufacturer":"哈药集团制药六厂",
+			"specification":"75mg*12s",
+			"price":9.0,
+			"amount":1,
+			"selected":true
+		}
+	]
+}

@@ -53,7 +53,8 @@ public class View extends JFrame {
                 labelManufacturer.getText(),
                 labelSpecification.getText(),
                 Double.parseDouble(labelPrice.getText().replaceAll("￥ ", "")),
-                1
+                1,
+                true
         ));
         if (Environment.cartForm != null)
             team.arcticfox.frms.client.form.cart.EventHandler.refresh(Environment.cartForm);
@@ -91,16 +92,17 @@ public class View extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new Dimension(551, 564));
+        setIconImage(new ImageIcon(getClass().getResource("/icons/fr.png")).getImage());
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[521:521,center]",
-                // rows
-                "[250:250,center]" +
-                        "[44!,fill]" +
-                        "[185!,fill]" +
-                        "[41:41,fill]"));
+            "hidemode 3",
+            // columns
+            "[521:521,center]",
+            // rows
+            "[250:250,center]" +
+            "[44!,fill]" +
+            "[185!,fill]" +
+            "[41:41,fill]"));
 
         //---- labelImage ----
         labelImage.setIcon(new ImageIcon(getClass().getResource("/images/default.jpeg")));
@@ -109,14 +111,14 @@ public class View extends JFrame {
         //======== panelMainInfo ========
         {
             panelMainInfo.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[70!,fill]" +
-                            "[313!,fill]" +
-                            "[30!,fill]" +
-                            "[73!,fill]",
-                    // rows
-                    "[30:30,fill]"));
+                "hidemode 3",
+                // columns
+                "[70!,fill]" +
+                "[313!,fill]" +
+                "[30!,fill]" +
+                "[73!,fill]",
+                // rows
+                "[30:30,fill]"));
 
             //---- labelGrade ----
             labelGrade.setText("%grade%");
@@ -143,17 +145,17 @@ public class View extends JFrame {
         //======== panelInformation ========
         {
             panelInformation.setLayout(new MigLayout(
-                    "hidemode 3",
-                    // columns
-                    "[150:150,fill]" +
-                            "[313:313,fill]" +
-                            "[30:30,fill]",
-                    // rows
-                    "[30!,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]" +
-                            "[30:30,fill]"));
+                "hidemode 3",
+                // columns
+                "[150:150,fill]" +
+                "[313:313,fill]" +
+                "[30:30,fill]",
+                // rows
+                "[30!,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]" +
+                "[30:30,fill]"));
 
             //---- labelIdLabel ----
             labelIdLabel.setText("Id");
@@ -248,21 +250,21 @@ public class View extends JFrame {
     JButton buttonCopyMedicineName;
     JLabel labelPrice;
     private JPanel panelInformation;
-    private JLabel labelIdLabel;
+    JLabel labelIdLabel;
     JLabel labelId;
-    private JLabel labelApprovalNoLabel;
+    JLabel labelApprovalNoLabel;
     JLabel labelApprovalNo;
     JButton buttonCopyApprovalNo;
-    private JLabel labelTypeLabel;
+    JLabel labelTypeLabel;
     JLabel labelType;
     JButton buttonCopyType;
-    private JLabel labelSpecificationLabel;
+    JLabel labelSpecificationLabel;
     JLabel labelSpecification;
     JButton buttonCopySpecification;
-    private JLabel labelManufacturerLabel;
+    JLabel labelManufacturerLabel;
     JLabel labelManufacturer;
     JButton buttonCopyManufacturer;
     private JPanel panelButton;
-    private JButton buttonAddToCart;
+    JButton buttonAddToCart;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

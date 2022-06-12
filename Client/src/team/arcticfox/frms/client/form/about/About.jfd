@@ -14,14 +14,14 @@ new FormModel {
 			"defaultCloseOperation": 2
 			"title": "About"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/potion 60x60.png" )
+				name: "labelImage"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/fr.png" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "<html>\n    <p><b style=\"color:red\">FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>"
+				name: "labelAboutInfo"
+				"text": "<html>\n    <p><b style=\"color:red\">FuRui Medical System (Education Edition)</b></p>\n    <br/>\n    <p>Version: %version%</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 1 0"
 			} )

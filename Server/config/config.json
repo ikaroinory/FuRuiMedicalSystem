@@ -10,15 +10,19 @@
         "list": {
             "signIn": {
                 "ip": "localhost",
-                "port": 25566
+                "port": 25567
             },
             "register": {
                 "ip": "localhost",
-                "port": 25567
+                "port": 25568
             },
             "cart": {
                 "ip": "localhost",
-                "port": 25568
+                "port": 25569
+            },
+            "order": {
+                "ip": "localhost",
+                "port": 25570
             }
         }
     },

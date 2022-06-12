@@ -6,7 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.data.AccountInfo;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class SignInProtocolServerToClient implements IJsonTextable {
+public final class SignInProtocolServerToClient implements IJsonTextable {
     @JSONField(name = "code")
     public String code;
     @JSONField(name = "account-info", ordinal = 1)

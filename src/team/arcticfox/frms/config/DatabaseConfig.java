@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class DatabaseConfig implements IJsonTextable {
+public final class DatabaseConfig implements IJsonTextable {
     @JSONField(name = "name")
     public String name;
     @JSONField(name = "address", ordinal = 1)

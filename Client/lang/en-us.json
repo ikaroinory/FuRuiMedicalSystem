@@ -15,7 +15,7 @@
             "button-register": "Register"
         },
         "mainPage": {
-            "form-title": "Main Page - FuRui Medical System",
+            "form-title": "Main Page - FuRui Medical System   %version%",
             "menu-file": "File",
             "menu-account": "Account",
             "menu-help": "Help",
@@ -24,6 +24,7 @@
             "menuItem-register": "Register",
             "menuItem-signIn": "Sign In",
             "menuItem-signOut": "Sign Out",
+            "menuItem-viewCart": "View Cart",
             "menuItem-checkUpdate": "Check Update",
             "menuItem-about": "About",
             "tab-welcomePage": "Welcome Page",
@@ -36,10 +37,13 @@
             "table-price": "Price",
             "table-amount": "Amount",
             "button-refresh": "Refresh",
-            "button-viewDetails": "View Details"
+            "button-viewDetails": "View Details",
+            "button-addToCart": "Add To Cart",
+            "button-viewCart": "View Cart"
         },
         "view": {
             "form-title": "%medicine_name% - View",
+            "label-id": "Id",
             "label-approvalNo": "Approval No",
             "label-type": "Type",
             "label-specification": "Specification",
@@ -48,6 +52,16 @@
         },
         "about": {
             "form-title": "About"
+        },
+        "cart": {
+            "form-title": "Cart",
+            "table-id": "Id",
+            "table-itemName": "Item Name",
+            "table-amount": "Amount",
+            "table-price": "Price",
+            "radioButton-selectAll": "Select All",
+            "button-clear": "Clear",
+            "button-buy": "Buy"
         }
     }
 }

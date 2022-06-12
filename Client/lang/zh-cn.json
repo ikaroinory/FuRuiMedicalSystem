@@ -15,7 +15,7 @@
             "button-register": "注册"
         },
         "mainPage": {
-            "form-title": "主页-福瑞医疗系统",
+            "form-title": "主页 - 福瑞医药系统   %version%",
             "menu-file": "文件",
             "menu-account": "账户",
             "menu-help": "帮助",
@@ -24,11 +24,12 @@
             "menuItem-register": "注册",
             "menuItem-signIn": "登录",
             "menuItem-signOut": "登出",
+            "menuItem-viewCart": "查看购物车",
             "menuItem-checkUpdate": "检查更新",
             "menuItem-about": "关于",
             "tab-welcomePage": "欢迎",
             "tab-medicineList": "药品清单",
-            "table-id": "ID",
+            "table-id": "序列号",
             "table-medicineName": "药品名称",
             "table-approvalNo": "批准号",
             "table-manufacturer": "制造商",
@@ -36,10 +37,13 @@
             "table-price": "价格",
             "table-amount": "数量",
             "button-refresh": "刷新",
-            "button-viewDetails": "查看详细信息"
+            "button-viewDetails": "查看详情",
+            "button-addToCart": "加入购物车",
+            "button-viewCart": "查看购物车"
         },
         "view": {
-            "form-title": "%medicine_name% - View",
+            "form-title": "%medicine_name% - 详情",
+            "label-id": "标识符",
             "label-approvalNo": "批准号",
             "label-type": "类型",
             "label-specification": "规格",
@@ -48,6 +52,16 @@
         },
         "about": {
             "form-title": "关于"
+        },
+        "cart": {
+            "form-title": "购物车",
+            "table-id": "序列号",
+            "table-itemName": "商品名称",
+            "table-amount": "数量",
+            "table-price": "价格",
+            "radioButton-selectAll": "全选",
+            "button-clear": "删除所选",
+            "button-buy": "购买"
         }
     }
 }

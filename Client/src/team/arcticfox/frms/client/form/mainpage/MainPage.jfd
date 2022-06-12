@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
-			"$columnConstraints": "[220!,fill][1100:1100,fill]"
+			"$columnConstraints": "[1114:1114,fill]"
 			"$rowConstraints": "[590:590,fill]"
 		} ) {
 			name: "this"
@@ -13,48 +13,8 @@ new FormModel {
 			"title": "Main Page - FuRui Medical System"
 			"defaultCloseOperation": 2
 			"resizable": false
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/fr.png" )
 			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
-			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPaneTree"
-				add( new FormComponent( "javax.swing.JTree" ) {
-					name: "tree1"
-					"model": new javax.swing.tree.DefaultTreeModel( new javax.swing.tree.DefaultMutableTreeNode {
-						userObject: "FuRui Medical System"
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "Home Page"
-						} )
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "FuRui Medical Database"
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Drugs"
-							} )
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Rx"
-							} )
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "OTC"
-							} )
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Medical Devices"
-							} )
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Others"
-							} )
-						} )
-						add( new javax.swing.tree.DefaultMutableTreeNode {
-							userObject: "Search Tools"
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Tools1"
-							} )
-							add( new javax.swing.tree.DefaultMutableTreeNode {
-								userObject: "Tools2"
-							} )
-						} )
-					} )
-				} )
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0"
-			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane"
 				auxiliary() {
@@ -62,7 +22,7 @@ new FormModel {
 				}
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[1035,fill]"
+					"$columnConstraints": "[1100:1100,fill]"
 					"$rowConstraints": "[70:70,fill][453:453,top]"
 				} ) {
 					name: "panelWelcomeVisit"
@@ -87,7 +47,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[1035:1035,fill]"
+					"$columnConstraints": "[1100:1100,fill]"
 					"$rowConstraints": "[70:70,fill][453:453,top]"
 				} ) {
 					name: "panelWelcome"
@@ -112,7 +72,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3"
-					"$columnConstraints": "[1048:1048,fill]"
+					"$columnConstraints": "[1100:1100,fill]"
 					"$rowConstraints": "[500:500,fill][41:41,fill]"
 				} ) {
 					name: "panelMedicineList"
@@ -157,7 +117,7 @@ new FormModel {
 							}, new java.util.Vector {
 								add( new com.jformdesigner.model.SwingTableColumn( null, 45, 45, 45, false ) )
 								add( null )
-								add( new com.jformdesigner.model.SwingTableColumn( null, 135, 135, 135, true ) )
+								add( new com.jformdesigner.model.SwingTableColumn( null, 130, 130, 130, true ) )
 								add( null )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 80, 80, 80, false ) )
 								add( new com.jformdesigner.model.SwingTableColumn( null, 100, 100, 100, true ) )
@@ -177,21 +137,33 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonRefresh"
 							"text": "Refresh"
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 0
+							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonRefreshActionListener", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonViewDetails"
 							"text": "View Details"
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 0
+							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonViewDetailsActionListener", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonAddToCart"
 							"text": "Add To Cart"
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 0
+							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonAddToCartActionListener", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonViewCart"
 							"text": "View Cart"
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 0
+							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonViewCartActionListener", true ) )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -201,7 +173,7 @@ new FormModel {
 					"title": "Medicine List"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 0"
+				"value": "cell 0 0"
 			} )
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar"
@@ -209,16 +181,26 @@ new FormModel {
 					name: "menuFile"
 					"text": "File"
 					"mnemonic": 70
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemSettings"
 						"text": "Settings"
 						"mnemonic": 84
 						"accelerator": static javax.swing.KeyStroke getKeyStroke( 83, 650, false )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemSettingsActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemExit"
 						"text": "Exit"
 						"mnemonic": 88
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemExitActionListener", true ) )
 					} )
 				} )
@@ -226,9 +208,15 @@ new FormModel {
 					name: "menuAccount"
 					"text": "Account"
 					"mnemonic": 65
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemRegister"
 						"text": "Register"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemRegisterActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
@@ -237,22 +225,47 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemSignIn"
 						"text": "Sign In"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemSignInActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemSignOut"
 						"text": "Sign Out"
 						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemSignOutActionListener", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+						name: "separatorAccount2"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemViewCart"
+						"text": "View Cart"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemCartActionListener", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "menuHelp"
 					"text": "Help"
 					"mnemonic": 72
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItemCheckUpdate"
 						"text": "Check Update"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemCheckUpdateActionListener", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
 						name: "separatorHelp1"
@@ -261,13 +274,16 @@ new FormModel {
 						name: "menuItemAbout"
 						"text": "About"
 						"mnemonic": 65
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemAboutActionListener", true ) )
 					} )
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1400, 665 )
+			"size": new java.awt.Dimension( 1130, 665 )
 		} )
 	}
 }

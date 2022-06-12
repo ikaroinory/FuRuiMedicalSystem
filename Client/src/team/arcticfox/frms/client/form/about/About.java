@@ -8,6 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import net.miginfocom.swing.*;
+import team.arcticfox.frms.client.environment.Environment;
 
 /**
  * @author IkaroInory
@@ -16,12 +17,26 @@ public class About extends JDialog {
     public About(Window owner) {
         super(owner);
         initComponents();
+        initialize();
+        loadLang();
+    }
+
+
+    private void loadLang() {
+        setTitle(Environment.language.form.about.formTitle);
+        labelAboutInfo.setText(labelAboutInfo.getText().replaceAll("%version%", Environment.config.version));
+    }
+
+    private void initialize() {
+        ImageIcon iconImage = new ImageIcon(getClass().getResource("/icons/fr.png"));
+        iconImage.setImage(iconImage.getImage().getScaledInstance(60, 60, Image.SCALE_AREA_AVERAGING));
+        labelImage.setIcon(iconImage);
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        label1 = new JLabel();
-        label2 = new JLabel();
+        labelImage = new JLabel();
+        labelAboutInfo = new JLabel();
 
         //======== this ========
         setVisible(true);
@@ -37,20 +52,20 @@ public class About extends JDialog {
             // rows
             "[256:256,top]"));
 
-        //---- label1 ----
-        label1.setIcon(new ImageIcon(getClass().getResource("/images/potion 60x60.png")));
-        contentPane.add(label1, "cell 0 0");
+        //---- labelImage ----
+        labelImage.setIcon(new ImageIcon(getClass().getResource("/icons/fr.png")));
+        contentPane.add(labelImage, "cell 0 0");
 
-        //---- label2 ----
-        label2.setText("<html>\n    <p><b style=\"color:red\">FuRui Medical System (Internal Development Version)</b></p>\n    <br/>\n    <p>Version: 0.0.2 - alpha</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>");
-        contentPane.add(label2, "cell 1 0");
+        //---- labelAboutInfo ----
+        labelAboutInfo.setText("<html>\n    <p><b style=\"color:red\">FuRui Medical System (Education Edition)</b></p>\n    <br/>\n    <p>Version: %version%</p>\n    <p>\n        MySQL: 8.0<br/>\n        SKD: Java 11.0.12\n    </p>\n    <p>\n        Technical support:<br/>\n         - Aliyun(server support)<br/>\n         - Huaweicloud(network support).\n    </p>\n</html>");
+        contentPane.add(labelAboutInfo, "cell 1 0");
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JLabel label1;
-    private JLabel label2;
+    private JLabel labelImage;
+    private JLabel labelAboutInfo;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

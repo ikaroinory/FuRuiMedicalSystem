@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class UserPwdPair implements IJsonTextable {
+public final class UserPwdPair implements IJsonTextable {
     @JSONField(name = "username")
     public String username;
     @JSONField(name = "password", ordinal = 1)

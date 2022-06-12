@@ -1,6 +1,6 @@
 package team.arcticfox.frms.system;
 
-public class SystemEnvironment {
+public final class SystemEnvironment {
     public static final String EOL = java.lang.System.lineSeparator();
     public static final String DB_NAME = "FuRui Medical System";
     public static final String TABLE_ACCOUNT_INFO = "Account Info";

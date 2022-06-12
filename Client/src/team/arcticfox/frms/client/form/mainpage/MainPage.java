@@ -14,6 +14,7 @@ import net.miginfocom.swing.*;
 import team.arcticfox.frms.client.environment.Environment;
 import team.arcticfox.frms.client.function.Account;
 import team.arcticfox.frms.data.ShoppingItem;
+import team.arcticfox.frms.integration.message.MessageBox;
 
 /**
  * @author IkaroInory
@@ -42,6 +43,7 @@ public class MainPage extends JFrame {
     }
 
     private void menuItemSignOutActionListener(ActionEvent e) {
+        Account.signOut();
         signOutInitialize();
     }
 
@@ -70,6 +72,18 @@ public class MainPage extends JFrame {
         EventHandler.showCart();
     }
 
+    private void menuItemCartActionListener(ActionEvent e) {
+        EventHandler.showCart();
+    }
+
+    private void menuItemCheckUpdateActionListener(ActionEvent e) {
+        MessageBox.show(MessageBox.Title.INFORMATION, "Currently it is the latest version.", MessageBox.Icon.INFORMATION);
+    }
+
+    private void menuItemSettingsActionListener(ActionEvent e) {
+        EventHandler.showSettingsForm();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar = new JMenuBar();
@@ -80,11 +94,10 @@ public class MainPage extends JFrame {
         menuItemRegister = new JMenuItem();
         menuItemSignIn = new JMenuItem();
         menuItemSignOut = new JMenuItem();
+        menuItemViewCart = new JMenuItem();
         menuHelp = new JMenu();
         menuItemCheckUpdate = new JMenuItem();
         menuItemAbout = new JMenuItem();
-        scrollPaneTree = new JScrollPane();
-        tree1 = new JTree();
         tabbedPane = new JTabbedPane();
         panelWelcomeVisit = new JPanel();
         labelWelcomeTitleVisit = new JLabel();
@@ -106,6 +119,7 @@ public class MainPage extends JFrame {
         setTitle("Main Page - FuRui Medical System");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/icons/fr.png")).getImage());
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -114,12 +128,11 @@ public class MainPage extends JFrame {
         });
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
-                "hidemode 3",
-                // columns
-                "[220!,fill]" +
-                        "[1100:1100,fill]",
-                // rows
-                "[590:590,fill]"));
+            "hidemode 3",
+            // columns
+            "[1114:1114,fill]",
+            // rows
+            "[590:590,fill]"));
 
         //======== menuBar ========
         {
@@ -132,7 +145,8 @@ public class MainPage extends JFrame {
                 //---- menuItemSettings ----
                 menuItemSettings.setText("Settings");
                 menuItemSettings.setMnemonic('T');
-                menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.ALT_DOWN_MASK));
+                menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK|KeyEvent.ALT_DOWN_MASK));
+                menuItemSettings.addActionListener(e -> menuItemSettingsActionListener(e));
                 menuFile.add(menuItemSettings);
 
                 //---- menuItemExit ----
@@ -164,6 +178,13 @@ public class MainPage extends JFrame {
                 menuItemSignOut.setEnabled(false);
                 menuItemSignOut.addActionListener(e -> menuItemSignOutActionListener(e));
                 menuAccount.add(menuItemSignOut);
+                menuAccount.addSeparator();
+
+                //---- menuItemViewCart ----
+                menuItemViewCart.setText("View Cart");
+                menuItemViewCart.setEnabled(false);
+                menuItemViewCart.addActionListener(e -> menuItemCartActionListener(e));
+                menuAccount.add(menuItemViewCart);
             }
             menuBar.add(menuAccount);
 
@@ -174,6 +195,7 @@ public class MainPage extends JFrame {
 
                 //---- menuItemCheckUpdate ----
                 menuItemCheckUpdate.setText("Check Update");
+                menuItemCheckUpdate.addActionListener(e -> menuItemCheckUpdateActionListener(e));
                 menuHelp.add(menuItemCheckUpdate);
                 menuHelp.addSeparator();
 
@@ -187,43 +209,18 @@ public class MainPage extends JFrame {
         }
         setJMenuBar(menuBar);
 
-        //======== scrollPaneTree ========
-        {
-
-            //---- tree1 ----
-            tree1.setModel(new DefaultTreeModel(
-                    new DefaultMutableTreeNode("FuRui Medical System") {
-                        {
-                            add(new DefaultMutableTreeNode("Home Page"));
-                            DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("FuRui Medical Database");
-                            node1.add(new DefaultMutableTreeNode("Drugs"));
-                            node1.add(new DefaultMutableTreeNode("Rx"));
-                            node1.add(new DefaultMutableTreeNode("OTC"));
-                            node1.add(new DefaultMutableTreeNode("Medical Devices"));
-                            node1.add(new DefaultMutableTreeNode("Others"));
-                            add(node1);
-                            node1 = new DefaultMutableTreeNode("Search Tools");
-                            node1.add(new DefaultMutableTreeNode("Tools1"));
-                            node1.add(new DefaultMutableTreeNode("Tools2"));
-                            add(node1);
-                        }
-                    }));
-            scrollPaneTree.setViewportView(tree1);
-        }
-        contentPane.add(scrollPaneTree, "cell 0 0");
-
         //======== tabbedPane ========
         {
 
             //======== panelWelcomeVisit ========
             {
                 panelWelcomeVisit.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1035,fill]",
-                        // rows
-                        "[70:70,fill]" +
-                                "[453:453,top]"));
+                    "hidemode 3",
+                    // columns
+                    "[1100:1100,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
 
                 //---- labelWelcomeTitleVisit ----
                 labelWelcomeTitleVisit.setText("Welcome!");
@@ -239,12 +236,12 @@ public class MainPage extends JFrame {
             //======== panelWelcome ========
             {
                 panelWelcome.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1035:1035,fill]",
-                        // rows
-                        "[70:70,fill]" +
-                                "[453:453,top]"));
+                    "hidemode 3",
+                    // columns
+                    "[1100:1100,fill]",
+                    // rows
+                    "[70:70,fill]" +
+                    "[453:453,top]"));
 
                 //---- labelWelcomeTitle ----
                 labelWelcomeTitle.setText("Welcome!");
@@ -260,37 +257,35 @@ public class MainPage extends JFrame {
             //======== panelMedicineList ========
             {
                 panelMedicineList.setLayout(new MigLayout(
-                        "hidemode 3",
-                        // columns
-                        "[1048:1048,fill]",
-                        // rows
-                        "[500:500,fill]" +
-                                "[41:41,fill]"));
+                    "hidemode 3",
+                    // columns
+                    "[1100:1100,fill]",
+                    // rows
+                    "[500:500,fill]" +
+                    "[41:41,fill]"));
 
                 //======== scrollPaneMedicineList ========
                 {
 
                     //---- tableMedicineList ----
                     tableMedicineList.setModel(new DefaultTableModel(
-                            new Object[][]{
-                                    {null, null, null, null, null, null, null},
-                            },
-                            new String[]{
-                                    "Id", "Medicine Name", "Approval No", "Manufacturer", "Type", "Price", "Amount"
-                            }
+                        new Object[][] {
+                            {null, null, null, null, null, null, null},
+                        },
+                        new String[] {
+                            "Id", "Medicine Name", "Approval No", "Manufacturer", "Type", "Price", "Amount"
+                        }
                     ) {
-                        Class<?>[] columnTypes = new Class<?>[]{
-                                Integer.class, String.class, String.class, String.class, String.class, Double.class, Integer.class
+                        Class<?>[] columnTypes = new Class<?>[] {
+                            Integer.class, String.class, String.class, String.class, String.class, Double.class, Integer.class
                         };
-                        boolean[] columnEditable = new boolean[]{
-                                false, false, false, false, false, false, false
+                        boolean[] columnEditable = new boolean[] {
+                            false, false, false, false, false, false, false
                         };
-
                         @Override
                         public Class<?> getColumnClass(int columnIndex) {
                             return columnTypes[columnIndex];
                         }
-
                         @Override
                         public boolean isCellEditable(int rowIndex, int columnIndex) {
                             return columnEditable[columnIndex];
@@ -302,9 +297,9 @@ public class MainPage extends JFrame {
                         cm.getColumn(0).setMinWidth(45);
                         cm.getColumn(0).setMaxWidth(45);
                         cm.getColumn(0).setPreferredWidth(45);
-                        cm.getColumn(2).setMinWidth(135);
-                        cm.getColumn(2).setMaxWidth(135);
-                        cm.getColumn(2).setPreferredWidth(135);
+                        cm.getColumn(2).setMinWidth(130);
+                        cm.getColumn(2).setMaxWidth(130);
+                        cm.getColumn(2).setPreferredWidth(130);
                         cm.getColumn(4).setResizable(false);
                         cm.getColumn(4).setMinWidth(80);
                         cm.getColumn(4).setMaxWidth(80);
@@ -355,7 +350,7 @@ public class MainPage extends JFrame {
             }
             tabbedPane.addTab("Medicine List", panelMedicineList);
         }
-        contentPane.add(tabbedPane, "cell 1 0");
+        contentPane.add(tabbedPane, "cell 0 0");
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -363,18 +358,17 @@ public class MainPage extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar;
-    private JMenu menuFile;
-    private JMenuItem menuItemSettings;
-    private JMenuItem menuItemExit;
-    private JMenu menuAccount;
-    private JMenuItem menuItemRegister;
-    private JMenuItem menuItemSignIn;
-    private JMenuItem menuItemSignOut;
-    private JMenu menuHelp;
-    private JMenuItem menuItemCheckUpdate;
-    private JMenuItem menuItemAbout;
-    private JScrollPane scrollPaneTree;
-    private JTree tree1;
+    JMenu menuFile;
+    JMenuItem menuItemSettings;
+    JMenuItem menuItemExit;
+    JMenu menuAccount;
+    JMenuItem menuItemRegister;
+    JMenuItem menuItemSignIn;
+    JMenuItem menuItemSignOut;
+    JMenuItem menuItemViewCart;
+    JMenu menuHelp;
+    JMenuItem menuItemCheckUpdate;
+    JMenuItem menuItemAbout;
     JTabbedPane tabbedPane;
     JPanel panelWelcomeVisit;
     private JLabel labelWelcomeTitleVisit;
@@ -386,19 +380,20 @@ public class MainPage extends JFrame {
     private JScrollPane scrollPaneMedicineList;
     JTable tableMedicineList;
     private JPanel panelButton;
-    private JButton buttonRefresh;
-    private JButton buttonViewDetails;
-    private JButton buttonAddToCart;
-    private JButton buttonViewCart;
+    JButton buttonRefresh;
+    JButton buttonViewDetails;
+    JButton buttonAddToCart;
+    JButton buttonViewCart;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void signInInitialize() {
         menuItemSignIn.setEnabled(false);
         menuItemSignOut.setEnabled(true);
+        menuItemViewCart.setEnabled(true);
 
         tabbedPane.removeAll();
-        tabbedPane.addTab("Welcome Page", panelWelcome);
-        tabbedPane.add("Medicine List", panelMedicineList);
+        tabbedPane.addTab(Environment.language.form.mainPage.tabWelcomePage, panelWelcome);
+        tabbedPane.add(Environment.language.form.mainPage.tabMedicineList, panelMedicineList);
 
         labelWelcomeContent.setText(labelWelcomeContent.getText().replaceAll("%username%", Environment.accountInfo.username));
 
@@ -406,12 +401,11 @@ public class MainPage extends JFrame {
     }
 
     public void signOutInitialize() {
-        Account.signOut();
-
         menuItemSignIn.setEnabled(true);
         menuItemSignOut.setEnabled(false);
+        menuItemViewCart.setEnabled(false);
 
         tabbedPane.removeAll();
-        tabbedPane.add("Welcome Page", panelWelcomeVisit);
+        tabbedPane.add(Environment.language.form.mainPage.tabWelcomePage, panelWelcomeVisit);
     }
 }

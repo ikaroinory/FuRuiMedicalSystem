@@ -14,6 +14,7 @@ new FormModel {
 			"resizable": false
 			"defaultCloseOperation": 2
 			"minimumSize": new java.awt.Dimension( 551, 564 )
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/fr.png" )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "labelImage"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/default.jpeg" )
@@ -81,6 +82,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelIdLabel"
 					"text": "Id"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 0"
 				} )
@@ -96,6 +100,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelApprovalNoLabel"
 					"text": "Approval No"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 1"
 				} )
@@ -123,6 +130,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelTypeLabel"
 					"text": "Type"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 2"
 				} )
@@ -150,6 +160,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelSpecificationLabel"
 					"text": "Specification"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 3"
 				} )
@@ -177,6 +190,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelManufacturerLabel"
 					"text": "Manufacturer"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 4"
 				} )
@@ -209,6 +225,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "buttonAddToCart"
 					"text": "Add To Cart"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonAddToCartActionListener", true ) )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {

@@ -8,7 +8,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
-public class Function {
+public final class Function {
     private static final String PATH_TABLE_ACCOUNT_INFO = "`" + SystemEnvironment.DB_NAME + "`.`" + SystemEnvironment.TABLE_ACCOUNT_INFO + "`";
     public static final String PATH_TABLE_MEDICINE_LIST = "`" + SystemEnvironment.DB_NAME + "`.`" + SystemEnvironment.TABLE_MEDICINE_LIST + "`";
 

@@ -5,23 +5,26 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import team.arcticfox.frms.data.IJsonTextable;
 
-public class ServerListConfig implements IJsonTextable {
+public final class ServerListConfig implements IJsonTextable {
     @JSONField(name = "sign-in")
     public Address signIn;
     @JSONField(name = "register", ordinal = 1)
     public Address register;
     @JSONField(name = "cart", ordinal = 2)
     public Address cart;
+    @JSONField(name = "order", ordinal = 3)
+    public Address order;
 
 
     public ServerListConfig() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 
-    public ServerListConfig(Address signIn, Address register, Address cart) {
+    public ServerListConfig(Address signIn, Address register, Address cart, Address order) {
         this.signIn = signIn;
         this.register = register;
         this.cart = cart;
+        this.order = order;
     }
 
 

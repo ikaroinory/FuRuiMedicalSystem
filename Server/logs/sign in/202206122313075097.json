@@ -1,0 +1,15 @@
+{
+	"uuid":"202206122313075097",
+	"time":"2022-06-12 23:13:07",
+	"ip":{
+		"address":"127.0.0.1",
+		"port":54112
+	},
+	"exception":{
+		"code":"NULL"
+	},
+	"received-object":{
+		"password":"Root@2022",
+		"username":"root"
+	}
+}

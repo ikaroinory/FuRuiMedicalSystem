@@ -21,6 +21,7 @@ public final class Command extends Thread {
                 Environment.signInServer.terminate();
                 Environment.registerServer.terminate();
                 Environment.cartServer.terminate();
+                Environment.orderServer.terminate();
                 return true;
             });
             put("help", args -> {

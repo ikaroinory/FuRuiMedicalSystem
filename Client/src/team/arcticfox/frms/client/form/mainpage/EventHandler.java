@@ -39,7 +39,7 @@ final class EventHandler {
         mainPage.buttonRefresh.setText(Environment.language.form.mainPage.buttonRefresh);
         mainPage.buttonViewDetails.setText(Environment.language.form.mainPage.buttonViewDetails);
         mainPage.buttonAddToCart.setText(Environment.language.form.mainPage.buttonAddToCart);
-        mainPage.buttonViewDetails.setText(Environment.language.form.mainPage.buttonViewCart);
+        mainPage.buttonViewCart.setText(Environment.language.form.mainPage.buttonViewCart);
     }
 
     static void initialize(MainPage mainPage) {

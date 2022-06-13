@@ -1,3 +1,4 @@
+import team.arcticfox.frms.security.Base64;
 import team.arcticfox.frms.server.core.Command;
 import team.arcticfox.frms.server.thread.CartServer;
 import team.arcticfox.frms.server.thread.OrderServer;

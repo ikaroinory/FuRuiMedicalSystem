@@ -61,6 +61,10 @@ public final class Database {
         }
     }
 
+    public boolean sql(String sql) throws SQLException {
+        return stmt.execute(sql);
+    }
+
     public ResultSet sqlQuery(String sql) {
         ResultSet rs = null;
         try {

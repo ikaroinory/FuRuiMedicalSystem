@@ -19,7 +19,6 @@ public final class Account {
         String pattern = "^.*(?=.{8,16})(?=.*\\d)(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[!@#$%^&*?()]).*$";
         return !Pattern.matches(pattern, password);
     }
-
     public static boolean signIn(String username, String password) throws FuRuiException {
         if (username.equals("")) throw new UsernameIsEmptyException();
         if (password.equals("")) throw new PasswordIsEmptyException();
@@ -50,7 +49,6 @@ public final class Account {
 
         return true;
     }
-
     public static void signOut() {
         if (Environment.accountInfo != null)
             CartFunction.update();
@@ -60,7 +58,6 @@ public final class Account {
         Environment.cartForm = null;
         Environment.accountInfo = null;
     }
-
     public static boolean register(String username, String email, String password, String verifyPassword) throws FuRuiException {
         if (username.equals("")) throw new UsernameIsEmptyException();
         if (email.equals("")) throw new EmailIsEmptyException();

@@ -16,21 +16,17 @@ public final class ShoppingCart implements IJsonTextable {
     @JSONField(name = "list", ordinal = 1, serializeUsing = ShoppingItemSerializer.class, deserializeUsing = ShoppingItemSerializer.class)
     public Map<Integer, ShoppingItem> list;
 
-
     public ShoppingCart() {
         this(null, null);
     }
-
     public ShoppingCart(String username, Map<Integer, ShoppingItem> list) {
         this.username = username;
         this.list = list;
     }
 
-
     public static ShoppingCart parse(String json) {
         return JSON.parseObject(json, ShoppingCart.class);
     }
-
 
     public void add(ShoppingItem item) {
         if (list == null)
@@ -41,11 +37,9 @@ public final class ShoppingCart implements IJsonTextable {
         else
             list.put(item.id, item);
     }
-
     public void clear() {
         clear(false);
     }
-
     public void clear(boolean onlySelected) {
         if (list == null) return;
 
@@ -57,25 +51,21 @@ public final class ShoppingCart implements IJsonTextable {
         } else
             list.clear();
     }
-
     public void selectAll() {
         if (list == null) return;
 
         for (Map.Entry<Integer, ShoppingItem> item : list.entrySet())
             item.getValue().selected = true;
     }
-
     public void deselectAll() {
         if (list == null) return;
 
         for (Map.Entry<Integer, ShoppingItem> item : list.entrySet())
             item.getValue().selected = false;
     }
-
     public double getTotalPrice() {
         return getTotalPrice(false);
     }
-
     public double getTotalPrice(boolean onlySelected) {
         if (list == null) return 0;
 
@@ -87,12 +77,10 @@ public final class ShoppingCart implements IJsonTextable {
         return price.doubleValue();
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

@@ -22,19 +22,10 @@ public final class Order implements IJsonTextable {
     @JSONField(name = "total-price", ordinal = 25)
     public double totalPrice;
 
-
     public Order() {
         this(null, 0, null, null, null, 0);
     }
-
-    public Order(
-            String uuid,
-            int id,
-            String username,
-            DateTime time,
-            List<ShoppingItem> list,
-            double totalPrice
-    ) {
+    public Order(String uuid, int id, String username, DateTime time, List<ShoppingItem> list, double totalPrice) {
         this.uuid = uuid;
         this.id = id;
         this.username = username;
@@ -43,11 +34,9 @@ public final class Order implements IJsonTextable {
         this.totalPrice = totalPrice;
     }
 
-
     public static Order parse(String json) {
         return JSON.parseObject(json, Order.class);
     }
-
     public static Order parse(OrderProtocolClientToServer utpObj) {
         DateTime now = DateTime.now();
         return new Order(
@@ -60,12 +49,10 @@ public final class Order implements IJsonTextable {
         );
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

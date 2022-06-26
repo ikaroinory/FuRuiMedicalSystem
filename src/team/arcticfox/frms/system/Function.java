@@ -27,7 +27,6 @@ public final class Function {
         }
         return true;
     }
-
     public static String readFile(String path) {
         StringBuilder s = new StringBuilder();
         try {
@@ -51,11 +50,9 @@ public final class Function {
     public static String getSQL_Query_AccountInfo_ByName(String username) {
         return "SELECT * FROM " + PATH_TABLE_ACCOUNT_INFO + " WHERE `username` = '" + Base64.encode(username) + "'";
     }
-
     public static String getSQL_Update_AccountInfo_UpdateLastLoginTime(int id) {
         return "UPDATE " + PATH_TABLE_ACCOUNT_INFO + " SET `Last Login Time` = NOW() WHERE `Id` = " + id;
     }
-
     public static String getSQL_Update_AccountInfo_InsertUser(String username, String email, String password) {
         return "INSERT INTO " + PATH_TABLE_ACCOUNT_INFO + " (" +
                 "`" + SystemEnvironment.COLUMN_USERNAME + "`, " +
@@ -69,23 +66,22 @@ public final class Function {
                 "'" + "User" + "'" +
                 ")";
     }
-
     public static String getSQL_Query_MedicineList_ById(int id) {
         return "SELECT * FROM " + PATH_TABLE_MEDICINE_LIST + " WHERE `" + SystemEnvironment.COLUMN_ID + "` = '" + id + "'";
     }
-
     public static String getSQL_Query_MedicineList_ByApprovalNo(String approvalNo) {
         return "SELECT * FROM " + PATH_TABLE_MEDICINE_LIST + " WHERE `" + SystemEnvironment.COLUMN_APPROVAL_NO + "` = '" + approvalNo + "'";
     }
-
     public static String getSQL_Query_MedicineList_All() {
-        return "SELECT * FROM " + PATH_TABLE_MEDICINE_LIST;
+        return "SELECT * FROM " + PATH_TABLE_MEDICINE_LIST + " WHERE `" + SystemEnvironment.COLUMN_FOR_SALE + "` = true AND `" + SystemEnvironment.COLUMN_AMOUNT + "`!= 0";
+    }
+    public static String getSQL_Update_MedicineList_Amount_byId(int id, int amount) {
+        return "UPDATE " + PATH_TABLE_MEDICINE_LIST + " SET `" + SystemEnvironment.COLUMN_AMOUNT + "` = " + amount + " WHERE `Id` = " + id;
     }
 
     public static String getTimeStamp() {
         return getTimeStamp(DateTime.now());
     }
-
     public static String getTimeStamp(DateTime dateTime) {
         String no = "";
         int[] list = {

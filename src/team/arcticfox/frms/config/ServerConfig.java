@@ -17,12 +17,9 @@ public final class ServerConfig implements IJsonTextable {
     @JSONField(name = "database", ordinal = 4)
     public DatabaseConfig database;
 
-
     public ServerConfig() {
         this(null, null, null, null, null);
     }
-
-
     public ServerConfig(String name, String uuid, Address address, ServerListConfig list, DatabaseConfig database) {
         this.name = name;
         this.uuid = uuid;
@@ -31,12 +28,10 @@ public final class ServerConfig implements IJsonTextable {
         this.database = database;
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

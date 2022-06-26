@@ -19,7 +19,6 @@ public class Cart extends JFrame {
     int selectedCount = 0;
     int totalCount = 0;
 
-
     public Cart() {
         initComponents();
         EventHandler.initialize(this);
@@ -35,11 +34,9 @@ public class Cart extends JFrame {
         Environment.cart.clear(true);
         EventHandler.refresh(this);
     }
-
     private void buttonBuyActionListener(ActionEvent e) {
         EventHandler.buy(this);
     }
-
     private void radioButtonSelectAllActionEvent(ActionEvent e) {
         if (radioButtonSelectAll.isSelected()) {
             Environment.cart.selectAll();

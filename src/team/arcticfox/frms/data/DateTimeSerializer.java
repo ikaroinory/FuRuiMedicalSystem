@@ -13,12 +13,10 @@ public final class DateTimeSerializer implements ObjectSerializer, ObjectDeseria
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
         jsonSerializer.write(o.toString());
     }
-
     @Override
     public DateTime deserialze(DefaultJSONParser defaultJSONParser, Type type, Object o) {
         return DateTime.parse(defaultJSONParser.parse().toString());
     }
-
     @Override
     public int getFastMatchToken() {
         return 0;

@@ -16,11 +16,9 @@ public final class CartProtocolClientToServer implements IJsonTextable {
     @JSONField(name = "cart", ordinal = 3)
     public ShoppingCart cart;
 
-
     public CartProtocolClientToServer() {
         this(null, 0, null, null);
     }
-
     public CartProtocolClientToServer(String command, int id, String username, ShoppingCart cart) {
         this.command = command;
         this.id = id;
@@ -28,17 +26,14 @@ public final class CartProtocolClientToServer implements IJsonTextable {
         this.cart = cart;
     }
 
-
     public static CartProtocolClientToServer parse(String json) {
         return JSON.parseObject(json, CartProtocolClientToServer.class);
     }
-
 
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

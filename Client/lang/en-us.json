@@ -18,6 +18,7 @@
             "form-title": "Main Page - FuRui Medical System   %version%",
             "menu-file": "File",
             "menu-account": "Account",
+            "menu-management": "Management",
             "menu-help": "Help",
             "menuItem-settings": "Settings",
             "menuItem-exit": "Exit",
@@ -25,6 +26,9 @@
             "menuItem-signIn": "Sign In",
             "menuItem-signOut": "Sign Out",
             "menuItem-viewCart": "View Cart",
+            "menuItem-userManagement": "User Management",
+            "menuItem-medicineManagement": "Medicine Management",
+            "menuItem-onlineService": "Online Service",
             "menuItem-checkUpdate": "Check Update",
             "menuItem-about": "About",
             "tab-welcomePage": "Welcome Page",
@@ -39,7 +43,10 @@
             "button-refresh": "Refresh",
             "button-viewDetails": "View Details",
             "button-addToCart": "Add To Cart",
-            "button-viewCart": "View Cart"
+            "button-viewCart": "View Cart",
+            "label-welcome": "Welcome!",
+            "label-welcome-page-visit": "<html>\n    Welcome to FuRui Medical System! Please Sign in first.<br/>\n    <br/>\n    No account?<br/>\n    Click <b style=\"color:red\">Account - Register</b> at the top of the window to register your account.<br/>\n</html>",
+            "label-welcome-page": "<html>\n    Welcome to FuRui Medical System, <b style=\"color:red\">%username%</b>!<br/>\n</html>"
         },
         "view": {
             "form-title": "%medicine_name% - View",
@@ -62,6 +69,36 @@
             "radioButton-selectAll": "Select All",
             "button-clear": "Clear",
             "button-buy": "Buy"
+        },
+        "chat": {
+            "form-title": "Online Service",
+            "label-sessionTime": "Session Time: %now%",
+            "button-end": "End",
+            "button-clear": "Clear",
+            "button-send": "Send",
+            "msg-sessionEnded": "Session Ended."
         }
+    },
+    "message": {
+        "info": {
+            "title": "Information",
+            "sign-in-successful": "Sign in successful.",
+            "sign-in-failed": "Sign in failed.",
+            "register-successful": "Register successful.",
+            "register-failed": "Register failed.",
+            "latest-version": "Currently it is the latest version.",
+            "order-submitted-successfully": "Order submitted successfully!%eol%Order No: %uuid%"
+        },
+        "warning": {
+            "title": "Warning",
+            "select-at-least-one-item": "Select at least one item!"
+        },
+        "error": {
+            "title": "Error",
+            "select-a-row": "Please select a row!"
+        }
+    },
+    "exception": {
+        "title": "Error %code%"
     }
 }

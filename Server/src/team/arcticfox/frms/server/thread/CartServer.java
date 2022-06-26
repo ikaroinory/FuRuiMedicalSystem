@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public final class CartServer extends ServerThread {
     public CartServer() {
-        super(Environment.config.server.list.cart.port);
+        super("Cart Server", Environment.config.server.list.cart.port);
     }
 
     protected void monitor() {

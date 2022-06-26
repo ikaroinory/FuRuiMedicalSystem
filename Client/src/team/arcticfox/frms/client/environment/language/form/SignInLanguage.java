@@ -1,4 +1,4 @@
-package team.arcticfox.frms.client.environment.language;
+package team.arcticfox.frms.client.environment.language.form;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -11,7 +11,6 @@ public final class SignInLanguage {
     public String labelPassword;
     @JSONField(name = "button-signIn")
     public String buttonSignIn;
-
 
     public SignInLanguage(String formTitle, String labelUsername, String labelPassword, String buttonSignIn) {
         this.formTitle = formTitle;

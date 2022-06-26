@@ -13,12 +13,10 @@ public final class MedicineGradeSerializer implements ObjectSerializer, ObjectDe
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
         jsonSerializer.write(((MedicineGrade) o).getLabel());
     }
-
     @Override
     public MedicineGrade deserialze(DefaultJSONParser defaultJSONParser, Type type, Object o) {
         return MedicineGrade.parse(((MedicineGrade) defaultJSONParser.parse()).getLabel());
     }
-
     @Override
     public int getFastMatchToken() {
         return 0;

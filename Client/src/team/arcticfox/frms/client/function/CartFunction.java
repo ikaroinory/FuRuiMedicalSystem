@@ -40,7 +40,6 @@ public final class CartFunction {
             e.printStackTrace();
         }
     }
-
     public static void update() {
         try {
             Socket socket = new Socket(Environment.config.server.list.cart.ip, Environment.config.server.list.cart.port);
@@ -62,7 +61,6 @@ public final class CartFunction {
             e.printStackTrace();
         }
     }
-
     public static void buy(List<ShoppingItem> list, double totalPrice) {
         try {
             Socket socket = new Socket(
@@ -73,18 +71,14 @@ public final class CartFunction {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-            OrderProtocolClientToServer sentUtp = new OrderProtocolClientToServer(
-                    Environment.accountInfo.id,
-                    Environment.accountInfo.username,
-                    list,
-                    totalPrice
-            );
+            OrderProtocolClientToServer sentUtp = new OrderProtocolClientToServer(Environment.accountInfo.id, Environment.accountInfo.username, list, totalPrice);
             out.writeUTF(sentUtp.toJsonString());
             out.flush();
 
             String uuid = in.readUTF();
-            MessageBox.show(MessageBox.Title.INFORMATION, "Order submitted successfully!" + SystemEnvironment.EOL + "Order No: " + uuid, MessageBox.Icon.INFORMATION);
-
+            String info = Environment.language.message.info.orderSubmittedSuccessfully;
+            info = info.replaceAll("%eol%", SystemEnvironment.EOL).replaceAll("%uuid%", uuid);
+            MessageBox.show(Environment.language.message.info.title, info, MessageBox.Icon.INFORMATION);
             in.close();
             out.close();
             socket.close();

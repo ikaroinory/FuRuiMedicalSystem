@@ -21,12 +21,13 @@ final class EventHandler {
     static void signIn(String username, String password) {
         try {
             if (Account.signIn(username, password)) {
-                MessageBox.show(MessageBox.Title.INFORMATION, "Login successful!", MessageBox.Icon.INFORMATION);
+                MessageBox.show(Environment.language.message.info.title, Environment.language.message.info.signInSuccessful, MessageBox.Icon.INFORMATION);
                 Environment.mainPage.signInInitialize();
                 Environment.signIn.dispose();
                 Environment.signIn = null;
-            } else {
-                MessageBox.show(MessageBox.Title.INFORMATION, "Login failed!", MessageBox.Icon.INFORMATION);
+            }
+            else {
+                MessageBox.show(Environment.language.message.info.title, Environment.language.message.info.signInFailed, MessageBox.Icon.INFORMATION);
                 Environment.accountInfo = null;
                 System.gc();
             }

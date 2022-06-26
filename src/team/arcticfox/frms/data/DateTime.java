@@ -21,11 +21,9 @@ public final class DateTime implements IJsonTextable {
     @JSONField(name = "second", ordinal = 5)
     public int second;
 
-
     public DateTime() {
         this(0, 0, 0, 0, 0, 0);
     }
-
     public DateTime(int year, int month, int day, int hour, int minute, int second) {
         this.year = year;
         this.month = month;
@@ -34,7 +32,6 @@ public final class DateTime implements IJsonTextable {
         this.minute = minute;
         this.second = second;
     }
-
 
     // yyyy-mm-dd hh:mm:ss
     public static DateTime parse(String str) {
@@ -45,18 +42,15 @@ public final class DateTime implements IJsonTextable {
                 Integer.parseInt(time[0]), Integer.parseInt(time[1]), Integer.parseInt(time[2])
         );
     }
-
     public static DateTime now() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         return parse(df.format(new Date()));
     }
 
-
     public long timeToLong() {
         return hour * 10000 + minute * 100 + second;
     }
-
 
     @Override
     public String toString() {
@@ -64,12 +58,10 @@ public final class DateTime implements IJsonTextable {
                 + " "
                 + String.format("%02d", hour) + ":" + String.format("%02d", minute) + ":" + String.format("%02d", second);
     }
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this);

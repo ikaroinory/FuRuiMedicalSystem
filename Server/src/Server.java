@@ -1,11 +1,7 @@
-import team.arcticfox.frms.security.Base64;
+import team.arcticfox.frms.data.DateTime;
 import team.arcticfox.frms.server.core.Command;
-import team.arcticfox.frms.server.thread.CartServer;
-import team.arcticfox.frms.server.thread.OrderServer;
-import team.arcticfox.frms.server.thread.RegisterServer;
-import team.arcticfox.frms.server.thread.SignInServer;
+import team.arcticfox.frms.server.thread.*;
 import team.arcticfox.frms.server.environment.Environment;
-
 
 public final class Server {
     private static final String WELCOME_WORDS = "FuRui Medical System Server 2022 - [%ip%:%port%]";
@@ -16,7 +12,6 @@ public final class Server {
         s = s.replaceAll("%port%", String.valueOf(Environment.config.server.address.port));
         return s;
     }
-
     private static void initialize() {
         Environment.initialize();
 
@@ -25,12 +20,20 @@ public final class Server {
         Environment.registerServer = new RegisterServer();
         Environment.cartServer = new CartServer();
         Environment.orderServer = new OrderServer();
+        Environment.userToServerChatServer = new UserToServerChatServer();
+        Environment.serverToServiceChatServer = new ServerToServiceChatServer();
+        Environment.serviceToServerChatServer = new ServiceToServerChatServer();
+        Environment.serverToUserChatServer = new ServerToUserChatServer();
 
         Environment.command.start();
         Environment.signInServer.start();
         Environment.registerServer.start();
         Environment.cartServer.start();
         Environment.orderServer.start();
+        Environment.userToServerChatServer.start();
+        Environment.serverToServiceChatServer.start();
+        Environment.serviceToServerChatServer.start();
+        Environment.serverToUserChatServer.start();
     }
 
     public static void main(String[] args) throws Exception {

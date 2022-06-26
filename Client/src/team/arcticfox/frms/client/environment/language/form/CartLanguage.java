@@ -1,6 +1,5 @@
-package team.arcticfox.frms.client.environment.language;
+package team.arcticfox.frms.client.environment.language.form;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 public final class CartLanguage {
@@ -21,17 +20,7 @@ public final class CartLanguage {
     @JSONField(name = "button-buy", ordinal = 35)
     public String buttonBuy;
 
-
-    public CartLanguage(
-            String formTitle,
-            String tableId,
-            String tableItemName,
-            String tableAmount,
-            String tablePrice,
-            String radioButtonSelectAll,
-            String buttonClear,
-            String buttonBuy
-    ) {
+    public CartLanguage(String formTitle,String tableId,String tableItemName,String tableAmount,String tablePrice,String radioButtonSelectAll,String buttonClear,String buttonBuy) {
         this.formTitle = formTitle;
         this.tableId = tableId;
         this.tableItemName = tableItemName;

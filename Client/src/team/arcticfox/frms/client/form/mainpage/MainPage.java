@@ -8,13 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.tree.*;
 
 import net.miginfocom.swing.*;
 import team.arcticfox.frms.client.environment.Environment;
 import team.arcticfox.frms.client.function.Account;
-import team.arcticfox.frms.data.ShoppingItem;
+import team.arcticfox.frms.data.AccountPermission;
 import team.arcticfox.frms.integration.message.MessageBox;
+import team.arcticfox.frms.system.SystemEnvironment;
 
 /**
  * @author IkaroInory
@@ -29,59 +29,54 @@ public class MainPage extends JFrame {
     private void menuItemExitActionListener(ActionEvent e) {
         EventHandler.exit();
     }
-
     private void menuItemRegisterActionListener(ActionEvent e) {
         EventHandler.showRegisterForm();
     }
-
     private void menuItemSignInActionListener(ActionEvent e) {
         EventHandler.showSignInForm();
     }
-
     private void menuItemAboutActionListener(ActionEvent e) {
         EventHandler.showAboutForm(this);
     }
-
     private void menuItemSignOutActionListener(ActionEvent e) {
         Account.signOut();
         signOutInitialize();
     }
-
     private void buttonRefreshActionListener(ActionEvent e) {
         EventHandler.refresh(this);
     }
-
     private void buttonViewDetailsActionListener(ActionEvent e) {
         EventHandler.showView(this);
     }
-
     private void tableMedicineListKeyPressed(KeyEvent e) {
         if (e.getKeyChar() == KeyEvent.VK_ENTER)
             EventHandler.showView(this);
     }
-
     private void thisWindowClosed(WindowEvent e) {
-        Environment.exit(0);
+        // Environment.exit(0);
     }
-
     private void buttonAddToCartActionListener(ActionEvent e) {
         EventHandler.addToCart(this);
     }
-
     private void buttonViewCartActionListener(ActionEvent e) {
         EventHandler.showCart();
     }
-
     private void menuItemCartActionListener(ActionEvent e) {
         EventHandler.showCart();
     }
-
     private void menuItemCheckUpdateActionListener(ActionEvent e) {
-        MessageBox.show(MessageBox.Title.INFORMATION, "Currently it is the latest version.", MessageBox.Icon.INFORMATION);
+        MessageBox.show(Environment.language.message.info.title, Environment.language.message.info.latestVersion, MessageBox.Icon.INFORMATION);
     }
-
     private void menuItemSettingsActionListener(ActionEvent e) {
         EventHandler.showSettingsForm();
+    }
+
+    private void customerServiceActionListener(ActionEvent e) {
+        EventHandler.showChatForm();
+    }
+
+    private void thisWindowClosing(WindowEvent e) {
+        Environment.exit(0);
     }
 
     private void initComponents() {
@@ -95,6 +90,10 @@ public class MainPage extends JFrame {
         menuItemSignIn = new JMenuItem();
         menuItemSignOut = new JMenuItem();
         menuItemViewCart = new JMenuItem();
+        menuManagement = new JMenu();
+        menuItemUserManagement = new JMenuItem();
+        menuItemMedicineManagement = new JMenuItem();
+        menuItemOnlineService = new JMenuItem();
         menuHelp = new JMenu();
         menuItemCheckUpdate = new JMenuItem();
         menuItemAbout = new JMenuItem();
@@ -125,6 +124,10 @@ public class MainPage extends JFrame {
             public void windowClosed(WindowEvent e) {
                 thisWindowClosed(e);
             }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                thisWindowClosing(e);
+            }
         });
         var contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
@@ -146,6 +149,7 @@ public class MainPage extends JFrame {
                 menuItemSettings.setText("Settings");
                 menuItemSettings.setMnemonic('T');
                 menuItemSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK|KeyEvent.ALT_DOWN_MASK));
+                menuItemSettings.setEnabled(false);
                 menuItemSettings.addActionListener(e -> menuItemSettingsActionListener(e));
                 menuFile.add(menuItemSettings);
 
@@ -187,6 +191,28 @@ public class MainPage extends JFrame {
                 menuAccount.add(menuItemViewCart);
             }
             menuBar.add(menuAccount);
+
+            //======== menuManagement ========
+            {
+                menuManagement.setText("Management");
+
+                //---- menuItemUserManagement ----
+                menuItemUserManagement.setText("User Management");
+                menuItemUserManagement.setEnabled(false);
+                menuManagement.add(menuItemUserManagement);
+
+                //---- menuItemMedicineManagement ----
+                menuItemMedicineManagement.setText("Medicine Management");
+                menuItemMedicineManagement.setEnabled(false);
+                menuManagement.add(menuItemMedicineManagement);
+
+                //---- menuItemOnlineService ----
+                menuItemOnlineService.setText("Online Service");
+                menuItemOnlineService.setEnabled(false);
+                menuItemOnlineService.addActionListener(e -> customerServiceActionListener(e));
+                menuManagement.add(menuItemOnlineService);
+            }
+            menuBar.add(menuManagement);
 
             //======== menuHelp ========
             {
@@ -366,16 +392,20 @@ public class MainPage extends JFrame {
     JMenuItem menuItemSignIn;
     JMenuItem menuItemSignOut;
     JMenuItem menuItemViewCart;
+    JMenu menuManagement;
+    JMenuItem menuItemUserManagement;
+    JMenuItem menuItemMedicineManagement;
+    JMenuItem menuItemOnlineService;
     JMenu menuHelp;
     JMenuItem menuItemCheckUpdate;
     JMenuItem menuItemAbout;
     JTabbedPane tabbedPane;
     JPanel panelWelcomeVisit;
-    private JLabel labelWelcomeTitleVisit;
-    private JLabel labelWelcomeContentVisit;
+    JLabel labelWelcomeTitleVisit;
+    JLabel labelWelcomeContentVisit;
     JPanel panelWelcome;
-    private JLabel labelWelcomeTitle;
-    private JLabel labelWelcomeContent;
+    JLabel labelWelcomeTitle;
+    JLabel labelWelcomeContent;
     private JPanel panelMedicineList;
     private JScrollPane scrollPaneMedicineList;
     JTable tableMedicineList;
@@ -390,6 +420,11 @@ public class MainPage extends JFrame {
         menuItemSignIn.setEnabled(false);
         menuItemSignOut.setEnabled(true);
         menuItemViewCart.setEnabled(true);
+        menuItemOnlineService.setEnabled(true);
+        if (Environment.accountInfo.permission == AccountPermission.OWNER || Environment.accountInfo.permission == AccountPermission.ADMIN) {
+            menuItemUserManagement.setEnabled(true);
+            menuItemMedicineManagement.setEnabled(true);
+        }
 
         tabbedPane.removeAll();
         tabbedPane.addTab(Environment.language.form.mainPage.tabWelcomePage, panelWelcome);
@@ -404,6 +439,8 @@ public class MainPage extends JFrame {
         menuItemSignIn.setEnabled(true);
         menuItemSignOut.setEnabled(false);
         menuItemViewCart.setEnabled(false);
+        menuItemUserManagement.setEnabled(false);
+        menuItemMedicineManagement.setEnabled(false);
 
         tabbedPane.removeAll();
         tabbedPane.add(Environment.language.form.mainPage.tabWelcomePage, panelWelcomeVisit);

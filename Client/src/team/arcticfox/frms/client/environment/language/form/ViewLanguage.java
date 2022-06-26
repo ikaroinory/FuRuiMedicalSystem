@@ -1,4 +1,4 @@
-package team.arcticfox.frms.client.environment.language;
+package team.arcticfox.frms.client.environment.language.form;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -17,7 +17,6 @@ public final class ViewLanguage {
     public String labelManufacturer;
     @JSONField(name = "button-addToCart")
     public String buttonAddToCart;
-
 
     public ViewLanguage(String formTitle, String labelId, String labelApprovalNo, String labelType, String labelSpecification, String labelManufacturer, String buttonAddToCart) {
         this.formTitle = formTitle;

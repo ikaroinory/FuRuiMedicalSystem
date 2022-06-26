@@ -22,11 +22,9 @@ public final class ShoppingItem implements IJsonTextable {
     @JSONField(name = "selected", ordinal = 6)
     public boolean selected;
 
-
     public ShoppingItem() {
         this(0, null, null, null, 0, 0, false);
     }
-
     public ShoppingItem(int id, String name, String manufacturer, String specification, double price, int amount, boolean selected) {
         this.id = id;
         this.name = name;
@@ -37,26 +35,21 @@ public final class ShoppingItem implements IJsonTextable {
         this.selected = selected;
     }
 
-
     public static ShoppingItem parse(String json) {
         return JSON.parseObject(json, ShoppingItem.class);
     }
-
 
     public double getTotalPrice() {
         return BigDecimal.valueOf(price).multiply(BigDecimal.valueOf(amount)).doubleValue();
     }
 
-
     public Object[] toObjectList() {
         return new Object[]{selected, id, name, amount, getTotalPrice()};
     }
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

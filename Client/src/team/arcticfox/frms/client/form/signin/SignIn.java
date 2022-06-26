@@ -24,10 +24,7 @@ public class SignIn extends JFrame {
 
 
     private void buttonSignInActionListener(ActionEvent e) {
-        EventHandler.signIn(
-                textFieldUsername.getText(),
-                String.valueOf(passwordFieldPassword.getPassword())
-        );
+        EventHandler.signIn(textFieldUsername.getText(),String.valueOf(passwordFieldPassword.getPassword()));
     }
 
     private void buttonSignInKeyPressed(KeyEvent e) {

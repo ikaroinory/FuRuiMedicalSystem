@@ -13,12 +13,10 @@ public final class AccountPermissionSerializer implements ObjectSerializer, Obje
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
         jsonSerializer.write(String.valueOf(o));
     }
-
     @Override
     public AccountPermission deserialze(DefaultJSONParser defaultJSONParser, Type type, Object o) {
         return AccountPermission.parse(String.valueOf(defaultJSONParser.parse()));
     }
-
     @Override
     public int getFastMatchToken() {
         return 0;

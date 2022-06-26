@@ -18,6 +18,7 @@
             "form-title": "主页 - 福瑞医药系统   %version%",
             "menu-file": "文件",
             "menu-account": "账户",
+            "menu-management": "管理",
             "menu-help": "帮助",
             "menuItem-settings": "设置",
             "menuItem-exit": "退出",
@@ -25,6 +26,9 @@
             "menuItem-signIn": "登录",
             "menuItem-signOut": "登出",
             "menuItem-viewCart": "查看购物车",
+            "menuItem-userManagement": "用户管理",
+            "menuItem-medicineManagement": "药品库存管理",
+            "menuItem-onlineService": "在线客服",
             "menuItem-checkUpdate": "检查更新",
             "menuItem-about": "关于",
             "tab-welcomePage": "欢迎",
@@ -39,7 +43,10 @@
             "button-refresh": "刷新",
             "button-viewDetails": "查看详情",
             "button-addToCart": "加入购物车",
-            "button-viewCart": "查看购物车"
+            "button-viewCart": "查看购物车",
+            "label-welcome": "欢迎！",
+            "label-welcome-page-visit": "<html>\n    欢迎使用福瑞医药系统！请先登录。<br/>\n    <br/>\n    还没有账号？<br/>\n    点击窗口顶部菜单栏的 <b style=\"color:red\">账号 - 注册</b> 注册账号。<br/>\n</html>",
+            "label-welcome-page": "<html>\n    欢迎使用福瑞医药系统，<b style=\"color:red\">%username%</b>！<br/>\n</html>"
         },
         "view": {
             "form-title": "%medicine_name% - 详情",
@@ -62,6 +69,33 @@
             "radioButton-selectAll": "全选",
             "button-clear": "删除所选",
             "button-buy": "购买"
+        },
+        "chat": {
+            "form-title": "在线客服",
+            "label-sessionTime": "会话时间：%now%",
+            "button-end": "结束会话",
+            "button-clear": "清屏",
+            "button-send": "发送",
+            "msg-sessionEnded": "会话已结束。"
+        }
+    },
+    "message": {
+        "info": {
+            "title": "消息",
+            "sign-in-successful": "登录成功。",
+            "sign-in-failed": "登录失败。",
+            "register-successful": "注册成功。",
+            "register-failed": "注册失败。",
+            "latest-version": "当前已经是最新版本。",
+            "order-submitted-successfully": "订单提交成功！%eol%订单号：%uuid%"
+        },
+        "warning": {
+            "title": "警告",
+            "select-at-least-one-item": "请至少选择一个物品！"
+        },
+        "error": {
+            "title": "错误",
+            "select-a-row": "请选择一行！"
         }
     }
 }

@@ -17,24 +17,20 @@ public final class RegisterProtocolClientToServer implements IJsonTextable {
     public RegisterProtocolClientToServer() {
         this(null, null, null);
     }
-
     public RegisterProtocolClientToServer(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-
     public static RegisterProtocolClientToServer parse(String s) {
         return JSON.parseObject(s, RegisterProtocolClientToServer.class);
     }
-
 
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this);

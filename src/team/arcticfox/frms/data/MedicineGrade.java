@@ -2,11 +2,8 @@ package team.arcticfox.frms.data;
 
 public enum MedicineGrade {
     UNKNOWN("未知"),
-
     RX("Rx"),
-
     OTCA("OTC-甲"),
-
     OTCB("OTC-乙");
 
     private final String label;

@@ -18,19 +18,16 @@ public final class Config implements IJsonTextable {
     public Config() {
         this(null, null, null);
     }
-
     public Config(String version, ServerConfig server, DatabaseConfig database) {
         this.version = version;
         this.server = server;
         this.database = database;
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

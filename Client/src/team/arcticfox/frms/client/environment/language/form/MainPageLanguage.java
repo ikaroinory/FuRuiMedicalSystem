@@ -1,4 +1,4 @@
-package team.arcticfox.frms.client.environment.language;
+package team.arcticfox.frms.client.environment.language.form;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -7,6 +7,8 @@ public final class MainPageLanguage {
     public String formTitle;
     @JSONField(name = "menu-file")
     public String menuFile;
+    @JSONField(name = "menu-management")
+    public String menuManagement;
     @JSONField(name = "menu-account")
     public String menuAccount;
     @JSONField(name = "menu-help")
@@ -23,6 +25,12 @@ public final class MainPageLanguage {
     public String menuItemSignOut;
     @JSONField(name = "menuItem-viewCart")
     public String menuItemViewCart;
+    @JSONField(name = "menuItem-userManagement")
+    public String menuItemUserManagement;
+    @JSONField(name = "menuItem-medicineManagement")
+    public String menuItemMedicineManagement;
+    @JSONField(name = "menuItem-onlineService")
+    public String menuItemOnlineService;
     @JSONField(name = "menuItem-checkUpdate")
     public String menuItemCheckUpdate;
     @JSONField(name = "menuItem-about")
@@ -53,12 +61,18 @@ public final class MainPageLanguage {
     public String buttonAddToCart;
     @JSONField(name = "button-viewCart")
     public String buttonViewCart;
-
+    @JSONField(name = "label-welcome")
+    public String labelWelcome;
+    @JSONField(name = "label-welcome-page-visit")
+    public String labelWelcomePageVisit;
+    @JSONField(name = "label-welcome-page")
+    public String labelWelcomePage;
 
     public MainPageLanguage(
             String formTitle,
             String menuFile,
             String menuAccount,
+            String menuManagement,
             String menuHelp,
             String menuItemSettings,
             String menuItemExit,
@@ -66,6 +80,9 @@ public final class MainPageLanguage {
             String menuItemSignIn,
             String menuItemSignOut,
             String menuItemViewCart,
+            String menuItemUserManagement,
+            String menuItemMedicineManagement,
+            String menuItemOnlineService,
             String menuItemCheckUpdate,
             String menuItemAbout,
             String tabWelcomePage,
@@ -80,11 +97,15 @@ public final class MainPageLanguage {
             String buttonRefresh,
             String buttonViewDetails,
             String buttonAddToCart,
-            String buttonViewCart
+            String buttonViewCart,
+            String labelWelcome,
+            String labelWelcomePageVisit,
+            String labelWelcomePage
     ) {
         this.formTitle = formTitle;
         this.menuFile = menuFile;
         this.menuAccount = menuAccount;
+        this.menuManagement = menuManagement;
         this.menuHelp = menuHelp;
         this.menuItemSettings = menuItemSettings;
         this.menuItemExit = menuItemExit;
@@ -92,6 +113,9 @@ public final class MainPageLanguage {
         this.menuItemSignIn = menuItemSignIn;
         this.menuItemSignOut = menuItemSignOut;
         this.menuItemViewCart = menuItemViewCart;
+        this.menuItemUserManagement = menuItemUserManagement;
+        this.menuItemMedicineManagement = menuItemMedicineManagement;
+        this.menuItemOnlineService = menuItemOnlineService;
         this.menuItemCheckUpdate = menuItemCheckUpdate;
         this.menuItemAbout = menuItemAbout;
         this.tabWelcomePage = tabWelcomePage;
@@ -107,5 +131,8 @@ public final class MainPageLanguage {
         this.buttonViewDetails = buttonViewDetails;
         this.buttonAddToCart = buttonAddToCart;
         this.buttonViewCart = buttonViewCart;
+        this.labelWelcome = labelWelcome;
+        this.labelWelcomePageVisit = labelWelcomePageVisit;
+        this.labelWelcomePage = labelWelcomePage;
     }
 }

@@ -1,0 +1,100 @@
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[521:521,fill]"
+			"$rowConstraints": "[55:55,fill][400:400,fill][100:100,fill][41:41]"
+		} ) {
+			name: "this"
+			"visible": true
+			"resizable": false
+			"defaultCloseOperation": 2
+			"title": "Chat"
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/fr.png" )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$layoutConstraints": "hidemode 3"
+				"$columnConstraints": "[400:400,fill][100:100,fill]"
+				"$rowConstraints": "[41:41,fill]"
+			} ) {
+				name: "panelTitle"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelSessionTime"
+					"text": "Session Time: %now%"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panelEnd"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonEnd"
+						"text": "End"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonEndActionListener", true ) )
+					} )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 0"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPaneShow"
+				add( new FormComponent( "javax.swing.JEditorPane" ) {
+					name: "editorPane"
+					"editable": false
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPaneSend"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+				"alignment": 2
+			} ) {
+				name: "panelButton"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonClear"
+					"text": "Clear"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonClearActionListener", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonSend"
+					"text": "Send"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buttonSendActionListener", true ) )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 3"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 535, 660 )
+		} )
+	}
+}

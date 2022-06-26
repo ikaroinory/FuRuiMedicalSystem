@@ -18,12 +18,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-
 public final class SignInServer extends ServerThread {
     public SignInServer() {
-        super(Environment.config.server.list.signIn.port);
+        super("SignIn Server", Environment.config.server.list.signIn.port);
     }
-
 
     private String signIn(String username, String password) {
         AccountInfo accountInfo = AccountInfo.getAccountInfo(username);

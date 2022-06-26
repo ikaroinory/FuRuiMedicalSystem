@@ -17,9 +17,8 @@ import java.io.IOException;
 
 public final class RegisterServer extends ServerThread {
     public RegisterServer() {
-        super(Environment.config.server.list.register.port);
+        super("Register Server", Environment.config.server.list.register.port);
     }
-
 
     protected void monitor() {
         while (!terminated) {

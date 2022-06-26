@@ -15,28 +15,23 @@ public final class Config implements IJsonTextable {
     @JSONField(name = "database", ordinal = 2)
     public DatabaseConfig database;
 
-
     public Config() {
         this(null, null, null);
     }
-
     public Config(String version, ServerConfig server, DatabaseConfig database) {
         this.version = version;
         this.server = server;
         this.database = database;
     }
 
-
     public static Config parse(String json) {
         return JSON.parseObject(json, Config.class);
     }
-
 
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

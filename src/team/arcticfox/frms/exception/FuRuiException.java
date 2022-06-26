@@ -62,4 +62,7 @@ public class FuRuiException extends Exception implements IDisplayable {
                 + "Solution: " + solution + SystemEnvironment.EOL;
         MessageBox.show(MessageBox.Title.ERROR.getTitle() + " " + code, displayMessage, MessageBox.Icon.ERROR);
     }
+    public final void displayMessageBox(String title, String message) {
+        MessageBox.show(title.replaceAll("%code%", code), message, MessageBox.Icon.ERROR);
+    }
 }

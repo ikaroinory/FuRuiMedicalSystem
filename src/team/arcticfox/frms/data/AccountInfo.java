@@ -29,11 +29,9 @@ public final class AccountInfo implements IJsonTextable {
     @JSONField(name = "last-login-time", ordinal = 6, serializeUsing = DateTimeSerializer.class, deserializeUsing = DateTimeSerializer.class)
     public DateTime lastLoginTime;
 
-
     public AccountInfo() {
         this(0, null, null, null, null, null, null, null);
     }
-
     public AccountInfo(int id, String username, String email, String password, AccountPermission permission, DateTime registrationTime, DateTime destructionTime, DateTime lastLoginTime) {
         this.id = id;
         this.username = username;
@@ -44,7 +42,6 @@ public final class AccountInfo implements IJsonTextable {
         this.destructionTime = destructionTime;
         this.lastLoginTime = lastLoginTime;
     }
-
 
     private static AccountInfo parse(ResultSet rs) {
         int id = 0;
@@ -70,11 +67,9 @@ public final class AccountInfo implements IJsonTextable {
         }
         return new AccountInfo(id, username, email, password, permission, registrationTime, destructionTime, lastLoginTime);
     }
-
     public static AccountInfo parse(String s) {
         return JSON.parseObject(s, AccountInfo.class);
     }
-
     public static AccountInfo getAccountInfo(String username) {
         Database db = new Database(SystemEnvironment.DB_NAME);
         db.open();
@@ -91,12 +86,10 @@ public final class AccountInfo implements IJsonTextable {
         return accountInfo;
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this);

@@ -15,6 +15,7 @@ new FormModel {
 			"resizable": false
 			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/icons/fr.png" )
 			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosing", "thisWindowClosing", true ) )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane"
 				auxiliary() {
@@ -33,12 +34,18 @@ new FormModel {
 						name: "labelWelcomeTitleVisit"
 						"text": "Welcome!"
 						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 36 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelWelcomeContentVisit"
 						"text": "<html>\n    Welcome to FuRui Medical System! Please Sign in first.<br/>\n    <br/>\n    No account?<br/>\n    Click <b style=\"color:red\">Account - Register</b> at the top of the window to register your account.<br/>\n</html>"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"
 					} )
@@ -58,12 +65,18 @@ new FormModel {
 						name: "labelWelcomeTitle"
 						"text": "Welcome!"
 						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 36 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "labelWelcomeContent"
 						"text": "<html>\n    Welcome to FuRui Medical System, <b style=\"color:red\">%username%</b>!<br/>\n</html>"
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1"
 					} )
@@ -189,6 +202,7 @@ new FormModel {
 						"text": "Settings"
 						"mnemonic": 84
 						"accelerator": static javax.swing.KeyStroke getKeyStroke( 83, 650, false )
+						"enabled": false
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 0
 						}
@@ -250,6 +264,38 @@ new FormModel {
 							"JavaCodeGenerator.variableModifiers": 0
 						}
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItemCartActionListener", true ) )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menuManagement"
+					"text": "Management"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 0
+					}
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemUserManagement"
+						"text": "User Management"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemMedicineManagement"
+						"text": "Medicine Management"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemOnlineService"
+						"text": "Online Service"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 0
+						}
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customerServiceActionListener", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {

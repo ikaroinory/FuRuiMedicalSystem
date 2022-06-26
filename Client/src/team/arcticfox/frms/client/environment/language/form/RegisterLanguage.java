@@ -1,4 +1,4 @@
-package team.arcticfox.frms.client.environment.language;
+package team.arcticfox.frms.client.environment.language.form;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -15,7 +15,6 @@ public final class RegisterLanguage {
     public String labelVerifyPassword;
     @JSONField(name = "button-register")
     public String buttonRegister;
-
 
     public RegisterLanguage(String formTitle, String labelUsername, String labelEmail, String labelPassword, String labelVerifyPassword, String buttonRegister) {
         this.formTitle = formTitle;

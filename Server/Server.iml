@@ -3,11 +3,12 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/config" type="java-resource" relativeOutputPath="config" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/logs" type="java-resource" relativeOutputPath="logs" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/config" type="java-resource" relativeOutputPath="config" />
+      <sourceFolder url="file://$MODULE_DIR$/logs" type="java-resource" relativeOutputPath="logs" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/carts" type="java-resource" relativeOutputPath="carts" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/carts" type="java-resource" relativeOutputPath="carts" />
+      <sourceFolder url="file://$MODULE_DIR$/order" type="java-resource" relativeOutputPath="order" generated="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

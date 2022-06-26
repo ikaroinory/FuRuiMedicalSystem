@@ -35,11 +35,9 @@ public final class MedicineInfo implements IJsonTextable {
     @JSONField(name = "Image Name", ordinal = 11)
     public String imageName;             // Image Name.              Type: String            Encode Type: None
 
-
     public MedicineInfo() {
         this(0, null, null, null, MedicineGrade.UNKNOWN, MedicineType.UNKNOWN, null, false, 0, 0, null, null);
     }
-
     public MedicineInfo(int id, String medicineName, String approvalNo, String manufacturer, MedicineGrade grade, MedicineType type,
                         String specification, boolean forSale, double price, int amount, DateTime putawayTime, String imageName
     ) {
@@ -56,7 +54,6 @@ public final class MedicineInfo implements IJsonTextable {
         this.putawayTime = putawayTime;
         this.imageName = imageName;
     }
-
 
     public static List<MedicineInfo> parse(ResultSet rs) {
         List<MedicineInfo> list = new ArrayList<>();
@@ -97,21 +94,17 @@ public final class MedicineInfo implements IJsonTextable {
         return list;
     }
 
-
     public Object[] toObjectList() {
         return new Object[]{id, medicineName, approvalNo, manufacturer, type.getLabel(), price, amount};
     }
-
     @Override
     public JSONObject toJsonObject() {
         return JSONObject.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSONObject.toJSONString(this, true);
     }
-
     @Override
     public String toString() {
         return JSONObject.toJSONString(this);

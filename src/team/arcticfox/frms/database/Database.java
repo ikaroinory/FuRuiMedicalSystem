@@ -6,6 +6,10 @@ import java.sql.*;
 
 public final class Database {
     private static final String DRIVE = "com.mysql.cj.jdbc.Driver";
+    private static final String IP = "arcticfoxdb.mysql.rds.aliyuncs.com";      // 121.37.221.220
+    private static final int PORT = 3306;
+    private static final String USERNAME = "furui";                             // root
+    private static final String PASSWORD = "Furui@2022";                        // ArcticFox@2022
 
     private static boolean connect = false;
     private static Connection conn;
@@ -14,9 +18,8 @@ public final class Database {
 
 
     public Database(String databaseName) {
-        this("121.37.221.220", 3306, databaseName);
+        this(IP, PORT, databaseName);
     }
-
     public Database(String ip, int port, String databaseName) {
         this.url = "jdbc:mysql://" + ip + ":" + port + "/"
                 + URLEncoder.encode(databaseName, StandardCharsets.UTF_8) + "?"         // 数据库名含空格，用Url转义
@@ -26,9 +29,8 @@ public final class Database {
     }
 
     public void open() {
-        open("root", "ArcticFox@2022");
+        open(USERNAME, PASSWORD);
     }
-
     public void open(String username, String password) {
         if (connect) return;
 
@@ -46,7 +48,6 @@ public final class Database {
             connect = false;
         }
     }
-
     public void close() {
         if (!connect) return;
 
@@ -60,11 +61,9 @@ public final class Database {
             // Do nothing.
         }
     }
-
     public boolean sql(String sql) throws SQLException {
         return stmt.execute(sql);
     }
-
     public ResultSet sqlQuery(String sql) {
         ResultSet rs = null;
         try {
@@ -74,7 +73,6 @@ public final class Database {
         }
         return rs;
     }
-
     public void sqlUpdate(String sql) {
         try {
             stmt.executeUpdate(sql);

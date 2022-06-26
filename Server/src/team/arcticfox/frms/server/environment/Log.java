@@ -48,7 +48,6 @@ public final class Log {
             e.printStackTrace();
         }
     }
-
     public static void createRegisterLog(String uuid, DateTime time, SocketAddress ip, String exceptionCode, JSONObject receivedObject) {
         String fileName = dir + "register/" + uuid + ".json";
         Function.createFile(fileName);

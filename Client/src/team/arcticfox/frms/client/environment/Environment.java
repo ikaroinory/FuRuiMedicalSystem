@@ -2,8 +2,11 @@ package team.arcticfox.frms.client.environment;
 
 import team.arcticfox.frms.client.config.Config;
 import team.arcticfox.frms.client.config.Settings;
+import team.arcticfox.frms.client.environment.language.Language;
 import team.arcticfox.frms.client.form.about.About;
 import team.arcticfox.frms.client.form.cart.Cart;
+import team.arcticfox.frms.client.form.chat.Chat;
+import team.arcticfox.frms.client.form.chat.EventHandler;
 import team.arcticfox.frms.client.form.mainpage.MainPage;
 import team.arcticfox.frms.client.form.register.Register;
 import team.arcticfox.frms.client.form.settings.SettingsForm;
@@ -38,24 +41,23 @@ public final class Environment {
     public static About about = null;
     public static Cart cartForm = null;
     public static SettingsForm settingsForm = null;
+    public static Chat chatForm = null;
 
 
     public static void copyToClipboard(String s) {
         StringSelection stringSelection = new StringSelection(s);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
-
     private static void loadConfig() {
         config = Config.parse(Function.readFile(PATH_CONFIG));
         settings = Settings.parse(Function.readFile(PATH_SETTINGS));
         language = Language.parse(Function.readFile(DIR_LANG + settings.language + ".json"));
     }
-
     public static void initialize() {
         loadConfig();
     }
-
     public static void exit(int status) {
+        if (chatForm != null) EventHandler.end(chatForm);
         Account.signOut();
         System.exit(status);
     }

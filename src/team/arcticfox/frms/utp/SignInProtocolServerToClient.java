@@ -12,27 +12,22 @@ public final class SignInProtocolServerToClient implements IJsonTextable {
     @JSONField(name = "account-info", ordinal = 1)
     public AccountInfo accountInfo;
 
-
     public SignInProtocolServerToClient() {
         this(null, null);
     }
-
     public SignInProtocolServerToClient(String code, AccountInfo accountInfo) {
         this.code = code;
         this.accountInfo = accountInfo;
     }
 
-
     public static SignInProtocolServerToClient parse(String s) {
         return JSON.parseObject(s, SignInProtocolServerToClient.class);
     }
-
 
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);

@@ -22,7 +22,6 @@ public final class ShoppingItemSerializer implements ObjectSerializer, ObjectDes
             list.add(item.getValue());
         jsonSerializer.write(list);
     }
-
     @Override
     public Map<Integer, ShoppingItem> deserialze(DefaultJSONParser defaultJSONParser, Type type, Object o) {
         List<JSONObject> list = (List<JSONObject>) defaultJSONParser.parse();
@@ -33,7 +32,6 @@ public final class ShoppingItemSerializer implements ObjectSerializer, ObjectDes
         }
         return map;
     }
-
     @Override
     public int getFastMatchToken() {
         return 0;

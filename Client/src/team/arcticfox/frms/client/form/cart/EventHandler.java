@@ -3,7 +3,10 @@ package team.arcticfox.frms.client.form.cart;
 import team.arcticfox.frms.client.environment.Environment;
 import team.arcticfox.frms.client.function.CartFunction;
 import team.arcticfox.frms.data.ShoppingItem;
+import team.arcticfox.frms.database.Database;
 import team.arcticfox.frms.integration.message.MessageBox;
+import team.arcticfox.frms.system.Function;
+import team.arcticfox.frms.system.SystemEnvironment;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -11,6 +14,8 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +36,6 @@ public final class EventHandler {
         cart.buttonClear.setText(Environment.language.form.cart.buttonClear);
         cart.buttonBuy.setText(Environment.language.form.cart.buttonBuy);
     }
-
     private static void refreshOthers(Cart cart) {
         cart.labelTotalPrice.setText("￥ %total_price%");
         cart.labelTotalPrice.setText(cart.labelTotalPrice.getText().replaceAll("%total_price%", String.valueOf(Environment.cart.getTotalPrice(true))));
@@ -68,6 +72,21 @@ public final class EventHandler {
                         int id = (int) cart.tableCart.getValueAt(row, INDEX_ID);
                         int amount = (int) cart.tableCart.getValueAt(row, INDEX_AMOUNT);
 
+                        try {
+                            Database db = new Database(SystemEnvironment.DB_NAME);
+                            db.open();
+                            ResultSet rs = db.sqlQuery(Function.getSQL_Query_MedicineList_ById(id));
+                            rs.first();
+                            int maxAmount = rs.getInt(SystemEnvironment.COLUMN_AMOUNT);
+                            if (amount > maxAmount) {
+                                amount = maxAmount;
+                                cart.tableCart.setValueAt(amount, row, INDEX_AMOUNT);
+                            }
+                            db.close();
+                        } catch (SQLException exception) {
+                            exception.printStackTrace();
+                        }
+
                         Environment.cart.list.get(id).amount = amount;
 
                         cart.tableCart.setValueAt(Environment.cart.list.get(id).getTotalPrice(), row, INDEX_PRICE);
@@ -77,7 +96,6 @@ public final class EventHandler {
             }
         });
     }
-
     static void buy(Cart cart) {
         List<ShoppingItem> list = new ArrayList<>();
         BigDecimal totalPrice = new BigDecimal(0);
@@ -92,7 +110,7 @@ public final class EventHandler {
             totalPrice = new BigDecimal(Environment.cart.list.get(id).getTotalPrice()).add(totalPrice);
         }
         if (list.isEmpty())
-            MessageBox.show(MessageBox.Title.WARNING, "Select at least one item!", MessageBox.Icon.WARNING);
+            MessageBox.show(Environment.language.message.warning.title, Environment.language.message.warning.selectAtLeastOneItem, MessageBox.Icon.WARNING);
         else {
             CartFunction.buy(list, totalPrice.doubleValue());
             update(cart);
@@ -126,7 +144,6 @@ public final class EventHandler {
 
         refreshOthers(cart);
     }
-
     public static void update(Cart cart) {
         int rowCount = cart.tableCart.getRowCount();
         for (int i = 0; i < rowCount; i++) {

@@ -29,7 +29,6 @@ public enum MedicineType {
     public int getId() {
         return id;
     }
-
     public String getLabel() {
         return label;
     }

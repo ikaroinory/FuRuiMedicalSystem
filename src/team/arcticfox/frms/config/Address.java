@@ -11,22 +11,18 @@ public final class Address implements IJsonTextable {
     @JSONField(name = "port", ordinal = 1)
     public int port;
 
-
     public Address() {
         this(null, 0);
     }
-
     public Address(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
 
-
     @Override
     public JSONObject toJsonObject() {
         return JSON.parseObject(toJsonString());
     }
-
     @Override
     public String toJsonString() {
         return JSON.toJSONString(this, true);
